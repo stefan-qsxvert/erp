@@ -2,17 +2,17 @@ package pl.manester.app;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBCon {
 	
-	MainObjects obiekty;
+	private MainObjects obiekty;
+	private Connection conn;
 	
 	public DBCon(MainObjects obiekty) {
 		this.obiekty = obiekty;
-	}
-	
-	public void test() {
-		System.out.println("DBCon ok! ");
 	}
 	
 	public void connectDB() {
@@ -23,7 +23,7 @@ public class DBCon {
 		
 		try {
 
-			Connection conn = DriverManager.getConnection(url, usr, pass);
+			conn = DriverManager.getConnection(url, usr, pass);
 			
 			if (!conn.isClosed()){
 			System.out.println("Baza połączona!");
@@ -34,5 +34,33 @@ public class DBCon {
 			System.out.println("Nie tym razem!");
 			e.printStackTrace();
 		}
+	}
+	
+	public ResultSet getResult(String query) throws SQLException {
+		
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(query);
+		
+//		while (rs.next()) {
+//		for(int i = 1; i <= 3; i++) {
+//			String str = rs.getString(i);
+//			System.out.print(str+" ");
+//		}
+//		System.out.println();
+//		}
+		return rs;
+//		obiekty.getConn().close();
+	}
+	
+	public void setConnClose() {
+		try {
+			obiekty.getConn().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean getConnState() throws SQLException {
+		return conn.isClosed();
 	}
 }

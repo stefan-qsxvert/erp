@@ -18,27 +18,31 @@ import pl.manester.app.Osoba;
 
 public class Gui extends Application {
 	
-	MainObjects obiekty;
+	private MainObjects obiekty;
+	private Events ev;
+	private String tst;
 	
 	public Gui(MainObjects obiekty) {
 		this.obiekty = obiekty;
+		ev = new Events(obiekty);
+		tst = "11";
 	}
+	
 	public Gui() {
-
+//		System.out.println(this);
 	}
 	
 	public void run(String[] args) {
-		launch(args);
+		launch();
 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		
 		TextField txt = new TextField();
 		txt.setPromptText("Wpisz coś");
-		txt.setPrefWidth(64);
-		txt.setMaxWidth(96);
+		txt.setPrefWidth(164);
+		txt.setMaxWidth(164);
 		txt.setMaxHeight(24);
 		
 		Tabela tab = new Tabela();
@@ -46,10 +50,9 @@ public class Gui extends Application {
 		
 		TableView<Osoba> tabela = tab.getTabela();
 		
-		
 		Button przycisk =new Button();
 		przycisk.setText("Klik!");
-		przycisk.setOnAction(new Events(txt));
+		przycisk.setOnAction(ev);
 		
 		StackPane root = new StackPane();
 		root.getChildren().addAll(tabela, txt,przycisk);
@@ -72,4 +75,5 @@ public class Gui extends Application {
 	public void setObiekty(MainObjects obiekty) {
 		this.obiekty = obiekty;
 	}
+	
 }

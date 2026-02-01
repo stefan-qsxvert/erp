@@ -25,9 +25,6 @@ public class Tabela {
 	col0.setCellValueFactory( data -> data.getValue().getNazwisko());
 	col1.setCellValueFactory( data -> data.getValue().getImie());
 	
-	tabela.getItems().add(new Osoba("Jan", "Kowalski")); 
-	tabela.getItems().add(new Osoba("Anna", "Nowak"));
-	
 	tabela.getColumns().addAll(col0,col1);
 	
 	tabela.setEditable(true);
@@ -67,7 +64,5 @@ public class Tabela {
 	public void setImie(String imie) {
 		this.Imie = imie;
 	}
-	
-
 	
 }
