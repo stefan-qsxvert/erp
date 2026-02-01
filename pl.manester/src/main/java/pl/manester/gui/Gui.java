@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.manester.app.MainObjects;
@@ -40,53 +41,12 @@ public class Gui extends Application {
 		txt.setMaxWidth(96);
 		txt.setMaxHeight(24);
 		
-		TableView<Osoba> tabela = new TableView<Osoba>();
+		Tabela tab = new Tabela();
+		tab.createTable();
 		
-		TableColumn<Osoba, String> col0 = new TableColumn();
-		TableColumn<Osoba, String> col1 = new TableColumn();
-		
-		ObservableValue<String> ov = new ObservableValue<String>() {
-			
-			@Override
-			public void removeListener(InvalidationListener listener) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void addListener(InvalidationListener listener) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void removeListener(ChangeListener<? super String> listener) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public String getValue() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public void addListener(ChangeListener<? super String> listener) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-		
-		col0.setCellValueFactory( data -> data.getValue().getNazwisko());
-		col1.setCellValueFactory( data -> data.getValue().getImie());
+		TableView<Osoba> tabela = tab.getTabela();
 		
 		
-		tabela.getItems().add(new Osoba("Jan", "Kowalski")); 
-		tabela.getItems().add(new Osoba("Anna", "Nowak"));
-		
-		tabela.getColumns().addAll(col0,col1);
-
 		Button przycisk =new Button();
 		przycisk.setText("Klik!");
 		przycisk.setOnAction(new Events(txt));
