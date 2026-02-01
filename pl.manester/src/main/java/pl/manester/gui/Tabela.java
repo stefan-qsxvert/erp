@@ -37,6 +37,11 @@ public class Tabela {
 	col0.setCellFactory(TextFieldTableCell.forTableColumn());
 	col1.setCellFactory(TextFieldTableCell.forTableColumn());
 	
+	col0.setOnEditCommit(event -> { 
+		Osoba osoba = event.getRowValue(); 
+		osoba.getNazwisko().set(event.getNewValue()); 
+		});
+	
 	}
 
 	public TableView<Osoba> getTabela() {
