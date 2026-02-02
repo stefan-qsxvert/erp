@@ -17,7 +17,6 @@ public class DBCon {
 	
 	public void connectDB() {
 		
-		
 		String usr = "manester";
 		String pass = "274591";
 		String ip = "10.8.0.10";
@@ -58,5 +57,13 @@ public class DBCon {
 	
 	public boolean getConnState() throws SQLException {
 		return conn.isClosed();
+	}
+
+	public Connection getConn() {
+		return conn;
+	}
+
+	public void setConn(Connection conn) {
+		this.conn = conn;
 	}
 }

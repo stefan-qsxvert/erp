@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import pl.manester.app.DBCon;
-import pl.manester.app.Osoba;
+import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 
 public class Events implements EventHandler<ActionEvent>{
@@ -20,6 +20,8 @@ public class Events implements EventHandler<ActionEvent>{
 
 	@Override
 	public void handle(ActionEvent event) {
+		
+		
 
 		DBCon dbconn = obiekty.getDbconn();
 		dbconn.connectDB();
@@ -31,7 +33,7 @@ public class Events implements EventHandler<ActionEvent>{
 		while (rs.next()) {
 //			for(int i = 2; i <= 3; i++) {
 //				String str = rs.getString(i);
-				obiekty.getTabela().getItems().addAll( new Osoba( rs.getString(2),rs.getString(3)));
+				obiekty.getTabela().getItems().addAll( new Person( rs.getString(1),rs.getString(2), rs.getString(3)));
 				
 //				System.out.print(str+" ");
 //			}

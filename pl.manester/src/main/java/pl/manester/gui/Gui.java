@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
-import pl.manester.app.Osoba;
+import pl.manester.app.Person;
 
 public class Gui extends Application {
 	
@@ -46,7 +46,7 @@ public class Gui extends Application {
 		Tabela tab = new Tabela();
 		tab.createTable();
 		
-		TableView<Osoba> tabela = tab.getTabela();
+		TableView<Person> tabela = tab.getTabela();
 		obiekty.setTabela(tabela);
 		
 		Button przycisk =new Button();
