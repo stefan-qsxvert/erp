@@ -18,9 +18,6 @@ public class Run {
 		DBCon dbcon = new DBCon(obiekty);
 		obiekty.setDbconn(dbcon);
 		
-				
-		
-//		public void newLaunch() {
 			Platform.startup(new Runnable() {
 				@Override
 				public void run() {

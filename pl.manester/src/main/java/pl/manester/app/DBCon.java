@@ -16,17 +16,21 @@ public class DBCon {
 	}
 	
 	public void connectDB() {
-		String url = "jdbc:postgresql://10.8.0.10:5432/manester";
-//		String port;
+		
+		
 		String usr = "manester";
 		String pass = "274591";
+		String ip = "10.8.0.10";
+		String port = "5432";
+		String dataBase = "manester";
+		
+		String url = "jdbc:postgresql://"+ ip + ":" + port + "/" + dataBase;
 		
 		try {
 
 			conn = DriverManager.getConnection(url, usr, pass);
 			
 			if (!conn.isClosed()){
-			System.out.println("Baza połączona!");
 			obiekty.setConn(conn);
 //			conn.close();
 			}
@@ -44,7 +48,7 @@ public class DBCon {
 		return rs;
 	}
 	
-	public void setConnClose() {
+	public void disconnectDB() {
 		try {
 			obiekty.getConn().close();
 		} catch (SQLException e) {

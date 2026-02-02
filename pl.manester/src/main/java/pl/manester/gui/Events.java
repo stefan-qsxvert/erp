@@ -27,7 +27,7 @@ public class Events implements EventHandler<ActionEvent>{
 		try {
 			rs =  dbconn.getResult("select * from danepodstawowe;");
 		
-		
+			obiekty.getTabela().getItems().clear();
 		while (rs.next()) {
 //			for(int i = 2; i <= 3; i++) {
 //				String str = rs.getString(i);
@@ -42,7 +42,7 @@ public class Events implements EventHandler<ActionEvent>{
 			e.printStackTrace();
 		}
 			
-		dbconn.setConnClose();
+		dbconn.disconnectDB();
 		
 //		System.out.println(textf.getText());
 //		tab.getItems().add(new Osoba("Jan", "Kowalski")); 
