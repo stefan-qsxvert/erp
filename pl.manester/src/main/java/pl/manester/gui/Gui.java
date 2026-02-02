@@ -38,7 +38,7 @@ public class Gui extends Application {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				System.out.println("run: " + obiekty);
+//				System.out.println("run: " + obiekty);
 				Gui gui = new Gui(obiekty);
 				Stage primStage = new Stage();
 				try {
