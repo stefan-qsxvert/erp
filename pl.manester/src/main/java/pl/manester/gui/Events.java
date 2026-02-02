@@ -6,13 +6,14 @@ import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import pl.manester.app.DBCon;
-import pl.manester.app.MainObjects;
+import pl.manester.app.Osoba;
+import pl.manester.app.SharedObjects;
 
 public class Events implements EventHandler<ActionEvent>{
 	
-	private MainObjects obiekty;
+	private SharedObjects obiekty;
 	
-	public Events(MainObjects obiekty) {
+	public Events(SharedObjects obiekty) {
 //		super();
 		this.obiekty = obiekty;
 	}
@@ -28,10 +29,12 @@ public class Events implements EventHandler<ActionEvent>{
 		
 		
 		while (rs.next()) {
-			for(int i = 1; i <= 3; i++) {
-				String str = rs.getString(i);
-				System.out.print(str+" ");
-			}
+//			for(int i = 2; i <= 3; i++) {
+//				String str = rs.getString(i);
+				obiekty.getTabela().getItems().addAll( new Osoba( rs.getString(2),rs.getString(3)));
+				
+//				System.out.print(str+" ");
+//			}
 			System.out.println();
 			}
 		

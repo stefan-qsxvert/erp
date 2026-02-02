@@ -8,10 +8,10 @@ import java.sql.Statement;
 
 public class DBCon {
 	
-	private MainObjects obiekty;
+	private SharedObjects obiekty;
 	private Connection conn;
 	
-	public DBCon(MainObjects obiekty) {
+	public DBCon(SharedObjects obiekty) {
 		this.obiekty = obiekty;
 	}
 	
@@ -41,15 +41,7 @@ public class DBCon {
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		
-//		while (rs.next()) {
-//		for(int i = 1; i <= 3; i++) {
-//			String str = rs.getString(i);
-//			System.out.print(str+" ");
-//		}
-//		System.out.println();
-//		}
 		return rs;
-//		obiekty.getConn().close();
 	}
 	
 	public void setConnClose() {

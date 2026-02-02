@@ -9,16 +9,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import pl.manester.app.MainObjects;
+import pl.manester.app.SharedObjects;
 import pl.manester.app.Osoba;
 
 public class Gui extends Application {
 	
-	private MainObjects obiekty;
+	private SharedObjects obiekty;
 	private Events ev;
 	private String tst;
 	
-	public Gui(MainObjects obiekty) {
+	public Gui(SharedObjects obiekty) {
 		this.obiekty = obiekty;
 		ev = new Events(obiekty);
 		tst = "11";
@@ -32,24 +32,7 @@ public class Gui extends Application {
 		launch();
 	}
 	
-	public void newLaunch() {
-		Platform.startup(new Runnable() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-//				System.out.println("run: " + obiekty);
-				Gui gui = new Gui(obiekty);
-				Stage primStage = new Stage();
-				try {
-					gui.start(primStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -64,6 +47,7 @@ public class Gui extends Application {
 		tab.createTable();
 		
 		TableView<Osoba> tabela = tab.getTabela();
+		obiekty.setTabela(tabela);
 		
 		Button przycisk =new Button();
 		przycisk.setText("Klik!");
@@ -84,10 +68,10 @@ public class Gui extends Application {
 		primaryStage.show();
 		
 	}
-	public MainObjects getObiekty() {
+	public SharedObjects getObiekty() {
 		return obiekty;
 	}
-	public void setObiekty(MainObjects obiekty) {
+	public void setObiekty(SharedObjects obiekty) {
 		this.obiekty = obiekty;
 	}
 	
