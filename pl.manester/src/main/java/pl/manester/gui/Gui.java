@@ -1,16 +1,12 @@
 package pl.manester.gui;
 
 import javafx.application.Application;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.manester.app.MainObjects;
@@ -34,6 +30,25 @@ public class Gui extends Application {
 	
 	public void run(String[] args) {
 		launch();
+	}
+	
+	public void newLaunch() {
+		Platform.startup(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				System.out.println("run: " + obiekty);
+				Gui gui = new Gui(obiekty);
+				Stage primStage = new Stage();
+				try {
+					gui.start(primStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	@Override

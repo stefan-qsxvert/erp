@@ -17,15 +17,16 @@ public class Run {
 		DBCon dbcon = new DBCon(obiekty);
 		obiekty.setDbconn(dbcon);
 		
-//		Gui gui = new Gui(obiekty);
+		Gui gui = new Gui(obiekty);
+		gui.newLaunch();
 //		gui.setObiekty(obiekty);
 //		gui.run(args);
 		
-		Application.launch(Gui.class,args);
+//		Application.launch(Gui.class,args);
 		
 		
 		
-//		dbcon.setConnClose();
+		dbcon.setConnClose();
 		
 		
 		
