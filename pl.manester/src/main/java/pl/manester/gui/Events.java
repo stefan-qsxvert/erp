@@ -11,29 +11,37 @@ import pl.manester.app.SharedObjects;
 
 public class Events implements EventHandler<ActionEvent>{
 	
-	private SharedObjects obiekty;
+	private SharedObjects sharedObjects;
 	
-	public Events(SharedObjects obiekty) {
+	public Events(SharedObjects sharedObjects) {
 //		super();
-		this.obiekty = obiekty;
+		this.sharedObjects = sharedObjects;
 	}
 
 	@Override
-	public void handle(ActionEvent event) {
+	public void handle(ActionEvent actionEvent) {
 		
+	System.out.println(actionEvent.getSource().toString());
 		
-
-		DBCon dbconn = obiekty.getDbconn();
+		switch (sharedObjects.getEventCase()) {
+		case "connectDB":
+			
+			break;
+		default:
+			break;
+		}
+/*		
+		DBCon dbconn = sharedObjects.getDbconn();
 		dbconn.connectDB();
 		ResultSet rs = null;
 		try {
 			rs =  dbconn.getResult("select * from danepodstawowe;");
 		
-			obiekty.getTabela().getItems().clear();
+			sharedObjects.getTabela().getItems().clear();
 		while (rs.next()) {
 //			for(int i = 2; i <= 3; i++) {
 //				String str = rs.getString(i);
-				obiekty.getTabela().getItems().addAll( new Person( rs.getString(1),rs.getString(2), rs.getString(3)));
+				sharedObjects.getTabela().getItems().addAll( new Person( rs.getString(1),rs.getString(2), rs.getString(3)));
 				
 //				System.out.print(str+" ");
 //			}
@@ -49,7 +57,7 @@ public class Events implements EventHandler<ActionEvent>{
 //		System.out.println(textf.getText());
 //		tab.getItems().add(new Osoba("Jan", "Kowalski")); 
 //		tab.getItems().add(new Osoba("Anna", "Nowak"));
-		
+		*/
 	}
 	
 	

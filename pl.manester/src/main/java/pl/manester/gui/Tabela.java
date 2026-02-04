@@ -3,6 +3,7 @@ package pl.manester.gui;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import pl.manester.app.Person;
 
 public class Tabela {
@@ -22,10 +23,12 @@ public class Tabela {
 	TableColumn<Person, String> col0 = new TableColumn<Person, String>();
 	TableColumn<Person, String> col1 = new TableColumn<Person, String>();
 	TableColumn<Person, String> col2 = new TableColumn<Person, String>();
+	TableColumn<Person, String> col3 = new TableColumn<Person, String>();
 	
 	col0.setCellValueFactory( data -> data.getValue().getNumber());
 	col1.setCellValueFactory( data -> data.getValue().getNazwisko());
 	col2.setCellValueFactory( data -> data.getValue().getImie());
+	
 	
 	tabela.getColumns().addAll(col0,col1,col2);
 	 

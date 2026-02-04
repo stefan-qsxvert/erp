@@ -8,23 +8,27 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
+import pl.manester.gui.EventAtions;
 import pl.manester.gui.Gui;
 
 public class Run {
 	
 	public static void main(String[] args) throws Exception {
 		
-		SharedObjects obiekty = new SharedObjects();
-		DBCon dbcon = new DBCon(obiekty);
-		obiekty.setDbconn(dbcon);
+		SharedObjects sharedObjects = new SharedObjects();
+		DBCon dbcon = new DBCon(sharedObjects);
+		sharedObjects.setDbconn(dbcon);
+		EventAtions eventAtions = new EventAtions(sharedObjects);
+		sharedObjects.setEventAtions(eventAtions);
+		
 		
 			Platform.startup(new Runnable() {
 				@Override
 				public void run() {
-					Gui gui = new Gui(obiekty);
-					obiekty.setGui(gui);
+					Gui gui = new Gui(sharedObjects);
+					sharedObjects.setGui(gui);
 					Stage primStage = new Stage();
-					obiekty.setStage(primStage);
+					sharedObjects.setStage(primStage);
 					try {
 						gui.start(primStage);
 					} catch (Exception e) {

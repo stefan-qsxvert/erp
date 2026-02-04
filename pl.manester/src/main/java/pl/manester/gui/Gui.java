@@ -1,5 +1,7 @@
 package pl.manester.gui;
 
+import javax.swing.border.LineBorder;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -7,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
@@ -49,17 +52,24 @@ public class Gui extends Application {
 		TableView<Person> tabela = tab.getTabela();
 		obiekty.setTabela(tabela);
 		
+		tabela.setMaxSize(360, 420);
+		
 		Button przycisk =new Button();
 		przycisk.setText("Klik!");
 		przycisk.setOnAction(ev);
+		przycisk.setId("action1");
 		
 		StackPane root = new StackPane();
 		root.getChildren().addAll(tabela, txt,przycisk);
+		StackPane r2 = new StackPane();
+		r2.setMaxSize(96, 124);;
+		System.out.println(przycisk.getId());
 		
 		root.setAlignment(txt, Pos.TOP_LEFT);
 		root.setAlignment(przycisk, Pos.BOTTOM_RIGHT);
-		
-		Scene sc = new Scene(root);
+				
+		Scene sc = new Scene(root, 260, 320);
+//		Scene sc = new S
 		
 		primaryStage.setTitle("Moje okno");
 		primaryStage.setScene(sc);

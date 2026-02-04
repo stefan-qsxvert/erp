@@ -11,13 +11,14 @@ import pl.manester.gui.Gui;
 public class SharedObjects {
 		
 	private Gui gui;
-	private EventAtions eventAtions;
+	private EventAtions eventcAtions;
 	private Events events;
 	private Stage stage;
 	private TableView<Person> tabela;
 	private Connection conn;
 	private DBCon dbconn;
-	
+	private String eventCase;
+	private EventAtions eventAtions;
 	
 	public SharedObjects() {
 	}
@@ -60,5 +61,29 @@ public class SharedObjects {
 
 	public void setTabela(TableView<Person> tabela) {
 		this.tabela = tabela;
+	}
+	
+	public EventAtions getEventAtions() {
+		return getEventAtions();
+	}
+
+	public void setEventAtions(EventAtions eventAtions) {
+		this.eventAtions = eventAtions;
+	}
+
+	public Events getEvents() {
+		return events;
+	}
+
+	public void setEvents(Events events) {
+		this.events = events;
+	}
+
+	public String getEventCase() {
+		return eventCase;
+	}
+
+	public void setEventCase(String eventCase) {
+		this.eventCase = eventCase;
 	}
 }
