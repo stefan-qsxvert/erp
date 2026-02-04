@@ -1,13 +1,11 @@
 package pl.manester.gui;
 
-import java.sql.DriverManager;
-
 import pl.manester.app.SharedObjects;
 
-public class EventAtions {
+public class EventActions {
 	private SharedObjects sharedObjects;
 	
-	public EventAtions(SharedObjects sharedObjects) {
+	public EventActions(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
 	}
 

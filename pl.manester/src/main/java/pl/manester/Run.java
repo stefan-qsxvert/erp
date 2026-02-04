@@ -1,14 +1,11 @@
 package pl.manester;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.EventAtions;
+import pl.manester.gui.EventActions;
+import pl.manester.gui.Events;
 import pl.manester.gui.Gui;
 
 public class Run {
@@ -18,9 +15,10 @@ public class Run {
 		SharedObjects sharedObjects = new SharedObjects();
 		DBCon dbcon = new DBCon(sharedObjects);
 		sharedObjects.setDbconn(dbcon);
-		EventAtions eventAtions = new EventAtions(sharedObjects);
-		sharedObjects.setEventAtions(eventAtions);
-		
+//		EventActions eventActions = new EventActions(sharedObjects);
+//		sharedObjects.setEventAtions(eventActions);
+		Events events = new Events(sharedObjects);
+		sharedObjects.setEvents(events);
 		
 			Platform.startup(new Runnable() {
 				@Override

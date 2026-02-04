@@ -1,30 +1,27 @@
 package pl.manester.gui;
 
-import javax.swing.border.LineBorder;
-
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import pl.manester.app.SharedObjects;
 import pl.manester.app.Person;
+import pl.manester.app.SharedObjects;
 
 public class Gui extends Application {
 	
-	private SharedObjects obiekty;
+	PreparedObjects preparedObjects;
+	private SharedObjects sharedObjects;
 	private Events ev;
-	private String tst;
+
 	
-	public Gui(SharedObjects obiekty) {
-		this.obiekty = obiekty;
-		ev = new Events(obiekty);
-		tst = "11";
+	public Gui(SharedObjects sharedObjects) {
+		preparedObjects = new PreparedObjects(sharedObjects);
+		this.sharedObjects = sharedObjects;
+		ev = new Events(sharedObjects);
 	}
 	
 	public Gui() {
@@ -34,8 +31,6 @@ public class Gui extends Application {
 	public void run(String[] args) {
 		launch();
 	}
-	
-	
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -50,14 +45,11 @@ public class Gui extends Application {
 		tab.createTable();
 		
 		TableView<Person> tabela = tab.getTabela();
-		obiekty.setTabela(tabela);
+		sharedObjects.setTabela(tabela);
 		
 		tabela.setMaxSize(360, 420);
 		
-		Button przycisk =new Button();
-		przycisk.setText("Klik!");
-		przycisk.setOnAction(ev);
-		przycisk.setId("connectDB");
+		Button przycisk = preparedObjects.getButton("klik!", "connectDB");
 		
 		StackPane root = new StackPane();
 		root.getChildren().addAll(tabela, txt,przycisk);
@@ -78,10 +70,10 @@ public class Gui extends Application {
 		
 	}
 	public SharedObjects getObiekty() {
-		return obiekty;
+		return sharedObjects;
 	}
 	public void setObiekty(SharedObjects obiekty) {
-		this.obiekty = obiekty;
+		this.sharedObjects = obiekty;
 	}
 	
 }

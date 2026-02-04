@@ -4,20 +4,20 @@ import java.sql.Connection;
 
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import pl.manester.gui.EventAtions;
+import pl.manester.gui.EventActions;
 import pl.manester.gui.Events;
 import pl.manester.gui.Gui;
 
 public class SharedObjects {
 		
 	private Gui gui;
-	private EventAtions eventcAtions;
+	private EventActions eventcAtions;
 	private Events events;
 	private Stage stage;
 	private TableView<Person> tabela;
 	private DBCon dbconn;
 	private String eventCase;
-	private EventAtions eventAtions;
+	private EventActions eventAtions;
 	
 	public SharedObjects() {
 		eventCase = new String();
@@ -55,11 +55,11 @@ public class SharedObjects {
 		this.tabela = tabela;
 	}
 	
-	public EventAtions getEventAtions() {
+	public EventActions getEventAtions() {
 		return getEventAtions();
 	}
 
-	public void setEventAtions(EventAtions eventAtions) {
+	public void setEventAtions(EventActions eventAtions) {
 		this.eventAtions = eventAtions;
 	}
 
