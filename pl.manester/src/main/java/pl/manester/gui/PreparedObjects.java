@@ -23,14 +23,15 @@ public class PreparedObjects {
 		przycisk.setText(text);
 		przycisk.setOnAction(sharedObjects.getEvents());
 		przycisk.setId(id);
+		przycisk.setMaxSize(196,36);
 		przycisk.setLayoutX(layoutX);
 		przycisk.setLayoutY(layoutY);
 		return przycisk;
 	}
-	public TextField createTextField(Integer layoutX, Integer layoutY) {
+	public TextField createTextField(String text, Integer layoutX, Integer layoutY) {
 		
 		TextField textField = new TextField();
-		textField.setPromptText("Wpisz coś");
+		textField.setPromptText(text);
 //		textField.setPrefWidth(164);
 		textField.setLayoutX(layoutX);
 		textField.setMaxHeight(layoutY);
@@ -38,9 +39,9 @@ public class PreparedObjects {
 		return textField;
 	}
 	
-	public PasswordField createPasswordField(Integer layoutX, Integer layoutY) {
+	public PasswordField createPasswordField(String password, Integer layoutX, Integer layoutY) {
 		PasswordField passwordField = new PasswordField();
-		passwordField.setPromptText("hasło");
+		passwordField.setPromptText(password);
 		passwordField.setMaxSize(196, 36);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
@@ -69,7 +70,7 @@ public class PreparedObjects {
 		col1.setCellFactory(TextFieldTableCell.forTableColumn());
 		col2.setCellFactory(TextFieldTableCell.forTableColumn());
 		
-		tableView.setMaxSize(360, 420);
+		tableView.setMaxSize(360, 720);
 		tableView.setLayoutX(layoutX);
 		tableView.setLayoutY(layoutY);
 		

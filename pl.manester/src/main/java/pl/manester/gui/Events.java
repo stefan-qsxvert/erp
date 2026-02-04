@@ -1,12 +1,9 @@
 package pl.manester.gui;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import pl.manester.app.DBCon;
-import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 
 public class Events implements EventHandler<ActionEvent>{

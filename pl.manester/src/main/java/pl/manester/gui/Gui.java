@@ -15,9 +15,15 @@ import pl.manester.app.SharedObjects;
 
 public class Gui extends Application {
 	
-	PreparedObjects preparedObjects;
+	private PreparedObjects preparedObjects;
 	private SharedObjects sharedObjects;
 	private Events ev;
+	private TextField ipTextField;
+	private TextField userTextField;
+	private PasswordField passwordField;
+	private TextField databaseTextField;
+	private Button button;
+	private TableView<Person> tablePersonList;
 
 	
 	public Gui(SharedObjects sharedObjects) {
@@ -37,18 +43,23 @@ public class Gui extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		TextField ip = preparedObjects.createTextField(4, 4);
-		TextField user = preparedObjects.createTextField(200, 4);
-		PasswordField passwordField = preparedObjects.createPasswordField(400, 1);
+		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
+		userTextField = preparedObjects.createTextField("User", 320, 4);
+		passwordField = preparedObjects.createPasswordField("Password", 480, 1);
+		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
+		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
 		
-		TableView<Person> tabela = preparedObjects.createPersonTableView(4, 36);
+		tablePersonList = preparedObjects.createPersonTableView(4, 36);
 		
+		ipTextField.appendText("10.8.0.10:5432");
+		userTextField.appendText("manester");
+		passwordField.appendText("274591");
+		databaseTextField.appendText("manester");
 		
-		Button przycisk = preparedObjects.createButton("klik!", "connectDB", 420, 394);
 		
 		Pane root = new Pane();
 
-		root.getChildren().addAll(tabela, ip, user,przycisk, passwordField);
+		root.getChildren().addAll(tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField);
 		
 //		Pane r2 = new StackPane();
 //		r2.setMaxSize(96, 124);;
@@ -61,16 +72,93 @@ public class Gui extends Application {
 		
 		primaryStage.setTitle("Moje okno");
 		primaryStage.setScene(sc);
-		primaryStage.setHeight(460);
-		primaryStage.setWidth(640);
+		primaryStage.setHeight(680);
+		primaryStage.setWidth(796);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 	}
 	public SharedObjects getObiekty() {
 		return sharedObjects;
 	}
-	public void setObiekty(SharedObjects obiekty) {
-		this.sharedObjects = obiekty;
+	public void setObiekty(SharedObjects sharedObjects) {
+		this.sharedObjects = sharedObjects;
+	}
+
+	public PreparedObjects getPreparedObjects() {
+		return preparedObjects;
+	}
+
+	public void setPreparedObjects(PreparedObjects preparedObjects) {
+		this.preparedObjects = preparedObjects;
+	}
+
+	public SharedObjects getSharedObjects() {
+		return sharedObjects;
+	}
+
+	public void setSharedObjects(SharedObjects sharedObjects) {
+		this.sharedObjects = sharedObjects;
+	}
+
+	public Events getEv() {
+		return ev;
+	}
+
+	public void setEv(Events ev) {
+		this.ev = ev;
+	}
+
+	public TextField getIpTextField() {
+		return ipTextField;
+	}
+
+	public void setIp(TextField ipTextField) {
+		this.ipTextField = ipTextField;
+	}
+
+	public TextField getUserTextField() {
+		return userTextField;
+	}
+
+	public void setUserTextField(TextField useTextField) {
+		this.userTextField = useTextField;
+	}
+
+	public PasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(PasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public Button getButton() {
+		return button;
+	}
+
+	public void setButton(Button button) {
+		this.button = button;
+	}
+
+	public TableView<Person> getTablePersonList() {
+		return tablePersonList;
+	}
+
+	public void setTablePersonList(TableView<Person> tablePersonList) {
+		this.tablePersonList = tablePersonList;
+	}
+
+	public TextField getDatabaseTextField() {
+		return databaseTextField;
+	}
+
+	public void setDatabaseTextField(TextField databaseTextField) {
+		this.databaseTextField = databaseTextField;
+	}
+
+	public void setIpTextField(TextField ipTextField) {
+		this.ipTextField = ipTextField;
 	}
 	
 }
