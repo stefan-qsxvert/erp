@@ -11,8 +11,8 @@ public class DBCon {
 	private SharedObjects obiekty;
 	private Connection conn;
 	
-	public DBCon(SharedObjects obiekty) {
-		this.obiekty = obiekty;
+	public DBCon(SharedObjects sharedObjects) {
+		this.obiekty = sharedObjects;
 	}
 	
 	public void connectDB() {
@@ -26,13 +26,7 @@ public class DBCon {
 		String url = "jdbc:postgresql://"+ ip + ":" + port + "/" + dataBase;
 		
 		try {
-
 			conn = DriverManager.getConnection(url, usr, pass);
-			
-			if (!conn.isClosed()){
-			obiekty.setConn(conn);
-//			conn.close();
-			}
 		} catch (Exception e) {
 			System.out.println("Nie tym razem!");
 			e.printStackTrace();
@@ -49,14 +43,14 @@ public class DBCon {
 	
 	public void disconnectDB() {
 		try {
-			obiekty.getConn().close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public boolean getConnState() throws SQLException {
-		return conn.isClosed();
+		return !conn.isClosed();
 	}
 
 	public Connection getConn() {

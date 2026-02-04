@@ -57,13 +57,12 @@ public class Gui extends Application {
 		Button przycisk =new Button();
 		przycisk.setText("Klik!");
 		przycisk.setOnAction(ev);
-		przycisk.setId("action1");
+		przycisk.setId("connectDB");
 		
 		StackPane root = new StackPane();
 		root.getChildren().addAll(tabela, txt,przycisk);
 		StackPane r2 = new StackPane();
 		r2.setMaxSize(96, 124);;
-		System.out.println(przycisk.getId());
 		
 		root.setAlignment(txt, Pos.TOP_LEFT);
 		root.setAlignment(przycisk, Pos.BOTTOM_RIGHT);

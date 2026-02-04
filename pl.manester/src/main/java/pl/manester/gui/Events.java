@@ -20,11 +20,24 @@ public class Events implements EventHandler<ActionEvent>{
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
+		String c = actionEvent.getSource().toString();
 		
-	System.out.println(actionEvent.getSource().toString());
+		if (c.contains("connectDB")) {
+			sharedObjects.setEventCase("connectDB");
+		}	
 		
 		switch (sharedObjects.getEventCase()) {
 		case "connectDB":
+			
+			try {
+				sharedObjects.getDbconn().connectDB();
+				System.out.println(sharedObjects.getDbconn().getConnState());
+				sharedObjects.getDbconn().disconnectDB();
+				System.out.println(sharedObjects.getDbconn().getConnState());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			break;
 		default:

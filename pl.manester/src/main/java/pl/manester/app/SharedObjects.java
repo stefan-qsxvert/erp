@@ -15,20 +15,12 @@ public class SharedObjects {
 	private Events events;
 	private Stage stage;
 	private TableView<Person> tabela;
-	private Connection conn;
 	private DBCon dbconn;
 	private String eventCase;
 	private EventAtions eventAtions;
 	
 	public SharedObjects() {
-	}
-	
-	public Connection getConn() {
-		return conn;
-	}
-
-	public void setConn(Connection conn) {
-		this.conn = conn;
+		eventCase = new String();
 	}
 
 	public DBCon getDbconn() {
