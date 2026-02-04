@@ -20,18 +20,13 @@ public class DBCon {
 	}
 	
 	public void connectDB() {
-		/*
-		String usr = "manester";
-		String pass = "274591";
-		String ip = "10.8.0.10";
-		String port = "5432";
-		String dataBase = "manester";
-	*/	
+
 		String usr = sharedObjects.getGui().getUserTextField().getText();
-		String pass = sharedObjects.getGui().getPasswordField().getText();		
+		String pass = sharedObjects.getGui().getPasswordField().getText();
+		
 		String ip = sharedObjects.getGui().getIpTextField().getText();
-//		String port = "5432";
-		String dataBase = sharedObjects.getGui().getDatabaseTextField().getText();		
+		String dataBase = sharedObjects.getGui().getDatabaseTextField().getText();
+		
 		String url = "jdbc:postgresql://"+ ip + "/" + dataBase;
 		
 		try {
