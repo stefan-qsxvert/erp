@@ -1,7 +1,5 @@
 package pl.manester.app;
 
-import java.sql.Connection;
-
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import pl.manester.gui.EventActions;
@@ -11,14 +9,13 @@ import pl.manester.gui.Gui;
 public class SharedObjects {
 		
 	private Gui gui;
-	private EventActions eventcAtions;
+	private EventActions eventActions;
 	private Events events;
 	private Stage stage;
 	private TableView<Person> tabela;
 	private DBCon dbconn;
 	private String eventCase;
-	private EventActions eventAtions;
-	
+
 	public SharedObjects() {
 		eventCase = new String();
 	}
@@ -59,8 +56,8 @@ public class SharedObjects {
 		return getEventAtions();
 	}
 
-	public void setEventAtions(EventActions eventAtions) {
-		this.eventAtions = eventAtions;
+	public void setEventActions(EventActions eventActions) {
+		this.eventActions = eventActions;
 	}
 
 	public Events getEvents() {

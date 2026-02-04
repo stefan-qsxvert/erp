@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.manester.app.Person;
@@ -35,29 +37,24 @@ public class Gui extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		TextField txt = new TextField();
-		txt.setPromptText("Wpisz coś");
-		txt.setPrefWidth(164);
-		txt.setMaxWidth(164);
-		txt.setMaxHeight(24);
+		TextField ip = preparedObjects.createTextField(4, 4);
+		TextField user = preparedObjects.createTextField(200, 4);
+		PasswordField passwordField = preparedObjects.createPasswordField(400, 1);
 		
-		Tabela tab = new Tabela();
-		tab.createTable();
+		TableView<Person> tabela = preparedObjects.createPersonTableView(4, 36);
 		
-		TableView<Person> tabela = tab.getTabela();
-		sharedObjects.setTabela(tabela);
 		
-		tabela.setMaxSize(360, 420);
+		Button przycisk = preparedObjects.createButton("klik!", "connectDB", 420, 394);
 		
-		Button przycisk = preparedObjects.getButton("klik!", "connectDB");
+		Pane root = new Pane();
+
+		root.getChildren().addAll(tabela, ip, user,przycisk, passwordField);
 		
-		StackPane root = new StackPane();
-		root.getChildren().addAll(tabela, txt,przycisk);
-		StackPane r2 = new StackPane();
-		r2.setMaxSize(96, 124);;
+//		Pane r2 = new StackPane();
+//		r2.setMaxSize(96, 124);;
 		
-		root.setAlignment(txt, Pos.TOP_LEFT);
-		root.setAlignment(przycisk, Pos.BOTTOM_RIGHT);
+//		root.setAlignment(txt, Pos.TOP_LEFT);
+
 				
 		Scene sc = new Scene(root, 260, 320);
 //		Scene sc = new S
