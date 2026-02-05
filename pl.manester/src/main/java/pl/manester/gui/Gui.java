@@ -1,14 +1,12 @@
 package pl.manester.gui;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
@@ -24,6 +22,7 @@ public class Gui extends Application {
 	private TextField databaseTextField;
 	private Button button;
 	private TableView<Person> tablePersonList;
+	private Stage primaryStageCopy;
 
 	
 	public Gui(SharedObjects sharedObjects) {
@@ -42,6 +41,7 @@ public class Gui extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		primaryStageCopy = primaryStage;
 		
 		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
 		userTextField = preparedObjects.createTextField("User", 320, 4);
@@ -53,22 +53,14 @@ public class Gui extends Application {
 		
 		ipTextField.appendText("10.8.0.10:5432");
 		userTextField.appendText("manester");
-		passwordField.appendText("274591");
+		passwordField.appendText("");
 		databaseTextField.appendText("manester");
-		
 		
 		Pane root = new Pane();
 
 		root.getChildren().addAll(tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField);
 		
-//		Pane r2 = new StackPane();
-//		r2.setMaxSize(96, 124);;
-		
-//		root.setAlignment(txt, Pos.TOP_LEFT);
-
-				
 		Scene sc = new Scene(root, 260, 320);
-//		Scene sc = new S
 		
 		primaryStage.setTitle("Moje okno");
 		primaryStage.setScene(sc);
@@ -159,6 +151,14 @@ public class Gui extends Application {
 
 	public void setIpTextField(TextField ipTextField) {
 		this.ipTextField = ipTextField;
+	}
+
+	public Stage getPrimaryStageCopy() {
+		return primaryStageCopy;
+	}
+
+	public void setPrimaryStageCopy(Stage primaryStageCopy) {
+		this.primaryStageCopy = primaryStageCopy;
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 
 public class Events implements EventHandler<ActionEvent>{
@@ -29,22 +30,22 @@ public class Events implements EventHandler<ActionEvent>{
 			
 			try {
 				sharedObjects.getDbconn().connectDB();
-				System.out.println(sharedObjects.getDbconn().getConnState());
-				ResultSet rs = sharedObjects.getDbconn().getResult("insert * from person;" );
 				
-				rs.next();
-				System.out.println(rs.getString(1));
+				ResultSet rs = sharedObjects.getDbconn().getResult("select * from danepodstawowe;" );
+				sharedObjects.getGui().getTablePersonList().getItems().clear();
+				while (rs.next()) {
+					sharedObjects.getGui().getTablePersonList().getItems().addAll(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
+				}
 				
 				sharedObjects.getDbconn().disconnectDB();
-				System.out.println(sharedObjects.getDbconn().getConnState());
+				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				sharedObjects.getDbconn().disconnectDB();
 				try {
 					System.out.println(sharedObjects.getDbconn().getConnState());
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
@@ -54,7 +55,7 @@ public class Events implements EventHandler<ActionEvent>{
 			break;
 		}
 
-			sharedObjects.getTabela().getItems().clear();
+//			sharedObjects.getTabela().getItems().clear();
 			
 			
 			
