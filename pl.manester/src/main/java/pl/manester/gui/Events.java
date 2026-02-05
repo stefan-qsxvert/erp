@@ -29,37 +29,16 @@ public class Events implements EventHandler<ActionEvent>{
 		}
 
 		switch (sharedObjects.getEventCase()) {
+		
 		case "connectDB":
-			
-			try {
-				sharedObjects.getDbconn().connectDB();
-				
-				ResultSet rs = sharedObjects.getDbconn().getResult("select * from danepodstawowe;" );
-				sharedObjects.getGui().getTablePersonList().getItems().clear();
-				while (rs.next()) {
-					sharedObjects.getGui().getTablePersonList().getItems().addAll(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
-				}
-				
-				sharedObjects.getGui().getButton().setText("Rozłącz");
-				sharedObjects.getGui().getButton().setId("disconnectDB");
-				sharedObjects.setEventCase("disconnectDB");
-				sharedObjects.getDbconn().disconnectDB();
-				
-			} catch (SQLException e) {
-				//e.printStackTrace();
-				sharedObjects.getDbconn().disconnectDB();
-				try {
-					System.out.println(sharedObjects.getDbconn().getConnState());
-				} catch (SQLException e1) {
-
-					//e1.printStackTrace();
-				}
-			}
-			
+			sharedObjects.getEventActions().connectDB();
+			System.out.println(sharedObjects.getDbconn().getConnectionState());
 			break;
 			
 		case "disconnectDB":
-			System.out.println("rozłączam");
+			sharedObjects.getEventActions().disconnectDB();
+			System.out.println(sharedObjects.getDbconn().getConnectionState());
+			break;
 		default:
 			break;
 		}
