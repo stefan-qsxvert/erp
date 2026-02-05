@@ -23,8 +23,11 @@ public class Events implements EventHandler<ActionEvent>{
 		
 		if (c.contains("connectDB")) {
 			sharedObjects.setEventCase("connectDB");
-		}	
-		
+		}
+		if (c.contains("disconnectDB")) {
+			sharedObjects.setEventCase("disconnectDB");
+		}
+
 		switch (sharedObjects.getEventCase()) {
 		case "connectDB":
 			
@@ -37,6 +40,9 @@ public class Events implements EventHandler<ActionEvent>{
 					sharedObjects.getGui().getTablePersonList().getItems().addAll(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
 				}
 				
+				sharedObjects.getGui().getButton().setText("Rozłącz");
+				sharedObjects.getGui().getButton().setId("disconnectDB");
+				sharedObjects.setEventCase("disconnectDB");
 				sharedObjects.getDbconn().disconnectDB();
 				
 			} catch (SQLException e) {
@@ -51,34 +57,12 @@ public class Events implements EventHandler<ActionEvent>{
 			}
 			
 			break;
+			
+		case "disconnectDB":
+			System.out.println("rozłączam");
 		default:
 			break;
 		}
 
-//			sharedObjects.getTabela().getItems().clear();
-			
-			
-			
-//		while (rs.next()) {
-//
-//				//sharedObjects.getTabela().getItems().addAll( new Person( rs.getString(1),rs.getString(2), rs.getString(3)));
-//				
-//
-//			}
-//			System.out.println();
-//			}
-//		
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//			
-//		dbconn.disconnectDB();
-//		
-//		System.out.println(textf.getText());
-//		tab.getItems().add(new Osoba("Jan", "Kowalski")); 
-//		tab.getItems().add(new Osoba("Anna", "Nowak"));
-//
 	}
-	
-	
 }

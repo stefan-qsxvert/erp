@@ -32,7 +32,6 @@ public class Gui extends Application {
 	}
 	
 	public Gui() {
-//		System.out.println(this);
 	}
 	
 	public void run(String[] args) {

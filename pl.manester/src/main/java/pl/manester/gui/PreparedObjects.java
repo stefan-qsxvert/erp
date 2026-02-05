@@ -42,7 +42,7 @@ public class PreparedObjects {
 	public PasswordField createPasswordField(String password, Integer layoutX, Integer layoutY) {
 		PasswordField passwordField = new PasswordField();
 		passwordField.setPromptText(password);
-		passwordField.setMaxSize(196, 36);
+		passwordField.setMaxSize(360, 36);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
 		return passwordField;
