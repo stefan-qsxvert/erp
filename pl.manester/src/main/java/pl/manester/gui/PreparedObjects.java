@@ -42,7 +42,7 @@ public class PreparedObjects {
 	public PasswordField createPasswordField(String password, Integer layoutX, Integer layoutY) {
 		PasswordField passwordField = new PasswordField();
 		passwordField.setPromptText(password);
-		passwordField.setMaxSize(360, 36);
+		passwordField.setMaxSize(196, 36);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
 		return passwordField;
@@ -61,6 +61,15 @@ public class PreparedObjects {
 		col1.setCellValueFactory( data -> data.getValue().getNazwisko());
 		col2.setCellValueFactory( data -> data.getValue().getImie());
 		
+		col0.setMinWidth(24);
+		col0.setMaxWidth(24);
+		col1.setMinWidth(124);
+		col2.setMinWidth(124);
+		col0.setText("Lp");
+		col1.setText("Nazwisko");
+		col2.setText("Imię");
+		
+		
 		
 		tableView.getColumns().addAll(col0,col1,col2);
 		 
@@ -70,7 +79,8 @@ public class PreparedObjects {
 		col1.setCellFactory(TextFieldTableCell.forTableColumn());
 		col2.setCellFactory(TextFieldTableCell.forTableColumn());
 		
-		tableView.setMaxSize(360, 720);
+		tableView.setMinSize(274, 580);
+		tableView.setMaxSize(274, 580);
 		tableView.setLayoutX(layoutX);
 		tableView.setLayoutY(layoutY);
 		

@@ -46,13 +46,13 @@ public class Events implements EventHandler<ActionEvent>{
 				sharedObjects.getDbconn().disconnectDB();
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 				sharedObjects.getDbconn().disconnectDB();
 				try {
 					System.out.println(sharedObjects.getDbconn().getConnState());
 				} catch (SQLException e1) {
 
-					e1.printStackTrace();
+					//e1.printStackTrace();
 				}
 			}
 			
