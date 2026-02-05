@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
+import pl.manester.gui.EventActions;
 import pl.manester.gui.Events;
 import pl.manester.gui.Gui;
 
@@ -16,6 +17,8 @@ public class Run {
 		sharedObjects.setDbconn(dbcon);
 		Events events = new Events(sharedObjects);
 		sharedObjects.setEvents(events);
+		EventActions eventActions = new EventActions(sharedObjects);
+		sharedObjects.setEventActions(eventActions);
 		
 			Platform.startup(new Runnable() {
 				@Override

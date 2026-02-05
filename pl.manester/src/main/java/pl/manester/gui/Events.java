@@ -27,18 +27,33 @@ public class Events implements EventHandler<ActionEvent>{
 		if (c.contains("disconnectDB")) {
 			sharedObjects.setEventCase("disconnectDB");
 		}
+		if (c.contains("fillTab")) {
+			sharedObjects.setEventCase("fillTab");
+		}
 
 		switch (sharedObjects.getEventCase()) {
 		
 		case "connectDB":
 			sharedObjects.getEventActions().connectDB();
 			System.out.println(sharedObjects.getDbconn().getConnectionState());
+			sharedObjects.getGui().getButton().setId("fillTab");
+			sharedObjects.getGui().getButton().setText("Wypełnij_tabelę");
+			break;
+			
+		case "fillTab":
+			sharedObjects.getEventActions().fillTable();
+			System.out.println(sharedObjects.getDbconn().getConnectionState());
+			sharedObjects.getGui().getButton().setId("disconnectDB");
+			sharedObjects.getGui().getButton().setText("RozłączDB");
 			break;
 			
 		case "disconnectDB":
 			sharedObjects.getEventActions().disconnectDB();
 			System.out.println(sharedObjects.getDbconn().getConnectionState());
+			sharedObjects.getGui().getButton().setId("connectDB");
+			sharedObjects.getGui().getButton().setText("PołączDB");
 			break;
+			
 		default:
 			break;
 		}
