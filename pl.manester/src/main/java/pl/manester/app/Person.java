@@ -19,24 +19,24 @@ public class Person {
 		return Number;
 	}
 
-	public void setNumber(SimpleStringProperty number) {
-		Number = number;
+	public void setNumber(String number) {
+		Number.set(number);
 	}
 
 	public SimpleStringProperty getNazwisko() {
 		return Nazwisko;
 	}
 
-	public void setNazwisko(SimpleStringProperty nazwisko) {
-		Nazwisko = nazwisko;
+	public void setNazwisko(String nazwisko) {
+		Nazwisko.set(nazwisko);
 	}
 
 	public SimpleStringProperty getImie() {
 		return Imie;
 	}
 
-	public void setImie(SimpleStringProperty imie) {
-		Imie = imie;
+	public void setImie(String imie) {
+		Imie.set(imie);
 	}
 		
 }

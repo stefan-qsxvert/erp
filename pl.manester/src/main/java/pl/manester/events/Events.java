@@ -1,11 +1,7 @@
-package pl.manester.gui;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package pl.manester.events;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 
 public class Events implements EventHandler<ActionEvent>{
@@ -35,21 +31,23 @@ public class Events implements EventHandler<ActionEvent>{
 		
 		case "connectDB":
 			sharedObjects.getEventActions().connectDB();
-			System.out.println(sharedObjects.getDbconn().getConnectionState());
+//			System.out.println(sharedObjects.getDbconn().getConnectionState());
+			if (sharedObjects.getDbconn().getConnectionState()) {
 			sharedObjects.getGui().getButton().setId("fillTab");
 			sharedObjects.getGui().getButton().setText("Wypełnij_tabelę");
+			}
 			break;
 			
 		case "fillTab":
 			sharedObjects.getEventActions().fillTable();
-			System.out.println(sharedObjects.getDbconn().getConnectionState());
+//			System.out.println(sharedObjects.getDbconn().getConnectionState());
 			sharedObjects.getGui().getButton().setId("disconnectDB");
 			sharedObjects.getGui().getButton().setText("RozłączDB");
 			break;
 			
 		case "disconnectDB":
 			sharedObjects.getEventActions().disconnectDB();
-			System.out.println(sharedObjects.getDbconn().getConnectionState());
+//			System.out.println(sharedObjects.getDbconn().getConnectionState());
 			sharedObjects.getGui().getButton().setId("connectDB");
 			sharedObjects.getGui().getButton().setText("PołączDB");
 			break;

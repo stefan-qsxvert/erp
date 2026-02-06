@@ -1,7 +1,8 @@
 package pl.manester.app;
 
-import pl.manester.gui.EventActions;
-import pl.manester.gui.Events;
+import pl.manester.events.CellEventHandler;
+import pl.manester.events.EventActions;
+import pl.manester.events.Events;
 import pl.manester.gui.Gui;
 
 public class SharedObjects {
@@ -12,6 +13,7 @@ public class SharedObjects {
 	private DBCon dbconn;
 	private String eventCase;
 	private Person person;
+	private CellEventHandler cellEventHandler;
 
 	public SharedObjects() {
 		eventCase = new String();
@@ -64,5 +66,12 @@ public class SharedObjects {
 	public void setEventActions(EventActions eventActions) {
 		this.eventActions = eventActions;
 	}
-	
+
+	public CellEventHandler getCellEventHandler() {
+		return cellEventHandler;
+	}
+
+	public void setCellEventHandler(CellEventHandler cellEventHandler) {
+		this.cellEventHandler = cellEventHandler;
+	}
 }

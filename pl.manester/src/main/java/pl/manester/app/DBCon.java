@@ -6,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.sonatype.plexus.components.sec.dispatcher.PasswordDecryptor;
-
-import javafx.scene.control.PasswordField;
-
 public class DBCon {
 	
 	private SharedObjects sharedObjects;
@@ -34,16 +30,23 @@ public class DBCon {
 		try {
 			conn = DriverManager.getConnection(url, usr, pass);
 			connectionState = !conn.isClosed();
+			System.out.println("Baza połączona!");
 		} catch (Exception e) {
 			System.out.println("Nie tym razem!");
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
 	public ResultSet getResult(String query) throws SQLException {
 		
-		Statement st = conn.createStatement();
-		ResultSet rs = st.executeQuery(query);
+		ResultSet rs = null;
+		
+		try {
+			Statement st = conn.createStatement();
+			rs = st.executeQuery(query);
+		} catch (Exception e) {
+			System.out.println();
+		}
 		
 		return rs;
 	}
@@ -52,6 +55,7 @@ public class DBCon {
 		try {
 			conn.close();
 			connectionState = !conn.isClosed();
+			System.out.println("Baza rozłączona!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -6,9 +6,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
-import jdk.javadoc.internal.doclets.formats.html.taglets.ReturnTaglet;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
+import pl.manester.events.CellEventHandler;
 
 public class PreparedObjects {
 	
@@ -65,11 +65,16 @@ public class PreparedObjects {
 		col0.setMaxWidth(24);
 		col1.setMinWidth(124);
 		col2.setMinWidth(124);
+		
 		col0.setText("Lp");
 		col1.setText("Nazwisko");
 		col2.setText("Imię");
 		
 		
+		col0.setOnEditCommit(new CellEventHandler(sharedObjects, "0"));
+		col1.setOnEditCommit(new CellEventHandler(sharedObjects, "1"));
+		col2.setOnEditCommit(new CellEventHandler(sharedObjects, "2"));
+
 		
 		tableView.getColumns().addAll(col0,col1,col2);
 		 

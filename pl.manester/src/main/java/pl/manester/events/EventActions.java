@@ -1,4 +1,4 @@
-package pl.manester.gui;
+package pl.manester.events;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,12 +27,8 @@ public class EventActions {
 			while (rs.next()) {
 				sharedObjects.getGui().getTablePersonList().getItems().addAll(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
 			}
-			
-			sharedObjects.getGui().getButton().setText("Rozłącz");
-			sharedObjects.getGui().getButton().setId("disconnectDB");
-			sharedObjects.setEventCase("disconnectDB");
-			sharedObjects.getDbconn().disconnectDB();
-			
+				sharedObjects.getGui().getTablePersonList().getItems().add(new Person(null, null, null));
+				
 		} catch (SQLException e) {
 
 		}
