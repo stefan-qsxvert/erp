@@ -22,9 +22,8 @@ public class CellEventHandler implements EventHandler<CellEditEvent<Person, Stri
 		System.out.println(person.getImie().get());
 		System.out.println(person.getNazwisko().get());
 		
-		if (person.getImie().get()==null && person.getNazwisko().get()==null&&person.getNazwisko().get()==null) {
+		if (person.getImie().get()!=null && person.getNazwisko().get()!=null&&person.getNazwisko().get()!=null) {
 			sharedObjects.getGui().getTablePersonList().getItems().add(new Person(null,null,null));
-			System.out.println("tst");
 		}
 		
 		switch (type) {
@@ -40,7 +39,5 @@ public class CellEventHandler implements EventHandler<CellEditEvent<Person, Stri
 		default:
 			break;
 		}
-		
-		
 	}
 }

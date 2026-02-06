@@ -1,12 +1,9 @@
 package pl.manester;
 
 import javafx.application.Platform;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.stage.Stage;
 import pl.manester.app.DBCon;
-import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
-import pl.manester.events.CellEventHandler;
 import pl.manester.events.EventActions;
 import pl.manester.events.Events;
 import pl.manester.gui.Gui;
@@ -22,8 +19,6 @@ public class Run {
 		sharedObjects.setEvents(events);
 		EventActions eventActions = new EventActions(sharedObjects);
 		sharedObjects.setEventActions(eventActions);
-//		CellEventHandler cellEventHandler = new CellEventHandler(sharedObjects);
-//		sharedObjects.setCellEventHandler(cellEventHandler);
 		
 			Platform.startup(new Runnable() {
 				@Override

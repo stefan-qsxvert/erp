@@ -6,6 +6,14 @@
   
  
  <dependencies>
+
+<dependency>
+    <groupId>com.zaxxer</groupId>
+    <artifactId>HikariCP</artifactId>
+    <version>7.0.2</version>
+    <scope>compile</scope>
+</dependency>
+
   <dependency>
     <groupId>org.openjfx</groupId>
     <artifactId>javafx-maven-plugin</artifactId>

@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pl.manester.app.Person;
@@ -43,13 +45,15 @@ public class Gui extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStageCopy = primaryStage;
 		
+		
 		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
 		userTextField = preparedObjects.createTextField("User", 320, 4);
 		passwordField = preparedObjects.createPasswordField("Password", 480, 1);
 		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
 		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
 		
-		tablePersonList = preparedObjects.createPersonTableView(4, 36);
+		
+		tablePersonList = preparedObjects.createPersonTableView(256, 36);
 		
 		ipTextField.appendText("10.8.0.10:5432");
 		userTextField.appendText("manester");
@@ -58,7 +62,7 @@ public class Gui extends Application {
 		
 		Pane root = new Pane();
 
-		root.getChildren().addAll(tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField);
+		root.getChildren().addAll(tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeButtonMenu());
 		
 		Scene sc = new Scene(root, 260, 320);
 		

@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
@@ -99,5 +101,50 @@ public class PreparedObjects {
 		tableView.setLayoutY(layoutY);
 		
 		return tableView;
+	}
+	
+	public TreeView<String> createTreeMenu(){
+		TreeItem<String> root = new TreeItem<>("Menu"); 
+		root.setExpanded(true);
+		
+		TreeItem<String> file = new TreeItem<>("Plik"); 
+		TreeItem<String> edit = new TreeItem<>("Edycja"); 
+		TreeItem<String> view = new TreeItem<>("Widok"); 
+		// podmenu 
+		file.getChildren().addAll( new TreeItem<>("Nowy"), new TreeItem<>("Otwórz"), new TreeItem<>("Zapisz") ); 
+		edit.getChildren().addAll( new TreeItem<>("Kopiuj"), new TreeItem<>("Wklej") ); 
+		view.getChildren().addAll( new TreeItem<>("Powiększ"), new TreeItem<>("Pomniejsz") ); 
+		// dodanie do korzenia 
+		root.getChildren().addAll(file, edit, view); 
+		TreeView<String> treeView = new TreeView<>(root);
+		treeView.setLayoutX(4);
+		treeView.setLayoutY(48);
+		treeView.setPrefWidth(200); 
+		treeView.setPrefHeight(300); 
+		treeView.setShowRoot(true);
+		
+		return treeView;
+	}
+	public TreeView<Button> createTreeButtonMenu(){
+		TreeItem<Button> root = new TreeItem<>(new Button()); 
+		root.setExpanded(true);
+		
+		TreeItem<Button> file = new TreeItem<>(new Button("0")); 
+		TreeItem<Button> edit = new TreeItem<>(new Button("1")); 
+		TreeItem<Button> view = new TreeItem<>(new Button("2")); 
+		// podmenu 
+		file.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button())); 
+		edit.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button())); 
+		view.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button()));
+		// dodanie do korzenia 
+		root.getChildren().addAll(file, edit, view); 
+		TreeView<Button> treeView = new TreeView<>(root);
+		treeView.setLayoutX(4);
+		treeView.setLayoutY(48);
+		treeView.setPrefWidth(200); 
+		treeView.setPrefHeight(300); 
+		treeView.setShowRoot(true);
+		
+		return treeView;
 	}
 }
