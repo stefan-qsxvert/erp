@@ -1,5 +1,9 @@
 package pl.manester.gui;
 
+import com.sun.tools.javac.comp.Enter;
+
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
@@ -45,6 +49,11 @@ public class PreparedObjects {
 		passwordField.setMaxSize(196, 36);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
+		passwordField.setOnAction(ev -> {
+			sharedObjects.getDbconn().connectDB();
+			sharedObjects.getEventActions().fillTable();
+			sharedObjects.getDbconn().disconnectDB();
+		});
 		return passwordField;
 	}
 	

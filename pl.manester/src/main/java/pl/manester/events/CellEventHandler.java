@@ -19,10 +19,12 @@ public class CellEventHandler implements EventHandler<CellEditEvent<Person, Stri
 	public void handle(CellEditEvent<Person, String> event) {
 		
 		Person person = event.getRowValue();
+		System.out.println(person.getImie().get());
+		System.out.println(person.getNazwisko().get());
 		
-		if (person.getImie()==null && person.getNazwisko()==null&&person.getNazwisko()==null) {
+		if (person.getImie().get()==null && person.getNazwisko().get()==null&&person.getNazwisko().get()==null) {
 			sharedObjects.getGui().getTablePersonList().getItems().add(new Person(null,null,null));
-			System.out.println("null");
+			System.out.println("tst");
 		}
 		
 		switch (type) {
