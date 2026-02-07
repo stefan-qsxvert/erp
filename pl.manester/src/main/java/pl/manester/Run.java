@@ -10,6 +10,7 @@ import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
 import pl.manester.events.EventActions;
 import pl.manester.events.Events;
+import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
 
 public class Run {
@@ -23,10 +24,10 @@ public class Run {
 		sharedObjects.setEvents(events);
 		EventActions eventActions = new EventActions(sharedObjects);
 		sharedObjects.setEventActions(eventActions);
+		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
+		sharedObjects.setAuxPreperdObjects(auxPreperdObjects);
 				
-		System.out.println(sharedObjects.getClass().getResource("/1765051670049.jpg"));
-		
-			Platform.startup(new Runnable() {
+		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
 					Gui gui = new Gui(sharedObjects);

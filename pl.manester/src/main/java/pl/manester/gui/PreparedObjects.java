@@ -5,6 +5,7 @@ import com.sun.tools.javac.comp.Enter;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 import pl.manester.events.CellEventHandler;
@@ -29,7 +32,8 @@ public class PreparedObjects {
 		przycisk.setText(text);
 		przycisk.setOnAction(sharedObjects.getEvents());
 		przycisk.setId(id);
-		przycisk.setMaxSize(196,36);
+		przycisk.setMaxSize(88,24);
+		przycisk.setMinSize(88, 24);
 		przycisk.setLayoutX(layoutX);
 		przycisk.setLayoutY(layoutY);
 		return przycisk;
@@ -40,15 +44,17 @@ public class PreparedObjects {
 		textField.setPromptText(text);
 //		textField.setPrefWidth(164);
 		textField.setLayoutX(layoutX);
-		textField.setMaxHeight(layoutY);
-		textField.setMaxSize(196, 36);
+		textField.setLayoutY(layoutY);
+		textField.setMaxSize(144, 24);
+		textField.setMinSize(144, 24);
 		return textField;
 	}
 	
 	public PasswordField createPasswordField(String password, Integer layoutX, Integer layoutY) {
 		PasswordField passwordField = new PasswordField();
 		passwordField.setPromptText(password);
-		passwordField.setMaxSize(196, 36);
+		passwordField.setMaxSize(144, 24);
+		passwordField.setMinSize(144, 24);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
 		passwordField.setOnAction(ev -> {
@@ -108,11 +114,12 @@ public class PreparedObjects {
 		TreeItem<String> file = new TreeItem<>("Plik"); 
 		TreeItem<String> edit = new TreeItem<>("Edycja"); 
 		TreeItem<String> view = new TreeItem<>("Widok"); 
-		// podmenu 
+
 		file.getChildren().addAll( new TreeItem<>("Nowy"), new TreeItem<>("Otwórz"), new TreeItem<>("Zapisz") ); 
 		edit.getChildren().addAll( new TreeItem<>("Kopiuj"), new TreeItem<>("Wklej") ); 
 		view.getChildren().addAll( new TreeItem<>("Powiększ"), new TreeItem<>("Pomniejsz") ); 
-		// dodanie do korzenia 
+		
+		
 		root.getChildren().addAll(file, edit, view); 
 		TreeView<String> treeView = new TreeView<>(root);
 		treeView.setLayoutX(4);
@@ -123,20 +130,23 @@ public class PreparedObjects {
 		
 		return treeView;
 	}
-	public TreeView<Button> createTreeButtonMenu(){
-		TreeItem<Button> root = new TreeItem<>(new Button()); 
+	public TreeView<Label> createTreeButtonMenu(){
+		
+		AuxPreperdObjects axo = sharedObjects.getAuxPreperdObjects();
+		
+		TreeItem<Label> root = new TreeItem<>(new Label()); 
 		root.setExpanded(true);
 		
-		TreeItem<Button> file = new TreeItem<>(new Button("0")); 
-		TreeItem<Button> edit = new TreeItem<>(new Button("1")); 
-		TreeItem<Button> view = new TreeItem<>(new Button("2")); 
+		TreeItem<Label> file = new TreeItem<>(new Label("0")); 
+		TreeItem<Label> edit = new TreeItem<>(new Label("1")); 
+		TreeItem<Label> view = new TreeItem<>(new Label("2")); 
 		
-		file.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button())); 
-		edit.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button())); 
-		view.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button()));
+		file.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("A")), new TreeItem<>(new Label())); 
+		edit.getChildren().addAll( new TreeItem<>(new Label("A")), new TreeItem<>(new Label()), new TreeItem<>(new Label())); 
+		view.getChildren().addAll( new TreeItem<>(new Label("A")), new TreeItem<>(new Label()), new TreeItem<>(new Label()));
 		
 		root.getChildren().addAll(file, edit, view); 
-		TreeView<Button> treeView = new TreeView<>(root);
+		TreeView<Label> treeView = new TreeView<>(root);
 		treeView.setLayoutX(4);
 		treeView.setLayoutY(48);
 		treeView.setPrefWidth(200); 
@@ -144,5 +154,10 @@ public class PreparedObjects {
 		treeView.setShowRoot(true);
 		
 		return treeView;
+	}
+	
+	public Image createLogo() {
+		Image logo = new Image(sharedObjects.getClass().getResource("/1765051670049.jpg").toString(), false);
+		return logo;
 	}
 }

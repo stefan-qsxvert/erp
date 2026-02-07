@@ -3,6 +3,7 @@ package pl.manester.app;
 import pl.manester.events.CellEventHandler;
 import pl.manester.events.EventActions;
 import pl.manester.events.Events;
+import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
 
 public class SharedObjects {
@@ -15,6 +16,7 @@ public class SharedObjects {
 	private Person person;
 	private CellEventHandler cellEventHandler;
 	private String rootDir;
+	private AuxPreperdObjects auxPreperdObjects;
 
 	public SharedObjects() {
 		eventCase = new String();
@@ -82,5 +84,13 @@ public class SharedObjects {
 
 	public void setRootDir(String rootDir) {
 		this.rootDir = rootDir;
+	}
+
+	public AuxPreperdObjects getAuxPreperdObjects() {
+		return auxPreperdObjects;
+	}
+
+	public void setAuxPreperdObjects(AuxPreperdObjects auxPreperdObjects) {
+		this.auxPreperdObjects = auxPreperdObjects;
 	}
 }
