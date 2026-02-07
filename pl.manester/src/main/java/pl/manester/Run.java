@@ -1,5 +1,9 @@
 package pl.manester;
 
+import java.net.PortUnreachableException;
+
+import org.apache.maven.properties.internal.SystemProperties;
+
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import pl.manester.app.DBCon;
@@ -19,6 +23,8 @@ public class Run {
 		sharedObjects.setEvents(events);
 		EventActions eventActions = new EventActions(sharedObjects);
 		sharedObjects.setEventActions(eventActions);
+				
+		System.out.println(sharedObjects.getClass().getResource("/1765051670049.jpg"));
 		
 			Platform.startup(new Runnable() {
 				@Override

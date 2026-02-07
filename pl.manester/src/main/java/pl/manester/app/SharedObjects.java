@@ -14,9 +14,11 @@ public class SharedObjects {
 	private String eventCase;
 	private Person person;
 	private CellEventHandler cellEventHandler;
+	private String rootDir;
 
 	public SharedObjects() {
 		eventCase = new String();
+		rootDir = System.getProperty("user.dir");
 	}
 
 	public DBCon getDbconn() {
@@ -73,5 +75,12 @@ public class SharedObjects {
 
 	public void setCellEventHandler(CellEventHandler cellEventHandler) {
 		this.cellEventHandler = cellEventHandler;
+	}
+	public String getRootDir() {
+		return rootDir;
+	}
+
+	public void setRootDir(String rootDir) {
+		this.rootDir = rootDir;
 	}
 }

@@ -81,12 +81,10 @@ public class PreparedObjects {
 		col1.setText("Nazwisko");
 		col2.setText("Imię");
 		
-		
 		col0.setOnEditCommit(new CellEventHandler(sharedObjects, "0"));
 		col1.setOnEditCommit(new CellEventHandler(sharedObjects, "1"));
 		col2.setOnEditCommit(new CellEventHandler(sharedObjects, "2"));
 
-		
 		tableView.getColumns().addAll(col0,col1,col2);
 		 
 		tableView.setEditable(true);
@@ -132,11 +130,11 @@ public class PreparedObjects {
 		TreeItem<Button> file = new TreeItem<>(new Button("0")); 
 		TreeItem<Button> edit = new TreeItem<>(new Button("1")); 
 		TreeItem<Button> view = new TreeItem<>(new Button("2")); 
-		// podmenu 
+		
 		file.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button())); 
 		edit.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button())); 
 		view.getChildren().addAll( new TreeItem<>(new Button()), new TreeItem<>(new Button()), new TreeItem<>(new Button()));
-		// dodanie do korzenia 
+		
 		root.getChildren().addAll(file, edit, view); 
 		TreeView<Button> treeView = new TreeView<>(root);
 		treeView.setLayoutX(4);
