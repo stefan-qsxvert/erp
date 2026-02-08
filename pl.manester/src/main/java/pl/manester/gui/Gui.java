@@ -84,7 +84,8 @@ public class Gui extends Application {
 		vb.setLayoutX(580);
 		vb.setLayoutY(36);
 
-		;
+		sharedObjects.getGui().getTablePersonList().getItems().add(new Person("1", "Nowak", "Krystna"));
+		
 		root.getChildren().addAll(vb,tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeButtonMenu());
 		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
