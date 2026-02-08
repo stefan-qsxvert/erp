@@ -25,6 +25,8 @@ public class Gui extends Application {
 	private Events ev;
 	private TextField ipTextField;
 	private TextField userTextField;
+	private TextField itTextField;
+	private TextField swTextField;
 	private PasswordField passwordField;
 	private TextField databaseTextField;
 	private Button button;
@@ -53,11 +55,16 @@ public class Gui extends Application {
 		
 		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
 		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
+		itTextField = preparedObjects.createTextField("IT", 224, 570);
+		swTextField = preparedObjects.createTextField("SW", 586, 570);
 		userTextField = preparedObjects.createTextField("User", 320, 4);
 		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
 		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
 		logo = preparedObjects.createLogo();
 		tablePersonList = preparedObjects.createPersonTableView(224, 36);
+		
+		itTextField.setMinSize(344, 24);
+		itTextField.setMaxSize(344, 24);
 				
 //		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, 12.0);
 		
@@ -80,7 +87,7 @@ public class Gui extends Application {
 
 		sharedObjects.getGui().getTablePersonList().getItems().add(new Person("1", "Nowak", "Krystna"));
 		
-		root.getChildren().addAll(tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeMenu());
+		root.getChildren().addAll(itTextField, swTextField, tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeMenu());
 		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
 		

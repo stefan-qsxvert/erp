@@ -41,6 +41,8 @@ public class PreparedObjects {
 	}
 	public TextField createTextField(String text, Integer layoutX, Integer layoutY) {
 		
+		Border border = new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+		
 		TextField textField = new TextField();
 		textField.setPromptText(text);
 //		textField.setPrefWidth(164);
@@ -48,6 +50,7 @@ public class PreparedObjects {
 		textField.setLayoutY(layoutY);
 		textField.setMaxSize(144, 24);
 		textField.setMinSize(144, 24);
+		textField.setBorder(border);
 		return textField;
 	}
 	
@@ -108,8 +111,8 @@ public class PreparedObjects {
 		col1.setCellFactory(TextFieldTableCell.forTableColumn());
 		col2.setCellFactory(TextFieldTableCell.forTableColumn());
 		
-		tableView.setMinSize(504, 480);
-		tableView.setMaxSize(504, 480);
+		tableView.setMinSize(504, 524);
+		tableView.setMaxSize(504, 524);
 		tableView.setLayoutX(layoutX);
 		tableView.setLayoutY(layoutY);
 		
@@ -139,7 +142,7 @@ public class PreparedObjects {
 		treeView.setLayoutX(4);
 		treeView.setLayoutY(36);
 		treeView.setPrefWidth(200); 
-		treeView.setPrefHeight(300); 
+		treeView.setPrefHeight(560);
 		treeView.setShowRoot(true);
 		treeView.setBorder(border);
 		return treeView;
