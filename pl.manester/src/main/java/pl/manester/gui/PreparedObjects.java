@@ -15,6 +15,13 @@ import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 import pl.manester.events.CellEventHandler;
@@ -108,7 +115,8 @@ public class PreparedObjects {
 	}
 	
 	public TreeView<String> createTreeMenu(){
-		TreeItem<String> root = new TreeItem<>("Menu"); 
+		
+		TreeItem<String> root = new TreeItem<>( "Menu"); 
 		root.setExpanded(true);
 		
 		TreeItem<String> file = new TreeItem<>("Plik"); 
@@ -118,7 +126,6 @@ public class PreparedObjects {
 		file.getChildren().addAll( new TreeItem<>("Nowy"), new TreeItem<>("Otwórz"), new TreeItem<>("Zapisz") ); 
 		edit.getChildren().addAll( new TreeItem<>("Kopiuj"), new TreeItem<>("Wklej") ); 
 		view.getChildren().addAll( new TreeItem<>("Powiększ"), new TreeItem<>("Pomniejsz") ); 
-		
 		
 		root.getChildren().addAll(file, edit, view); 
 		TreeView<String> treeView = new TreeView<>(root);
@@ -137,13 +144,14 @@ public class PreparedObjects {
 		TreeItem<Label> root = new TreeItem<>(new Label()); 
 		root.setExpanded(true);
 		
-		TreeItem<Label> file = new TreeItem<>(new Label("0")); 
-		TreeItem<Label> edit = new TreeItem<>(new Label("1")); 
-		TreeItem<Label> view = new TreeItem<>(new Label("2")); 
 		
-		file.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("A")), new TreeItem<>(new Label())); 
-		edit.getChildren().addAll( new TreeItem<>(new Label("A")), new TreeItem<>(new Label()), new TreeItem<>(new Label())); 
-		view.getChildren().addAll( new TreeItem<>(new Label("A")), new TreeItem<>(new Label()), new TreeItem<>(new Label()));
+		TreeItem<Label> file = new TreeItem<>(axo.createMenuLabel("0"));
+		TreeItem<Label> edit = new TreeItem<>(axo.createMenuLabel("1")); 
+		TreeItem<Label> view = new TreeItem<>(axo.createMenuLabel("2")); 
+		
+		file.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("A"))); 
+		edit.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Dwa")), new TreeItem<>(axo.createMenuLabel("Dwa")), new TreeItem<>(axo.createMenuLabel("A"))); 
+		view.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Trzy")), new TreeItem<>(axo.createMenuLabel("Trzy")), new TreeItem<>(axo.createMenuLabel("A")));
 		
 		root.getChildren().addAll(file, edit, view); 
 		TreeView<Label> treeView = new TreeView<>(root);
