@@ -1,16 +1,11 @@
 package pl.manester.gui;
 
-import java.awt.List;
-
 import javafx.application.Application;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -18,8 +13,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
@@ -55,8 +48,8 @@ public class Gui extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStageCopy = primaryStage;
 		
+		primaryStageCopy = primaryStage;
 		
 		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
 		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
@@ -64,11 +57,12 @@ public class Gui extends Application {
 		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
 		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
 		logo = preparedObjects.createLogo();
+		tablePersonList = preparedObjects.createPersonTableView(224, 36);
 				
 //		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, 12.0);
 		
 		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-		tablePersonList = preparedObjects.createPersonTableView(256, 36);
+		
 		
 		Background bcg =new Background(bgimg);
 		
@@ -78,15 +72,15 @@ public class Gui extends Application {
 		databaseTextField.appendText("manester");
 		
 		Pane root = new Pane();
-		VBox vb = new VBox();
-		vb.setBackground(bcg);
-		vb.setMinSize(180, 160);
-		vb.setLayoutX(580);
-		vb.setLayoutY(36);
+//		VBox vb = new VBox();
+//		vb.setBackground(bcg);
+//		vb.setMinSize(180, 160);
+//		vb.setLayoutX(580);
+//		vb.setLayoutY(36);
 
 		sharedObjects.getGui().getTablePersonList().getItems().add(new Person("1", "Nowak", "Krystna"));
 		
-		root.getChildren().addAll(vb,tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeButtonMenu());
+		root.getChildren().addAll(tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeMenu());
 		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
 		

@@ -1,9 +1,5 @@
 package pl.manester.gui;
 
-import com.sun.tools.javac.comp.Enter;
-
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -14,14 +10,12 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 import pl.manester.events.CellEventHandler;
@@ -74,6 +68,8 @@ public class PreparedObjects {
 	
 	public TableView<Person> createPersonTableView(Integer layoutX, Integer layoutY) {
 		
+		Border border = new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+		
 		TableView<Person> tableView = new TableView<>();
 		
 		TableColumn<Person, String> col0 = new TableColumn<Person, String>();
@@ -87,8 +83,10 @@ public class PreparedObjects {
 		
 		col0.setMinWidth(24);
 		col0.setMaxWidth(24);
-		col1.setMinWidth(124);
+		col1.setMinWidth(256);
+		col1.setMaxWidth(256);
 		col2.setMinWidth(124);
+		col2.setMaxWidth(124);
 		
 		col0.setText("Lp");
 		col1.setText("Nazwisko");
@@ -97,7 +95,11 @@ public class PreparedObjects {
 		col0.setOnEditCommit(new CellEventHandler(sharedObjects, "0"));
 		col1.setOnEditCommit(new CellEventHandler(sharedObjects, "1"));
 		col2.setOnEditCommit(new CellEventHandler(sharedObjects, "2"));
-
+		
+		col0.setResizable(true);
+		col1.setResizable(true);
+		col2.setResizable(true);
+		
 		tableView.getColumns().addAll(col0,col1,col2);
 		 
 		tableView.setEditable(true);
@@ -106,15 +108,19 @@ public class PreparedObjects {
 		col1.setCellFactory(TextFieldTableCell.forTableColumn());
 		col2.setCellFactory(TextFieldTableCell.forTableColumn());
 		
-		tableView.setMinSize(274, 580);
-		tableView.setMaxSize(274, 580);
+		tableView.setMinSize(504, 480);
+		tableView.setMaxSize(504, 480);
 		tableView.setLayoutX(layoutX);
 		tableView.setLayoutY(layoutY);
+		
+		tableView.setBorder(border);
 		
 		return tableView;
 	}
 	
 	public TreeView<String> createTreeMenu(){
+		
+		Border border = new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
 		TreeItem<String> root = new TreeItem<>( "Menu"); 
 		root.setExpanded(true);
@@ -129,12 +135,13 @@ public class PreparedObjects {
 		
 		root.getChildren().addAll(file, edit, view); 
 		TreeView<String> treeView = new TreeView<>(root);
+		System.out.println(treeView.getStyle());
 		treeView.setLayoutX(4);
-		treeView.setLayoutY(48);
+		treeView.setLayoutY(36);
 		treeView.setPrefWidth(200); 
 		treeView.setPrefHeight(300); 
 		treeView.setShowRoot(true);
-		
+		treeView.setBorder(border);
 		return treeView;
 	}
 	public TreeView<Label> createTreeButtonMenu(){
@@ -143,7 +150,6 @@ public class PreparedObjects {
 		
 		TreeItem<Label> root = new TreeItem<>(new Label()); 
 		root.setExpanded(true);
-		
 		
 		TreeItem<Label> file = new TreeItem<>(axo.createMenuLabel("0"));
 		TreeItem<Label> edit = new TreeItem<>(axo.createMenuLabel("1")); 
