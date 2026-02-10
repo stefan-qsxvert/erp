@@ -1,17 +1,13 @@
 package pl.manester;
 
-import java.net.PortUnreachableException;
-
-import org.apache.maven.properties.internal.SystemProperties;
-
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.events.EventActions;
-import pl.manester.gui.events.Events;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
+import pl.manester.gui.events.EventActions;
+import pl.manester.gui.events.Events;
 
 public class Run {
 	
