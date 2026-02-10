@@ -1,4 +1,4 @@
-package pl.manester.events;
+package pl.manester.gui.events;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.TableColumn.CellEditEvent;

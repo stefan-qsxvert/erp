@@ -1,8 +1,8 @@
 package pl.manester.app;
 
-import pl.manester.events.CellEventHandler;
-import pl.manester.events.EventActions;
-import pl.manester.events.Events;
+import pl.manester.gui.events.CellEventHandler;
+import pl.manester.gui.events.EventActions;
+import pl.manester.gui.events.Events;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
 

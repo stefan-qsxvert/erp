@@ -1,4 +1,4 @@
-package pl.manester.events;
+package pl.manester.gui.events;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

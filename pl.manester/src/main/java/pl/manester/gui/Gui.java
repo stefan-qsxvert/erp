@@ -16,7 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
-import pl.manester.events.Events;
+import pl.manester.gui.events.Events;
 
 public class Gui extends Application {
 	

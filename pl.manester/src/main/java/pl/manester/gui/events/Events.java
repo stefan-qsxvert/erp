@@ -1,4 +1,4 @@
-package pl.manester.events;
+package pl.manester.gui.events;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

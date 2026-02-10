@@ -18,7 +18,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
-import pl.manester.events.CellEventHandler;
+import pl.manester.gui.events.CellEventHandler;
 
 public class PreparedObjects {
 	
