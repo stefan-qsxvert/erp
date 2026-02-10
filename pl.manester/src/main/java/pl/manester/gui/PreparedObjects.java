@@ -85,11 +85,11 @@ public class PreparedObjects {
 		col2.setCellValueFactory( data -> data.getValue().getImie());
 		
 		col0.setMinWidth(24);
-		col0.setMaxWidth(24);
-		col1.setMinWidth(256);
-		col1.setMaxWidth(256);
-		col2.setMinWidth(124);
-		col2.setMaxWidth(124);
+		col0.setMaxWidth(640);
+		col1.setMinWidth(56);
+		col1.setMaxWidth(640);
+		col2.setMinWidth(56);
+		col2.setMaxWidth(640);
 		
 		col0.setText("Lp");
 		col1.setText("Nazwisko");
@@ -174,7 +174,7 @@ public class PreparedObjects {
 	}
 	
 	public Image createLogo() {
-		Image logo = new Image(sharedObjects.getClass().getResource("/1765051670049.jpg").toString(), false);
+		Image logo = new Image(sharedObjects.getClass().getResource("/logo.jpg").toString(), false);
 		return logo;
 	}
 }

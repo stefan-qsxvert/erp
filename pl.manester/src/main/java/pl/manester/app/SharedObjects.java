@@ -5,6 +5,7 @@ import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
+import pl.manester.gui.Images;
 
 public class SharedObjects {
 		
@@ -17,6 +18,7 @@ public class SharedObjects {
 	private CellEventHandler cellEventHandler;
 	private String rootDir;
 	private AuxPreperdObjects auxPreperdObjects;
+	private Images images;
 
 	public SharedObjects() {
 		eventCase = new String();
@@ -92,5 +94,13 @@ public class SharedObjects {
 
 	public void setAuxPreperdObjects(AuxPreperdObjects auxPreperdObjects) {
 		this.auxPreperdObjects = auxPreperdObjects;
+	}
+
+	public Images getImages() {
+		return images;
+	}
+
+	public void setImages(Images images) {
+		this.images = images;
 	}
 }
