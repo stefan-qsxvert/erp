@@ -53,7 +53,7 @@ public class Gui extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		graph = new Graph(sharedObjects);
 		sharedObjects.setGraph(graph);
-		primaryStage.getIcons().add(sharedObjects.getGraph().getLogo());
+		primaryStage.getIcons().add(graph.getLogo());
 		
 		primaryStageCopy = primaryStage;
 		
