@@ -54,8 +54,7 @@ public class Gui extends Application {
 		graph = new Graph(sharedObjects);
 		sharedObjects.setGraph(graph);
 		primaryStage.getIcons().add(graph.getLogo());
-		primaryStage.setTitle("ERP");
-		
+				
 		primaryStageCopy = primaryStage;
 		
 //		primaryStage.getIcons().add(sharedObjects.getImages().getLogo());
