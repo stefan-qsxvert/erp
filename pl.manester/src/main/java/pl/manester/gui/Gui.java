@@ -55,13 +55,13 @@ public class Gui extends Application {
 		
 		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
 		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
-		itTextField = preparedObjects.createTextField("IT", 224, 570);
-		swTextField = preparedObjects.createTextField("SW", 586, 570);
+		itTextField = preparedObjects.createTextField("IT", 224, 660);
+		swTextField = preparedObjects.createTextField("SW", 586, 660);
 		userTextField = preparedObjects.createTextField("User", 320, 4);
 		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
 		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
 		logo = preparedObjects.createLogo();
-		tablePersonList = preparedObjects.createPersonTableView(224, 36);
+		tablePersonList = preparedObjects.createPersonTableView(224, 126);
 		
 		itTextField.setMinSize(344, 24);
 		itTextField.setMaxSize(344, 24);
@@ -93,7 +93,7 @@ public class Gui extends Application {
 		
 		primaryStage.setTitle("Moje okno");
 		primaryStage.setScene(sc);
-		primaryStage.setHeight(680);
+		primaryStage.setHeight(770);
 		primaryStage.setWidth(796);
 		primaryStage.setResizable(false);
 		primaryStage.show();
