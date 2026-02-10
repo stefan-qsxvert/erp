@@ -1,23 +1,16 @@
 package pl.manester.gui;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-
 import javafx.scene.image.Image;
 import pl.manester.app.SharedObjects;
 
-public class Images {
+public class Graph {
 	
 	private SharedObjects sharedObjects;
-	private Image logo1;
+	private Image logo;
 	
-	public Images(SharedObjects sharedObjects) {
+	public Graph(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
-	}
-
-	public void init() {
-		logo1 =  new Image(sharedObjects.getClass().getResource("/logo.jpg").toString(), false);
-
+		logo =  new Image(sharedObjects.getClass().getResource("/logo.jpg").toString(), false);
 	}
 	
 
@@ -30,11 +23,11 @@ public class Images {
 	}
 
 	public Image getLogo() {
-		return logo1;
+		return logo;
 	}
 
 	public void setLogo(Image logo) {
-		this.logo1 = logo;
+		this.logo = logo;
 	}
 	
 	

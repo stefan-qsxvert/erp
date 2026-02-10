@@ -6,7 +6,7 @@ import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
-import pl.manester.gui.Images;
+import pl.manester.gui.Graph;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
 
@@ -22,10 +22,6 @@ public class Run {
 		EventActions eventActions = new EventActions(sharedObjects);
 		sharedObjects.setEventActions(eventActions);
 		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
-		sharedObjects.setAuxPreperdObjects(auxPreperdObjects);
-		Images images = new Images(sharedObjects);
-		
-		images.init();
 				
 		Platform.startup(new Runnable() {
 				@Override

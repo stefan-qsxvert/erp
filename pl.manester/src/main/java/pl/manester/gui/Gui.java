@@ -34,7 +34,7 @@ public class Gui extends Application {
 	private TableView<Person> tablePersonList;
 	private Stage primaryStageCopy;
 	private Image logo;
-
+	private Graph graph;
 	
 	public Gui(SharedObjects sharedObjects) {
 		preparedObjects = new PreparedObjects(sharedObjects);
@@ -51,6 +51,9 @@ public class Gui extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		graph = new Graph(sharedObjects);
+		sharedObjects.setGraph(graph);
+		primaryStage.getIcons().add(sharedObjects.getGraph().getLogo());
 		
 		primaryStageCopy = primaryStage;
 		
@@ -102,6 +105,7 @@ public class Gui extends Application {
 		primaryStage.show();
 		
 	}
+	
 	public SharedObjects getObiekty() {
 		return sharedObjects;
 	}

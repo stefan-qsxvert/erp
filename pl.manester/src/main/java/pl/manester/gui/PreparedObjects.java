@@ -174,7 +174,7 @@ public class PreparedObjects {
 	}
 	
 	public Image createLogo() {
-		Image logo = new Image(sharedObjects.getClass().getResource("/logo.jpg").toString(), false);
+		Image logo = new Image(sharedObjects.getClass().getResource("/1765051670049.jpg").toString(), false);
 		return logo;
 	}
 }
