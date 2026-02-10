@@ -28,7 +28,6 @@ public class Run {
 				public void run() {
 					Gui gui = new Gui(sharedObjects);
 					sharedObjects.setGui(gui);
-					gui.getPrimaryStageCopy();
 					Stage primStage = new Stage();
 					try {
 						gui.start(primStage);
