@@ -35,6 +35,7 @@ public class Gui extends Application {
 	private Stage primaryStageCopy;
 	private Image logo;
 	private Graph graph;
+	private Pane root;
 	
 	public Gui(SharedObjects sharedObjects) {
 		preparedObjects = new PreparedObjects(sharedObjects);
@@ -70,8 +71,8 @@ public class Gui extends Application {
 		logo = preparedObjects.createLogo();
 		tablePersonList = preparedObjects.createPersonTableView(224, 126);
 		
-		itTextField.setMinSize(344, 24);
-		itTextField.setMaxSize(344, 24);
+		itTextField.setMinSize(96, 24);
+		itTextField.setMaxSize(96, 24);
 				
 //		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, 12.0);
 		
@@ -84,7 +85,7 @@ public class Gui extends Application {
 		passwordField.appendText("");
 		databaseTextField.appendText("manester");
 		
-		Pane root = new Pane();
+		root = new Pane();
 //		VBox vb = new VBox();
 //		vb.setBackground(bcg);
 //		vb.setMinSize(180, 160);
@@ -93,7 +94,19 @@ public class Gui extends Application {
 
 		sharedObjects.getGui().getTablePersonList().getItems().add(new Person("1", "Nowak", "Krystna"));
 		
-		root.getChildren().addAll(ewidNr, itTextField, swTextField, tablePersonList, ipTextField, userTextField, databaseTextField, button, passwordField, preparedObjects.createTreeMenu());
+		root.getChildren().addAll(
+									ewidNr, 
+									itTextField, 
+									swTextField, 
+									tablePersonList, 
+									ipTextField, 
+									userTextField, 
+									databaseTextField, 
+									button,
+									passwordField, 
+									preparedObjects.createTreeMenu());
+//		root.getChildren().remove(9);
+		
 		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
 		
@@ -203,5 +216,45 @@ public class Gui extends Application {
 
 	public void setLogo(Image logo) {
 		this.logo = logo;
+	}
+
+	public TextField getItTextField() {
+		return itTextField;
+	}
+
+	public void setItTextField(TextField itTextField) {
+		this.itTextField = itTextField;
+	}
+
+	public TextField getSwTextField() {
+		return swTextField;
+	}
+
+	public void setSwTextField(TextField swTextField) {
+		this.swTextField = swTextField;
+	}
+
+	public TextField getEwidNr() {
+		return ewidNr;
+	}
+
+	public void setEwidNr(TextField ewidNr) {
+		this.ewidNr = ewidNr;
+	}
+
+	public Graph getGraph() {
+		return graph;
+	}
+
+	public void setGraph(Graph graph) {
+		this.graph = graph;
+	}
+
+	public Pane getRoot() {
+		return root;
+	}
+
+	public void setRoot(Pane root) {
+		this.root = root;
 	}
 }
