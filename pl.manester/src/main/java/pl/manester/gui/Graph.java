@@ -1,16 +1,17 @@
 package pl.manester.gui;
 
-import javafx.scene.image.Image;
+import java.io.File;
+
 import pl.manester.app.SharedObjects;
 
 public class Graph {
 	
 	private SharedObjects sharedObjects;
-	private Image logo;
+	private File logoFile;
 	
 	public Graph(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
-		logo =  new Image(sharedObjects.getClass().getResource("/logo.jpg").toString(), false);
+		logoFile =  new File(sharedObjects.getClass().getResource("/logo.jpg").toString());
 	}
 	
 
@@ -22,12 +23,12 @@ public class Graph {
 		this.sharedObjects = sharedObjects;
 	}
 
-	public Image getLogo() {
-		return logo;
+	public File getLogoFile() {
+		return logoFile;
 	}
 
-	public void setLogo(Image logo) {
-		this.logo = logo;
+	public void setLogoFile(File logoFile) {
+		this.logoFile = logoFile;
 	}
 	
 	
