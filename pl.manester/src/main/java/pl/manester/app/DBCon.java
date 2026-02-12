@@ -11,24 +11,36 @@ public class DBCon {
 	private SharedObjects sharedObjects;
 	private Connection conn;
 	private Boolean connectionState;
+	private String userDB;
+	private String userPasswordDB;
+	private String ip;
 	
 	public DBCon(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
+		userDB = new String();
+		userPasswordDB = new String();
+		ip = new String();
 	}
 	
 	public void connectDB() {
 
-		String usr = sharedObjects.getGui().getUserTextField().getText();
-		String pass = sharedObjects.getGui().getPasswordField().getText();
+//		String usr = sharedObjects.getGui().getUserTextField().getText();
+//		String pass = sharedObjects.getGui().getPasswordField().getText();
 		
-		String ip = sharedObjects.getGui().getIpTextField().getText();
-		String dataBase = sharedObjects.getGui().getDatabaseTextField().getText();
+//		String ip = sharedObjects.getGui().getIpTextField().getText();
+		
+		String dataBase = "manester"; //sharedObjects.getGui().getDatabaseTextField().getText();
+		System.out.println(userDB);
+		System.out.println(userPasswordDB);
+		
+		ip = "10.8.0.10:5432";
 		
 		String url = "jdbc:postgresql://"+ ip + "/" + dataBase;
+		System.out.println(url);
 		connectionState = false;
 		
 		try {
-			conn = DriverManager.getConnection(url, usr, pass);
+			conn = DriverManager.getConnection(url, userDB, userPasswordDB);
 			connectionState = !conn.isClosed();
 			System.out.println("Baza połączona!");
 		} catch (Exception e) {
@@ -87,5 +99,29 @@ public class DBCon {
 
 	public void setConnectionState(Boolean connectionState) {
 		this.connectionState = connectionState;
+	}
+
+	public String getUserDB() {
+		return userDB;
+	}
+
+	public void setUserDB(String userDB) {
+		this.userDB = userDB;
+	}
+
+	public String getUserPasswordDB() {
+		return userPasswordDB;
+	}
+
+	public void setUserPasswordDB(String userPasswordDB) {
+		this.userPasswordDB = userPasswordDB;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 }

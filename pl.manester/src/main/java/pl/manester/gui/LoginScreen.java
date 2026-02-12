@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -83,6 +84,28 @@ public class LoginScreen extends Application{
 			}
 		});
 		
+		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
+		PasswordField passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
+		
+		Button loginButton = new Button("Zaloguj");
+		loginButton.setLayoutX(34);
+		loginButton.setLayoutY(98);
+		loginButton.setPrefSize(144, 24);
+		loginButton.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				// TODO Auto-generated method stub
+				sharedObjects.getDbconn().setUserDB(userTextField.getText());
+				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
+				sharedObjects.getDbconn().connectDB();
+				System.out.println(sharedObjects.getDbconn().getConnectionState());
+				sharedObjects.getDbconn().disconnectDB();
+				primaryStage.hide();
+			}
+		});
+		
+		
 		tableView.setOnKeyPressed(new EventHandler<Event>() {
 
 			@Override
@@ -92,8 +115,6 @@ public class LoginScreen extends Application{
 				System.out.println(event.toString());
 				}
 			}
-
-		
 		});
 		
 		pn0.getChildren().addAll(tableView);
@@ -102,11 +123,12 @@ public class LoginScreen extends Application{
 		Scene scene = new Scene(pane);
 		
 		pane.getChildren().addAll(
-				preparedObjects.createTextField("login", 34, 34),
-				preparedObjects.createPasswordField("hasło", 34, 68),
+				userTextField,
+				passwordField,
 				pn0,
 				server,
-				textField
+				textField,
+				loginButton
 				);
 		
 		primaryStage.setScene(scene);
