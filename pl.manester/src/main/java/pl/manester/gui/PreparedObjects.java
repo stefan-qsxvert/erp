@@ -140,7 +140,7 @@ public class PreparedObjects {
 		TreeView<String> treeView = new TreeView<>(root);
 		System.out.println(treeView.getStyle());
 		treeView.setLayoutX(4);
-		treeView.setLayoutY(36);
+		treeView.setLayoutY(4);
 		treeView.setPrefWidth(200); 
 		treeView.setPrefHeight(650);
 		treeView.setShowRoot(true);

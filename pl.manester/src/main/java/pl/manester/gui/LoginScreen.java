@@ -57,14 +57,21 @@ public class LoginScreen extends Application{
 		
 		TableView<String> tableView = new TableView<>();
 		tableView.setPrefSize(358, 240);
-		TableColumn<String, String> coll = new TableColumn<String, String>();
+		TableColumn<String, String> coll_lp = new TableColumn<String, String>();
+		TableColumn<String, String> coll_text = new TableColumn<String, String>();
+		TableColumn<String, String> coll_ip = new TableColumn<String, String>();
 		
-		coll.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
 		
-		coll.setPrefWidth(360);
-		tableView.getItems().add (new String("10.8.0.10:5432"));
+		coll_lp.setPrefWidth(8);
+		coll_text.setPrefWidth(116);
+		coll_ip.setPrefWidth(116);
 		
-		tableView.getColumns().add(coll);
+		tableView.getItems().add(new String("10.8.0.10:5432"));
+		
+		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
 		TextField textField = new TextField();
 		textField.setPrefSize(360, 24);
@@ -103,8 +110,6 @@ public class LoginScreen extends Application{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		
-				
 			}
 		});
 		

@@ -1,9 +1,10 @@
 package pl.manester.gui;
 
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -64,7 +65,7 @@ public class Gui extends Application {
 //		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
 		itTextField = preparedObjects.createTextField("IT", 224, 660);
 		swTextField = preparedObjects.createTextField("SW", 586, 660);
-		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 36);
+		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 4);
 //		userTextField = preparedObjects.createTextField("User", 320, 4);
 //		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
 //		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
@@ -91,6 +92,23 @@ public class Gui extends Application {
 //		vb.setMinSize(180, 160);
 //		vb.setLayoutX(580);
 //		vb.setLayoutY(36);
+		
+		Button button = new Button("Nowe okno");
+		button.setLayoutX(640);
+		button.setLayoutY(4);
+		
+		button.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event event) {
+				try {
+					sharedObjects.getGui().start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}				
+			}
+		
+		});
 
 		sharedObjects.getGui().getTablePersonList().getItems().add(new Person("1", "Nowak", "Krystna"));
 		
@@ -102,7 +120,7 @@ public class Gui extends Application {
 //									ipTextField, 
 //									userTextField, 
 //									databaseTextField, 
-//									button,
+									button,
 //									passwordField, 
 									preparedObjects.createTreeMenu());
 //		root.getChildren().remove(9);
