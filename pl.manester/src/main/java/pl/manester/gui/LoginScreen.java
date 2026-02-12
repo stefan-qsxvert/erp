@@ -85,7 +85,11 @@ public class LoginScreen extends Application{
 		coll_text.setPrefWidth(116);
 		coll_ip.setPrefWidth(196);
 		
-		tableView.getItems().add(new ServerMenu("1", "10.8.0.10:5432", "HSR"));
+		coll_lp.setText("lp");
+		coll_text.setText("alias");
+		coll_ip.setText("ip");
+		
+		tableView.getItems().add(new ServerMenu("1", "HSR", "10.8.0.10:5432"));
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
