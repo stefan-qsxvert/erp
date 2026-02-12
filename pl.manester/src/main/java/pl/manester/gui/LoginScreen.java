@@ -13,6 +13,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -48,28 +53,39 @@ public class LoginScreen extends Application{
 		server.setPrefWidth(360);
 		server.setPrefHeight(24);
 		
-		
 		Pane pn0 = new Pane();
 		pn0.setBorder(border);
 		pn0.setPrefSize(360, 240);
 		pn0.setLayoutX(196);
 		pn0.setLayoutY(68);
 		
-		TableView<String> tableView = new TableView<>();
+		Pane pn1 = new Pane();
+		pn1.setLayoutX(34);
+		pn1.setLayoutY(130);
+		pn1.setPrefSize(144, 212);
+//		pn1.setBorder(border);
+		
+		Image image = new Image(sharedObjects.getGraph().getSlavFile().toString());
+		BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+		Background background = new Background(backgroundImage);
+		
+		pn1.setBackground(background);
+		
+		TableView<ServerMenu> tableView = new TableView<>();
 		tableView.setPrefSize(358, 240);
-		TableColumn<String, String> coll_lp = new TableColumn<String, String>();
-		TableColumn<String, String> coll_text = new TableColumn<String, String>();
-		TableColumn<String, String> coll_ip = new TableColumn<String, String>();
+		TableColumn<ServerMenu, String> coll_lp = new TableColumn<>();
+		TableColumn<ServerMenu, String> coll_text = new TableColumn<>();
+		TableColumn<ServerMenu, String> coll_ip = new TableColumn<>();
 		
-		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLp()));
+		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIp()));
+		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAlias()));
 		
-		coll_lp.setPrefWidth(8);
+		coll_lp.setPrefWidth(24);
 		coll_text.setPrefWidth(116);
-		coll_ip.setPrefWidth(116);
+		coll_ip.setPrefWidth(196);
 		
-		tableView.getItems().add(new String("10.8.0.10:5432"));
+		tableView.getItems().add(new ServerMenu("1", "10.8.0.10:5432", "HSR"));
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
@@ -82,7 +98,7 @@ public class LoginScreen extends Application{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				tableView.getItems().add (new String(textField.getText()));
+				tableView.getItems().add(new ServerMenu("1", "10.8.0.10:5432", "HSR"));
 			}
 		});
 		
@@ -113,7 +129,6 @@ public class LoginScreen extends Application{
 			}
 		});
 		
-		
 		tableView.setOnKeyPressed(new EventHandler<Event>() {
 
 			@Override
@@ -136,7 +151,8 @@ public class LoginScreen extends Application{
 				pn0,
 				server,
 				textField,
-				loginButton
+				loginButton,
+				pn1
 				);
 		
 		primaryStage.setScene(scene);

@@ -1,17 +1,20 @@
 package pl.manester.gui;
 
-import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import pl.manester.app.SharedObjects;
 
 public class Graph {
 	
 	private SharedObjects sharedObjects;
-	private File logoFile;
+	private URI logoFile;
+	private URI slavFile;
 	
-	public Graph(SharedObjects sharedObjects) {
+	public Graph(SharedObjects sharedObjects) throws URISyntaxException {
 		this.sharedObjects = sharedObjects;
-		logoFile =  new File(sharedObjects.getClass().getResource("/logo.jpg").toString());
+		logoFile = new URI(sharedObjects.getClass().getResource("/logo.jpg").toString());
+		slavFile = new URI(sharedObjects.getClass().getResource("/slav.jpg").toString());
 	}
 	
 
@@ -23,16 +26,19 @@ public class Graph {
 		this.sharedObjects = sharedObjects;
 	}
 
-	public File getLogoFile() {
+	public URI getLogoFile() {
 		return logoFile;
 	}
 
-	public void setLogoFile(File logoFile) {
+	public void setLogoFile(URI logoFile) {
 		this.logoFile = logoFile;
 	}
-	
-	
-	
-	
-	
+
+	public URI getSlavFile() {
+		return slavFile;
+	}
+
+	public void setSlavFile(URI slavFile) {
+		this.slavFile = slavFile;
+	}
 }

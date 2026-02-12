@@ -55,7 +55,7 @@ public class Gui extends Application {
 	public void start(Stage primaryStage) throws Exception {
 //		graph = new Graph(sharedObjects);
 //		sharedObjects.setGraph(graph);
-		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(),false));
+		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getSlavFile().toString(),false));
 				
 		primaryStageCopy = primaryStage;
 		

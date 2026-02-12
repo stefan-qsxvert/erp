@@ -142,7 +142,7 @@ public class PreparedObjects {
 		treeView.setLayoutX(4);
 		treeView.setLayoutY(4);
 		treeView.setPrefWidth(200); 
-		treeView.setPrefHeight(650);
+		treeView.setPrefHeight(680);
 		treeView.setShowRoot(true);
 		treeView.setBorder(border);
 		return treeView;
