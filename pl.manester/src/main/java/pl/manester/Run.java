@@ -28,12 +28,15 @@ public class Run {
 		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
 		Graph graph = new Graph(sharedObjects);
 		sharedObjects.setGraph(graph);
+		
+//		Platform platform = new Platform();
+		
 				
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
-//					Gui gui = new Gui(sharedObjects);
-//					sharedObjects.setGui(gui);
+					Gui gui = new Gui(sharedObjects);
+					sharedObjects.setGui(gui);
 //					Stage primStage = new Stage();
 					LoginScreen loginScreen = new LoginScreen(sharedObjects);
 					try {
@@ -44,5 +47,5 @@ public class Run {
 					}
 				}
 			});
-	}
+		}
 }

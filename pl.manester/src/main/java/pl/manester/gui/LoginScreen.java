@@ -2,7 +2,6 @@ package pl.manester.gui;
 
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -13,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -22,11 +20,8 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.events.CellEventHandler;
 
 public class LoginScreen extends Application{
 	
@@ -96,12 +91,20 @@ public class LoginScreen extends Application{
 			@Override
 			public void handle(Event event) {
 				// TODO Auto-generated method stub
-				sharedObjects.getDbconn().setUserDB(userTextField.getText());
-				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-				sharedObjects.getDbconn().connectDB();
-				System.out.println(sharedObjects.getDbconn().getConnectionState());
-				sharedObjects.getDbconn().disconnectDB();
+//				sharedObjects.getDbconn().setUserDB(userTextField.getText());
+//				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
+//				sharedObjects.getDbconn().connectDB();
+//				System.out.println(sharedObjects.getDbconn().getConnectionState());
+//				sharedObjects.getDbconn().disconnectDB();
+				
 				primaryStage.hide();
+				try {
+					sharedObjects.getGui().start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+				
 			}
 		});
 		

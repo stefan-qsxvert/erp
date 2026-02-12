@@ -23,14 +23,14 @@ public class Gui extends Application {
 	private PreparedObjects preparedObjects;
 	private SharedObjects sharedObjects;
 	private Events ev;
-	private TextField ipTextField;
-	private TextField userTextField;
+//	private TextField ipTextField;
+//	private TextField userTextField;
 	private TextField itTextField;
 	private TextField swTextField;
 	private TextField ewidNr;
-	private PasswordField passwordField;
-	private TextField databaseTextField;
-	private Button button;
+//	private PasswordField passwordField;
+//	private TextField databaseTextField;
+//	private Button button;
 	private TableView<Person> tablePersonList;
 	private Stage primaryStageCopy;
 	private Image logo;
@@ -60,14 +60,14 @@ public class Gui extends Application {
 		
 //		primaryStage.getIcons().add(sharedObjects.getImages().getLogo());
 		
-		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
-		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
+//		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
+//		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
 		itTextField = preparedObjects.createTextField("IT", 224, 660);
 		swTextField = preparedObjects.createTextField("SW", 586, 660);
 		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 36);
-		userTextField = preparedObjects.createTextField("User", 320, 4);
-		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
-		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
+//		userTextField = preparedObjects.createTextField("User", 320, 4);
+//		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
+//		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
 		logo = preparedObjects.createLogo();
 		tablePersonList = preparedObjects.createPersonTableView(224, 126);
 		
@@ -80,10 +80,10 @@ public class Gui extends Application {
 		
 		Background bcg =new Background(bgimg);
 		
-		ipTextField.appendText("10.8.0.10:5432");
-		userTextField.appendText("manester");
-		passwordField.appendText("");
-		databaseTextField.appendText("manester");
+//		ipTextField.appendText("10.8.0.10:5432");
+//		userTextField.appendText("manester");
+//		passwordField.appendText("");
+//		databaseTextField.appendText("manester");
 		
 		root = new Pane();
 //		VBox vb = new VBox();
@@ -99,11 +99,11 @@ public class Gui extends Application {
 									itTextField, 
 									swTextField, 
 									tablePersonList, 
-									ipTextField, 
-									userTextField, 
-									databaseTextField, 
-									button,
-									passwordField, 
+//									ipTextField, 
+//									userTextField, 
+//									databaseTextField, 
+//									button,
+//									passwordField, 
 									preparedObjects.createTreeMenu());
 //		root.getChildren().remove(9);
 		
@@ -150,37 +150,37 @@ public class Gui extends Application {
 		this.ev = ev;
 	}
 
-	public TextField getIpTextField() {
-		return ipTextField;
-	}
-
-	public void setIp(TextField ipTextField) {
-		this.ipTextField = ipTextField;
-	}
-
-	public TextField getUserTextField() {
-		return userTextField;
-	}
-
-	public void setUserTextField(TextField useTextField) {
-		this.userTextField = useTextField;
-	}
-
-	public PasswordField getPasswordField() {
-		return passwordField;
-	}
-
-	public void setPasswordField(PasswordField passwordField) {
-		this.passwordField = passwordField;
-	}
-
-	public Button getButton() {
-		return button;
-	}
-
-	public void setButton(Button button) {
-		this.button = button;
-	}
+//	public TextField getIpTextField() {
+//		return ipTextField;
+//	}
+//
+//	public void setIp(TextField ipTextField) {
+//		this.ipTextField = ipTextField;
+//	}
+//
+//	public TextField getUserTextField() {
+//		return userTextField;
+//	}
+//
+//	public void setUserTextField(TextField useTextField) {
+//		this.userTextField = useTextField;
+//	}
+//
+//	public PasswordField getPasswordField() {
+//		return passwordField;
+//	}
+//
+//	public void setPasswordField(PasswordField passwordField) {
+//		this.passwordField = passwordField;
+//	}
+//
+//	public Button getButton() {
+//		return button;
+//	}
+//
+//	public void setButton(Button button) {
+//		this.button = button;
+//	}
 
 	public TableView<Person> getTablePersonList() {
 		return tablePersonList;
@@ -190,17 +190,17 @@ public class Gui extends Application {
 		this.tablePersonList = tablePersonList;
 	}
 
-	public TextField getDatabaseTextField() {
-		return databaseTextField;
-	}
-
-	public void setDatabaseTextField(TextField databaseTextField) {
-		this.databaseTextField = databaseTextField;
-	}
-
-	public void setIpTextField(TextField ipTextField) {
-		this.ipTextField = ipTextField;
-	}
+//	public TextField getDatabaseTextField() {
+//		return databaseTextField;
+//	}
+//
+//	public void setDatabaseTextField(TextField databaseTextField) {
+//		this.databaseTextField = databaseTextField;
+//	}
+//
+//	public void setIpTextField(TextField ipTextField) {
+//		this.ipTextField = ipTextField;
+//	}
 
 	public Stage getPrimaryStageCopy() {
 		return primaryStageCopy;

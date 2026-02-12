@@ -33,23 +33,23 @@ public class Events implements EventHandler<ActionEvent>{
 			sharedObjects.getEventActions().connectDB();
 //			System.out.println(sharedObjects.getDbconn().getConnectionState());
 			if (sharedObjects.getDbconn().getConnectionState()) {
-			sharedObjects.getGui().getButton().setId("fillTab");
-			sharedObjects.getGui().getButton().setText("Wypełnij_tabelę");
+//			sharedObjects.getGui().getButton().setId("fillTab");
+//			sharedObjects.getGui().getButton().setText("Wypełnij_tabelę");
 			}
 			break;
 			
 		case "fillTab":
 			sharedObjects.getEventActions().fillTable();
 //			System.out.println(sharedObjects.getDbconn().getConnectionState());
-			sharedObjects.getGui().getButton().setId("disconnectDB");
-			sharedObjects.getGui().getButton().setText("RozłączDB");
+//			sharedObjects.getGui().getButton().setId("disconnectDB");
+//			sharedObjects.getGui().getButton().setText("RozłączDB");
 			break;
 			
 		case "disconnectDB":
 			sharedObjects.getEventActions().disconnectDB();
 //			System.out.println(sharedObjects.getDbconn().getConnectionState());
-			sharedObjects.getGui().getButton().setId("connectDB");
-			sharedObjects.getGui().getButton().setText("PołączDB");
+//			sharedObjects.getGui().getButton().setId("connectDB");
+//			sharedObjects.getGui().getButton().setText("PołączDB");
 			break;
 			
 		default:
