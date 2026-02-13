@@ -27,7 +27,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.events.CellEventHandler;
 
 public class LoginScreen extends Application{
 	
@@ -42,7 +41,9 @@ public class LoginScreen extends Application{
 		
 		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
-
+		
+		TextField textField = new TextField();
+		
 		primaryStage.setHeight(400);
 		primaryStage.setWidth(580);
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
@@ -94,7 +95,7 @@ public class LoginScreen extends Application{
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
-		TextField textField = new TextField();
+		
 		textField.setPrefSize(360, 24);
 		textField.setLayoutX(196);
 		textField.setLayoutY(316);
@@ -103,8 +104,12 @@ public class LoginScreen extends Application{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				tableView.getItems().add(new ServerMenu("1", "10.8.0.10:5432", "HSR"));
-			}
+				try {
+				String[] newPoz = textField.getText().split(";");
+				tableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2]));
+				}catch(Exception e) {
+				
+				}}
 		});
 		
 		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
@@ -133,28 +138,29 @@ public class LoginScreen extends Application{
 			}
 		});
 		
-		tableView.setOnKeyPressed(new EventHandler<Event>() {
-
-			@Override
-			public void handle(Event event) {
-				// TODO Auto-generated method stub
-				if (event.toString().contains("code = DELETE")) {
-				System.out.println(event.toString());
-				}
-			}
-		});
-		
-//		coll_ip.setOnMouseClicked(new EventHandler<Event>() {
+//		tableView.setOnMouseClicked(new EventHandler<Event>() {
 //
 //			@Override
-//			public void handle(CellEventHandler<> ev) { // Event event) {
+//			public void handle(Event event) {
 //				// TODO Auto-generated method stub
-//				System.out.println(event.g);
+//				if (event. toString().contains("code = DELETE")) {
+//				System.out.println(event.toString());
+//				}
 //				
+//				System.out.println(event.toString());
 //			}
-//			
 //		});
 		
+		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> System.out.println(poz.getValue().getAlias()));
+		
+//		setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ServerMenu,String>>() {
+//			
+//			@Override
+//			public void handle(CellEditEvent<ServerMenu, String> event) {
+//				// TODO Auto-generated method stub
+//				System.out.println(event.getRowValue().getAlias());
+//			}
+//		});		
 		
 		
 		pn0.getChildren().addAll(tableView);
