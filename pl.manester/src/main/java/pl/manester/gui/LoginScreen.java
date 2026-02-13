@@ -27,6 +27,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
+import pl.manester.gui.events.CellEventHandler;
 
 public class LoginScreen extends Application{
 	
@@ -117,11 +118,10 @@ public class LoginScreen extends Application{
 
 			@Override
 			public void handle(Event event) {
-				// TODO Auto-generated method stub
-//				sharedObjects.getDbconn().setUserDB(userTextField.getText());
-//				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-//				sharedObjects.getDbconn().connectDB();
-//				System.out.println(sharedObjects.getDbconn().getConnectionState());
+				sharedObjects.getDbconn().setUserDB(userTextField.getText());
+				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
+				sharedObjects.getDbconn().connectDB();
+				System.out.println(sharedObjects.getDbconn().getConnectionState());
 //				sharedObjects.getDbconn().disconnectDB();
 				
 				primaryStage.hide();
@@ -143,6 +143,19 @@ public class LoginScreen extends Application{
 				}
 			}
 		});
+		
+//		coll_ip.setOnMouseClicked(new EventHandler<Event>() {
+//
+//			@Override
+//			public void handle(CellEventHandler<> ev) { // Event event) {
+//				// TODO Auto-generated method stub
+//				System.out.println(event.g);
+//				
+//			}
+//			
+//		});
+		
+		
 		
 		pn0.getChildren().addAll(tableView);
 		

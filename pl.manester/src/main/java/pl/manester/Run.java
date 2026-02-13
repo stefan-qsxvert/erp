@@ -5,10 +5,10 @@ import javafx.stage.Stage;
 import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.AuxPreperdObjects;
-import pl.manester.gui.Gui;
+import pl.manester.gui.REGPanel;
 import pl.manester.gui.LoginScreen;
 import pl.manester.gui.PreparedObjects;
-import pl.manester.gui.TestGui;
+import pl.manester.gui.AdhocQery;
 import pl.manester.gui.Graph;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
@@ -36,16 +36,16 @@ public class Run {
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
-					Gui gui = new Gui(sharedObjects);
+					REGPanel gui = new REGPanel(sharedObjects);
 					sharedObjects.setGui(gui);
 //					Stage primStage = new Stage();
-//					LoginScreen loginScreen = new LoginScreen(sharedObjects);
+					LoginScreen loginScreen = new LoginScreen(sharedObjects);
 					
-					TestGui testGui = new TestGui();
+					AdhocQery testGui = new AdhocQery();
 					try {
-						testGui.start(new Stage());
-//						gui.start(primStage);
-//						loginScreen.start(new Stage());
+//						testGui.start(new Stage());
+//						gui.start(new Stage());
+						loginScreen.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

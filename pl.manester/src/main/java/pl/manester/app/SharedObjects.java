@@ -2,7 +2,7 @@ package pl.manester.app;
 
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Graph;
-import pl.manester.gui.Gui;
+import pl.manester.gui.REGPanel;
 import pl.manester.gui.PreparedObjects;
 import pl.manester.gui.events.CellEventHandler;
 import pl.manester.gui.events.EventActions;
@@ -10,7 +10,7 @@ import pl.manester.gui.events.Events;
 
 public class SharedObjects {
 		
-	private Gui gui;
+	private REGPanel gui;
 	private EventActions eventActions;
 	private Events events;
 	private DBCon dbconn;
@@ -35,11 +35,11 @@ public class SharedObjects {
 		this.dbconn = dbconn;
 	}
 
-	public Gui getGui() {
+	public REGPanel getGui() {
 		return gui;
 	}
 
-	public void setGui(Gui gui) {
+	public void setGui(REGPanel gui) {
 		this.gui = gui;
 	}
 

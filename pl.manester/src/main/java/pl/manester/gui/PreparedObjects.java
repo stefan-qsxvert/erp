@@ -61,11 +61,11 @@ public class PreparedObjects {
 		passwordField.setMinSize(144, 24);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
-		passwordField.setOnAction(ev -> {
-			sharedObjects.getDbconn().connectDB();
-			sharedObjects.getEventActions().fillTable();
-			sharedObjects.getDbconn().disconnectDB();
-		});
+//		passwordField.setOnAction(ev -> {
+//			sharedObjects.getDbconn().connectDB();
+//			sharedObjects.getEventActions().fillTable();
+//			sharedObjects.getDbconn().disconnectDB();
+//		});
 		return passwordField;
 	}
 	
@@ -121,58 +121,58 @@ public class PreparedObjects {
 		return tableView;
 	}
 	
-	public TreeView<String> createTreeMenu(){
-		
-		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
-		
-		TreeItem<String> root = new TreeItem<>( "Menu"); 
-		root.setExpanded(true);
-		
-		TreeItem<String> file = new TreeItem<>("Plik"); 
-		TreeItem<String> edit = new TreeItem<>("Edycja"); 
-		TreeItem<String> view = new TreeItem<>("Widok"); 
-
-		file.getChildren().addAll( new TreeItem<>("Nowy"), new TreeItem<>("Otwórz"), new TreeItem<>("Zapisz") ); 
-		edit.getChildren().addAll( new TreeItem<>("Kopiuj"), new TreeItem<>("Wklej") ); 
-		view.getChildren().addAll( new TreeItem<>("Powiększ"), new TreeItem<>("Pomniejsz") ); 
-		
-		root.getChildren().addAll(file, edit, view); 
-		TreeView<String> treeView = new TreeView<>(root);
-		System.out.println(treeView.getStyle());
-		treeView.setLayoutX(4);
-		treeView.setLayoutY(4);
-		treeView.setPrefWidth(200); 
-		treeView.setPrefHeight(680);
-		treeView.setShowRoot(true);
-		treeView.setBorder(border);
-		return treeView;
-	}
-	public TreeView<Label> createTreeButtonMenu(){
-		
-		AuxPreperdObjects axo = sharedObjects.getAuxPreperdObjects();
-		
-		TreeItem<Label> root = new TreeItem<>(new Label()); 
-		root.setExpanded(true);
-		
-		TreeItem<Label> file = new TreeItem<>(axo.createMenuLabel("0"));
-		TreeItem<Label> edit = new TreeItem<>(axo.createMenuLabel("1")); 
-		TreeItem<Label> view = new TreeItem<>(axo.createMenuLabel("2")); 
-		
-		file.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("A"))); 
-		edit.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Dwa")), new TreeItem<>(axo.createMenuLabel("Dwa")), new TreeItem<>(axo.createMenuLabel("A"))); 
-		view.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Trzy")), new TreeItem<>(axo.createMenuLabel("Trzy")), new TreeItem<>(axo.createMenuLabel("A")));
-		
-		root.getChildren().addAll(file, edit, view); 
-		TreeView<Label> treeView = new TreeView<>(root);
-		treeView.setLayoutX(4);
-		treeView.setLayoutY(48);
-		treeView.setPrefWidth(200); 
-		treeView.setPrefHeight(300); 
-		treeView.setShowRoot(true);
-		
-		return treeView;
-	}
-	
+//	public TreeView<String> createTreeMenu(){
+//		
+//		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+//		
+//		TreeItem<String> root = new TreeItem<>( "Menu"); 
+//		root.setExpanded(true);
+//		
+//		TreeItem<String> file = new TreeItem<>("Plik"); 
+//		TreeItem<String> edit = new TreeItem<>("Edycja"); 
+//		TreeItem<String> view = new TreeItem<>("Widok"); 
+//
+//		file.getChildren().addAll( new TreeItem<>("Nowy"), new TreeItem<>("Otwórz"), new TreeItem<>("Zapisz") ); 
+//		edit.getChildren().addAll( new TreeItem<>("Kopiuj"), new TreeItem<>("Wklej") ); 
+//		view.getChildren().addAll( new TreeItem<>("Powiększ"), new TreeItem<>("Pomniejsz") ); 
+//		
+//		root.getChildren().addAll(file, edit, view); 
+//		TreeView<String> treeView = new TreeView<>(root);
+//		System.out.println(treeView.getStyle());
+//		treeView.setLayoutX(4);
+//		treeView.setLayoutY(4);
+//		treeView.setPrefWidth(200); 
+//		treeView.setPrefHeight(680);
+//		treeView.setShowRoot(true);
+//		treeView.setBorder(border);
+//		return treeView;
+//	}
+//	public TreeView<Label> createTreeButtonMenu(){
+//		
+//		AuxPreperdObjects axo = sharedObjects.getAuxPreperdObjects();
+//		
+//		TreeItem<Label> root = new TreeItem<>(new Label()); 
+//		root.setExpanded(true);
+//		
+//		TreeItem<Label> file = new TreeItem<>(axo.createMenuLabel("0"));
+//		TreeItem<Label> edit = new TreeItem<>(axo.createMenuLabel("1")); 
+//		TreeItem<Label> view = new TreeItem<>(axo.createMenuLabel("2")); 
+//		
+//		file.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("Raz")), new TreeItem<>(axo.createMenuLabel("A"))); 
+//		edit.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Dwa")), new TreeItem<>(axo.createMenuLabel("Dwa")), new TreeItem<>(axo.createMenuLabel("A"))); 
+//		view.getChildren().addAll( new TreeItem<>(axo.createMenuLabel("Trzy")), new TreeItem<>(axo.createMenuLabel("Trzy")), new TreeItem<>(axo.createMenuLabel("A")));
+//		
+//		root.getChildren().addAll(file, edit, view); 
+//		TreeView<Label> treeView = new TreeView<>(root);
+//		treeView.setLayoutX(4);
+//		treeView.setLayoutY(48);
+//		treeView.setPrefWidth(200); 
+//		treeView.setPrefHeight(300); 
+//		treeView.setShowRoot(true);
+//		
+//		return treeView;
+//	}
+//	
 	public Image createLogo() {
 		Image logo = new Image(sharedObjects.getClass().getResource("/1765051670049.jpg").toString(), false);
 		return logo;

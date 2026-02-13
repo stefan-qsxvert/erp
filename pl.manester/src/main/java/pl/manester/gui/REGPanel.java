@@ -19,7 +19,7 @@ import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.events.Events;
 
-public class Gui extends Application {
+public class REGPanel extends Application {
 	
 	private PreparedObjects preparedObjects;
 	private SharedObjects sharedObjects;
@@ -38,13 +38,13 @@ public class Gui extends Application {
 	private Graph graph;
 	private Pane root;
 	
-	public Gui(SharedObjects sharedObjects) {
+	public REGPanel(SharedObjects sharedObjects) {
 		preparedObjects = new PreparedObjects(sharedObjects);
 		this.sharedObjects = sharedObjects;
 		ev = new Events(sharedObjects);
 	}
 	
-	public Gui() {
+	public REGPanel() {
 	}
 	
 	public void run(String[] args) {
@@ -66,6 +66,12 @@ public class Gui extends Application {
 		itTextField = preparedObjects.createTextField("IT", 224, 660);
 		swTextField = preparedObjects.createTextField("SW", 586, 660);
 		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 4);
+		ewidNr.setOnAction(ev -> {
+//			sharedObjects.getDbconn().connectDB();
+			sharedObjects.getEventActions().fillTable();
+//			sharedObjects.getDbconn().disconnectDB();
+		});
+			
 //		userTextField = preparedObjects.createTextField("User", 320, 4);
 //		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
 //		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
@@ -116,13 +122,14 @@ public class Gui extends Application {
 									ewidNr, 
 									itTextField, 
 									swTextField, 
-									tablePersonList, 
+									tablePersonList
 //									ipTextField, 
 //									userTextField, 
 //									databaseTextField, 
-									button,
+//									button
 //									passwordField, 
-									preparedObjects.createTreeMenu());
+//									preparedObjects.createTreeMenu());
+									);
 //		root.getChildren().remove(9);
 		
 		root.setBackground(bcg);

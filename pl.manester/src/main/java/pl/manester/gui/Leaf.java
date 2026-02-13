@@ -99,13 +99,13 @@ public class Leaf {
 		label.setBorder(border);
 		
 		CheckBox checkBox0 = new CheckBox();
-		checkBox0 = new CheckBox("ch0");
-		checkBox0.setLayoutX(90);
+		checkBox0 = new CheckBox(null);
+		checkBox0.setLayoutX(192);
 		checkBox0.setLayoutY(2);
 		
 		CheckBox checkBox1 = new CheckBox();
-		checkBox1 = new CheckBox("ch1");
-		checkBox1.setLayoutX(144);
+		checkBox1 = new CheckBox(null);
+		checkBox1.setLayoutX(236);
 		checkBox1.setLayoutY(2);
 
 		pane.getChildren().addAll(label, checkBox0, checkBox1);
