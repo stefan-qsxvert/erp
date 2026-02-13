@@ -123,7 +123,7 @@ public class PreparedObjects {
 	
 	public TreeView<String> createTreeMenu(){
 		
-		Border border = new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
 		TreeItem<String> root = new TreeItem<>( "Menu"); 
 		root.setExpanded(true);

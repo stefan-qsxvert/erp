@@ -8,6 +8,7 @@ import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Gui;
 import pl.manester.gui.LoginScreen;
 import pl.manester.gui.PreparedObjects;
+import pl.manester.gui.TestGui;
 import pl.manester.gui.Graph;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
@@ -38,10 +39,13 @@ public class Run {
 					Gui gui = new Gui(sharedObjects);
 					sharedObjects.setGui(gui);
 //					Stage primStage = new Stage();
-					LoginScreen loginScreen = new LoginScreen(sharedObjects);
+//					LoginScreen loginScreen = new LoginScreen(sharedObjects);
+					
+					TestGui testGui = new TestGui();
 					try {
+						testGui.start(new Stage());
 //						gui.start(primStage);
-						loginScreen.start(new Stage());
+//						loginScreen.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
