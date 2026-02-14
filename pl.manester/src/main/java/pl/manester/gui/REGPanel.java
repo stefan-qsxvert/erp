@@ -24,14 +24,9 @@ public class REGPanel extends Application {
 	private PreparedObjects preparedObjects;
 	private SharedObjects sharedObjects;
 	private Events ev;
-//	private TextField ipTextField;
-//	private TextField userTextField;
 	private TextField itTextField;
 	private TextField swTextField;
 	private TextField ewidNr;
-//	private PasswordField passwordField;
-//	private TextField databaseTextField;
-//	private Button button;
 	private TableView<Person> tablePersonList;
 	private Stage primaryStageCopy;
 	private Image logo;
@@ -53,16 +48,11 @@ public class REGPanel extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		graph = new Graph(sharedObjects);
-//		sharedObjects.setGraph(graph);
+
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getSlavFile().toString(),false));
 				
 		primaryStageCopy = primaryStage;
 		
-//		primaryStage.getIcons().add(sharedObjects.getImages().getLogo());
-		
-//		ipTextField = preparedObjects.createTextField("ip:port", 4, 4);
-//		databaseTextField = preparedObjects.createTextField("baza danych", 164, 4);
 		itTextField = preparedObjects.createTextField("IT", 224, 660);
 		swTextField = preparedObjects.createTextField("SW", 586, 660);
 		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 4);
@@ -72,33 +62,19 @@ public class REGPanel extends Application {
 //			sharedObjects.getDbconn().disconnectDB();
 		});
 			
-//		userTextField = preparedObjects.createTextField("User", 320, 4);
-//		passwordField = preparedObjects.createPasswordField("Password", 480, 4);
-//		button = preparedObjects.createButton("Połącz!", "connectDB", 640, 4);
+		;
 		logo = preparedObjects.createLogo();
 		tablePersonList = preparedObjects.createPersonTableView(224, 126);
 		
 		itTextField.setMinSize(96, 24);
 		itTextField.setMaxSize(96, 24);
 				
-//		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, 12.0);
-		
 		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 		
 		Background bcg =new Background(bgimg);
-		
-//		ipTextField.appendText("10.8.0.10:5432");
-//		userTextField.appendText("manester");
-//		passwordField.appendText("");
-//		databaseTextField.appendText("manester");
-		
+			
 		root = new Pane();
-//		VBox vb = new VBox();
-//		vb.setBackground(bcg);
-//		vb.setMinSize(180, 160);
-//		vb.setLayoutX(580);
-//		vb.setLayoutY(36);
-		
+
 		Button button = new Button("Nowe okno");
 		button.setLayoutX(640);
 		button.setLayoutY(4);
@@ -123,14 +99,8 @@ public class REGPanel extends Application {
 									itTextField, 
 									swTextField, 
 									tablePersonList
-//									ipTextField, 
-//									userTextField, 
-//									databaseTextField, 
-//									button
-//									passwordField, 
-//									preparedObjects.createTreeMenu());
 									);
-//		root.getChildren().remove(9);
+
 		
 		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
@@ -175,37 +145,6 @@ public class REGPanel extends Application {
 		this.ev = ev;
 	}
 
-//	public TextField getIpTextField() {
-//		return ipTextField;
-//	}
-//
-//	public void setIp(TextField ipTextField) {
-//		this.ipTextField = ipTextField;
-//	}
-//
-//	public TextField getUserTextField() {
-//		return userTextField;
-//	}
-//
-//	public void setUserTextField(TextField useTextField) {
-//		this.userTextField = useTextField;
-//	}
-//
-//	public PasswordField getPasswordField() {
-//		return passwordField;
-//	}
-//
-//	public void setPasswordField(PasswordField passwordField) {
-//		this.passwordField = passwordField;
-//	}
-//
-//	public Button getButton() {
-//		return button;
-//	}
-//
-//	public void setButton(Button button) {
-//		this.button = button;
-//	}
 
 	public TableView<Person> getTablePersonList() {
 		return tablePersonList;
@@ -214,18 +153,6 @@ public class REGPanel extends Application {
 	public void setTablePersonList(TableView<Person> tablePersonList) {
 		this.tablePersonList = tablePersonList;
 	}
-
-//	public TextField getDatabaseTextField() {
-//		return databaseTextField;
-//	}
-//
-//	public void setDatabaseTextField(TextField databaseTextField) {
-//		this.databaseTextField = databaseTextField;
-//	}
-//
-//	public void setIpTextField(TextField ipTextField) {
-//		this.ipTextField = ipTextField;
-//	}
 
 	public Stage getPrimaryStageCopy() {
 		return primaryStageCopy;

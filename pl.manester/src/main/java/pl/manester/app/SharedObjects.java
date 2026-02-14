@@ -1,5 +1,6 @@
 package pl.manester.app;
 
+import pl.manester.base.DBCon;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Graph;
 import pl.manester.gui.REGPanel;

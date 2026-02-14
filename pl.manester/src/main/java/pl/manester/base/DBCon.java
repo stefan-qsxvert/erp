@@ -1,10 +1,12 @@
-package pl.manester.app;
+package pl.manester.base;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import pl.manester.app.SharedObjects;
 
 public class DBCon {
 	
@@ -20,28 +22,22 @@ public class DBCon {
 		userDB = new String();
 		userPasswordDB = new String();
 		ip = new String();
+		connectionState = false;
 	}
 	
 	public void connectDB() {
 
-//		String usr = sharedObjects.getGui().getUserTextField().getText();
-//		String pass = sharedObjects.getGui().getPasswordField().getText();
+
 		
-//		String ip = sharedObjects.getGui().getIpTextField().getText();
-		
-		String dataBase = "manester"; //sharedObjects.getGui().getDatabaseTextField().getText();
-		System.out.println(userDB);
-		System.out.println(userPasswordDB);
+		String dataBase = "manester";
 		
 		ip = "10.8.0.10:5432";
 		
 		String url = "jdbc:postgresql://"+ ip + "/" + dataBase;
-		System.out.println(url);
 		connectionState = false;
 		
 		try {
 			conn = DriverManager.getConnection(url, userDB, userPasswordDB);
-			connectionState = !conn.isClosed();
 			System.out.println("Baza połączona!");
 		} catch (Exception e) {
 			System.out.println("Nie tym razem!");
@@ -66,10 +62,10 @@ public class DBCon {
 	public void disconnectDB() {
 		try {
 			conn.close();
-			connectionState = !conn.isClosed();
-			System.out.println("Baza rozłączona!");
+			System.out.println("Baza odłączona!");
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Baza odłączona!");
 		}
 	}
 	
@@ -94,6 +90,12 @@ public class DBCon {
 	}
 
 	public Boolean getConnectionState() {
+		try {
+			connectionState = !conn.isClosed();
+		} catch (Exception e) {
+//			e.printStackTrace();
+			System.out.println("Baza odłączona!");
+		}
 		return connectionState;
 	}
 

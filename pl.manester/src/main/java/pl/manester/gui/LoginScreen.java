@@ -80,8 +80,8 @@ public class LoginScreen extends Application{
 		TableColumn<ServerMenu, String> coll_ip = new TableColumn<>();
 		
 		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLp()));
-		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIp()));
-		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAlias()));
+		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAlias()));
+		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIp()));
 		
 		coll_lp.setPrefWidth(24);
 		coll_text.setPrefWidth(116);
@@ -126,42 +126,23 @@ public class LoginScreen extends Application{
 				sharedObjects.getDbconn().setUserDB(userTextField.getText());
 				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
 				sharedObjects.getDbconn().connectDB();
-				System.out.println(sharedObjects.getDbconn().getConnectionState());
+
 //				sharedObjects.getDbconn().disconnectDB();
+				
+				if (sharedObjects.getDbconn().getConnectionState()) {
 				
 				primaryStage.hide();
 				try {
 					sharedObjects.getGui().start(new Stage());
 				} catch (Exception e) {
-					e.printStackTrace();
+//					e.printStackTrace();
+				}
 				}
 			}
 		});
 		
-//		tableView.setOnMouseClicked(new EventHandler<Event>() {
-//
-//			@Override
-//			public void handle(Event event) {
-//				// TODO Auto-generated method stub
-//				if (event. toString().contains("code = DELETE")) {
-//				System.out.println(event.toString());
-//				}
-//				
-//				System.out.println(event.toString());
-//			}
-//		});
 		
-		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> System.out.println(poz.getValue().getAlias()));
-		
-//		setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ServerMenu,String>>() {
-//			
-//			@Override
-//			public void handle(CellEditEvent<ServerMenu, String> event) {
-//				// TODO Auto-generated method stub
-//				System.out.println(event.getRowValue().getAlias());
-//			}
-//		});		
-		
+		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> server.setText(poz.getValue().getLp() + " : " + poz.getValue().getAlias() + " : " + poz.getValue().getIp()));
 		
 		pn0.getChildren().addAll(tableView);
 		

@@ -2,8 +2,8 @@ package pl.manester;
 
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import pl.manester.app.DBCon;
 import pl.manester.app.SharedObjects;
+import pl.manester.base.DBCon;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.LoginScreen;
@@ -27,24 +27,20 @@ public class Run {
 		sharedObjects.setPreparedObjects(preparedObjects);
 		sharedObjects.setEventActions(eventActions);
 		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
+		sharedObjects.setAuxPreperdObjects(auxPreperdObjects);
 		Graph graph = new Graph(sharedObjects);
-		sharedObjects.setGraph(graph);
-		
-//		Platform platform = new Platform();
-		
+		sharedObjects.setGraph(graph);		
 				
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
 					REGPanel gui = new REGPanel(sharedObjects);
 					sharedObjects.setGui(gui);
-//					Stage primStage = new Stage();
+					
 					LoginScreen loginScreen = new LoginScreen(sharedObjects);
 					
 					AdhocQery testGui = new AdhocQery();
 					try {
-//						testGui.start(new Stage());
-//						gui.start(new Stage());
 						loginScreen.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
