@@ -27,16 +27,16 @@ public class DBCon {
 	
 	public void connectDB() {
 
-
-		
 		String dataBase = "manester";
 		
-		ip = "10.8.0.10:5432";
+//		ip = "10.8.0.10:5432";
 		
 		String url = "jdbc:postgresql://"+ ip + "/" + dataBase;
 		connectionState = false;
 		
+//		System.out.println(url);
 		try {
+			
 			conn = DriverManager.getConnection(url, userDB, userPasswordDB);
 			System.out.println("Baza połączona!");
 		} catch (Exception e) {

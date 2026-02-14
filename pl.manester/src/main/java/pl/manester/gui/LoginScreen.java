@@ -95,6 +95,8 @@ public class LoginScreen extends Application{
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
+		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
+//		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> System.out.println(poz.getValue().getIp()));
 		
 		textField.setPrefSize(360, 24);
 		textField.setLayoutX(196);
@@ -123,6 +125,7 @@ public class LoginScreen extends Application{
 
 			@Override
 			public void handle(Event event) {
+//				
 				sharedObjects.getDbconn().setUserDB(userTextField.getText());
 				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
 				sharedObjects.getDbconn().connectDB();
@@ -141,8 +144,6 @@ public class LoginScreen extends Application{
 			}
 		});
 		
-		
-		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> server.setText(poz.getValue().getLp() + " : " + poz.getValue().getAlias() + " : " + poz.getValue().getIp()));
 		
 		pn0.getChildren().addAll(tableView);
 		

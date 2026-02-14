@@ -3,13 +3,13 @@ package pl.manester.gui;
 public class ServerMenu {
 	
 	private String lp;
-	private String ip;
 	private String alias;
+	private String ip;
 	
-	public ServerMenu(String lp, String ip, String alias) {
+	public ServerMenu(String lp, String alias, String ip) {
 		this.lp = lp;
-		this.ip = ip;
 		this.alias = alias;
+		this.ip = ip;
 	}
 	
 	public String getLp() {

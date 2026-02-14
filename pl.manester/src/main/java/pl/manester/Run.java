@@ -7,6 +7,7 @@ import pl.manester.base.DBCon;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.LoginScreen;
+import pl.manester.gui.MainMenu;
 import pl.manester.gui.PreparedObjects;
 import pl.manester.gui.AdhocQery;
 import pl.manester.gui.Graph;
@@ -38,10 +39,12 @@ public class Run {
 					sharedObjects.setGui(gui);
 					
 					LoginScreen loginScreen = new LoginScreen(sharedObjects);
+					MainMenu mainMenu = new MainMenu(sharedObjects);
 					
 					AdhocQery testGui = new AdhocQery();
 					try {
-						loginScreen.start(new Stage());
+						mainMenu.start(new Stage());
+//						loginScreen.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
