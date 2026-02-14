@@ -1,6 +1,8 @@
 package pl.manester.gui;
 
 
+import org.w3c.dom.events.EventException;
+
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -84,11 +86,26 @@ public class MainMenu extends Application{
 		tree.setLayoutY(36);
 		
 		tree.setOnMouseClicked(ev -> {if (ev.getClickCount()==2) {
-			
+			try {
 			System.out.println(tree.getSelectionModel().getSelectedItem().getValue().getId());
 //			System.out.println(ev.getSource());
-		}
+			}catch(Exception e) {
+				
+			}
+			}
 		});
+		
+		// test click count
+		tree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		    private int counter = 0;
+
+		    @Override
+		    public void handle(MouseEvent event) {
+		        counter++;
+		        System.out.println("Kliknięć: " + counter);
+		    }
+		});
+		//------------------
 		
 		Pane pane = new Pane();
 		pane.getChildren().addAll(
