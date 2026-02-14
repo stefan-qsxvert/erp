@@ -1,8 +1,11 @@
 package pl.manester.gui;
 
-import java.awt.BorderLayout;
+
 
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -57,13 +60,17 @@ public class MainMenu extends Application{
 		
 		graph.setPrefSize(820,860);
 		graph.setLayoutY(36);
-		graph.setBorder(border);
+//		graph.setBorder(border);
 		graph.setLayoutX(420);
 		
-		TreeItem<String> br0 = new TreeItem<>("Menu");
-		TreeItem<String> treeItem0 = new TreeItem<>("poz1");
-		TreeItem<String> treeItem1 = new TreeItem<>("poz2");
-		TreeItem<String> treeItem2 = new TreeItem<>("poz3");
+		TreeItem<LeafMain> br0 = new TreeItem<>(new LeafMain("Menu","60"));
+		br0.setExpanded(true);
+		TreeItem<LeafMain> treeItem0 = new TreeItem<>(new LeafMain("123", "61"));
+		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("234","62"));
+		TreeItem<LeafMain> treeItem2 = new TreeItem<>(new LeafMain("345", "63"));
+		
+				
+		treeItem0.getChildren().add(treeItem2);
 		
 		br0.getChildren().addAll(
 						treeItem0,
@@ -71,11 +78,13 @@ public class MainMenu extends Application{
 						treeItem2
 				);
 		
-		TreeView<String> tree = new TreeView<>(br0);
+		TreeView<LeafMain> tree = new TreeView<>(br0);
 		tree.setPrefWidth(408);
 		tree.setPrefHeight(820);
 		tree.setLayoutX(4);
 		tree.setLayoutY(36);
+		
+		tree.getSelectionModel().selectedItemProperty().addListener((obs,o,n) -> System.out.println(n.getValue().getId()));
 		
 		
 		Pane pane = new Pane();
