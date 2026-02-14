@@ -1,8 +1,9 @@
 package pl.manester.gui;
 
 
-
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -12,6 +13,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -69,9 +71,6 @@ public class MainMenu extends Application{
 		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("234","62"));
 		TreeItem<LeafMain> treeItem2 = new TreeItem<>(new LeafMain("345", "63"));
 		
-				
-		treeItem0.getChildren().add(treeItem2);
-		
 		br0.getChildren().addAll(
 						treeItem0,
 						treeItem1,
@@ -84,8 +83,12 @@ public class MainMenu extends Application{
 		tree.setLayoutX(4);
 		tree.setLayoutY(36);
 		
-		tree.getSelectionModel().selectedItemProperty().addListener((obs,o,n) -> System.out.println(n.getValue().getId()));
-		
+		tree.setOnMouseClicked(ev -> {if (ev.getClickCount()==2) {
+			
+			System.out.println(tree.getSelectionModel().getSelectedItem().getValue().getId());
+//			System.out.println(ev.getSource());
+		}
+		});
 		
 		Pane pane = new Pane();
 		pane.getChildren().addAll(
