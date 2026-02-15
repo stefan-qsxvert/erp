@@ -1,8 +1,5 @@
 package pl.manester.gui;
 
-
-import org.w3c.dom.events.EventException;
-
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -69,8 +66,8 @@ public class MainAppScreen extends Application{
 		
 		TreeItem<LeafMain> br0 = new TreeItem<>(new LeafMain("Menu","60"));
 		br0.setExpanded(true);
-		TreeItem<LeafMain> treeItem0 = new TreeItem<>(new LeafMain("123", "61"));
-		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("234","62"));
+		TreeItem<LeafMain> treeItem0 = new TreeItem<>(new LeafMain("Reg panel", "61"));
+		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("Adhoc query","62"));
 		TreeItem<LeafMain> treeItem2 = new TreeItem<>(new LeafMain("345", "63"));
 		
 		br0.getChildren().addAll(
@@ -89,6 +86,8 @@ public class MainAppScreen extends Application{
 			try {
 			System.out.println(tree.getSelectionModel().getSelectedItem().getValue().getId());
 //			System.out.println(ev.getSource());
+			
+			
 			}catch(Exception e) {
 				
 			}
@@ -103,6 +102,15 @@ public class MainAppScreen extends Application{
 		    public void handle(MouseEvent event) {
 		        counter++;
 		        System.out.println("Kliknięć: " + counter);
+		        
+		        String id = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
+		        
+		        switch (id.toString()){
+		        case "10":
+		        	
+		        break;
+		        default:
+		        }
 		    }
 		});
 		//------------------
