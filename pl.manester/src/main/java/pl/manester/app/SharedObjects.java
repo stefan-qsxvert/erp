@@ -3,6 +3,7 @@ package pl.manester.app;
 import pl.manester.base.DBCon;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Graph;
+import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.PreparedObjects;
 import pl.manester.gui.events.CellEventHandler;
@@ -22,8 +23,11 @@ public class SharedObjects {
 	private PreparedObjects preparedObjects;
 	private AuxPreperdObjects auxPreperdObjects;
 	private Graph graph;
+	private MainAppScreen mainAppScreen;
+	private Boolean testMode;
 
 	public SharedObjects() {
+		testMode = true;
 		eventCase = new String();
 		rootDir = System.getProperty("user.dir");
 	}
@@ -113,6 +117,22 @@ public class SharedObjects {
 
 	public void setPreparedObjects(PreparedObjects preparedObjects) {
 		this.preparedObjects = preparedObjects;
+	}
+	
+	public MainAppScreen getMainAppScreen() {
+		return mainAppScreen;
+	}
+
+	public void setMainAppScreen(MainAppScreen mainAppScreen) {
+		this.mainAppScreen = mainAppScreen;
+	}
+
+	public Boolean getTestMode() {
+		return testMode;
+	}
+
+	public void setTestMode(Boolean testMode) {
+		this.testMode = testMode;
 	}
 	
 }

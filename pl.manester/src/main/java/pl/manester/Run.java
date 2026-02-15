@@ -7,7 +7,7 @@ import pl.manester.base.DBCon;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.LoginScreen;
-import pl.manester.gui.MainMenu;
+import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.PreparedObjects;
 import pl.manester.gui.AdhocQery;
 import pl.manester.gui.Graph;
@@ -30,7 +30,9 @@ public class Run {
 		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
 		sharedObjects.setAuxPreperdObjects(auxPreperdObjects);
 		Graph graph = new Graph(sharedObjects);
-		sharedObjects.setGraph(graph);		
+		sharedObjects.setGraph(graph);
+		MainAppScreen mainAppScreen = new MainAppScreen(sharedObjects);
+		sharedObjects.setMainAppScreen(mainAppScreen);
 				
 		Platform.startup(new Runnable() {
 				@Override
@@ -39,12 +41,12 @@ public class Run {
 					sharedObjects.setGui(gui);
 					
 					LoginScreen loginScreen = new LoginScreen(sharedObjects);
-					MainMenu mainMenu = new MainMenu(sharedObjects);
+					MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
 					
 					AdhocQery testGui = new AdhocQery();
 					try {
-						mainMenu.start(new Stage());
-//						loginScreen.start(new Stage());
+//						mainMenu.start(new Stage());
+						loginScreen.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

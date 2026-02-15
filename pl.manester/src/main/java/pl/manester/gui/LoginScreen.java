@@ -128,17 +128,29 @@ public class LoginScreen extends Application{
 //				
 				sharedObjects.getDbconn().setUserDB(userTextField.getText());
 				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-				sharedObjects.getDbconn().connectDB();
-
+				
+				if (sharedObjects.getTestMode()) {
+					try {
+						primaryStage.hide();
+						sharedObjects.getMainAppScreen().start(new Stage());
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					sharedObjects.getDbconn().connectDB();
+				
 //				sharedObjects.getDbconn().disconnectDB();
 				
 				if (sharedObjects.getDbconn().getConnectionState()) {
 				
 				primaryStage.hide();
 				try {
-					sharedObjects.getGui().start(new Stage());
+//					sharedObjects.getGui().start(new Stage());
+					sharedObjects.getMainAppScreen().start(new Stage());
 				} catch (Exception e) {
 //					e.printStackTrace();
+				}
 				}
 				}
 			}

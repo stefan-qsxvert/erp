@@ -31,11 +31,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
 
-public class MainMenu extends Application{
+public class MainAppScreen extends Application{
 
 	SharedObjects sharedObjects;
 	
-	public MainMenu(SharedObjects sharedObjects) {
+	public MainAppScreen(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
 	}
 	
