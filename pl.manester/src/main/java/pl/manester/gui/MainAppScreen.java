@@ -1,11 +1,7 @@
 package pl.manester.gui;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -31,6 +27,7 @@ import pl.manester.app.SharedObjects;
 public class MainAppScreen extends Application{
 
 	SharedObjects sharedObjects;
+	String id0 = "", id1 = "";
 	
 	public MainAppScreen(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -38,6 +35,8 @@ public class MainAppScreen extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
+		
 		
 		Image slav = new Image(sharedObjects.getGraph().getSlav_main().toString());
 		
@@ -66,8 +65,8 @@ public class MainAppScreen extends Application{
 		
 		TreeItem<LeafMain> br0 = new TreeItem<>(new LeafMain("Menu","60"));
 		br0.setExpanded(true);
-		TreeItem<LeafMain> treeItem0 = new TreeItem<>(new LeafMain("Reg panel", "61"));
-		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("Adhoc query","62"));
+		TreeItem<LeafMain> treeItem0 = new TreeItem<>(new LeafMain("Reg panel", "10"));
+		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("Adhoc query","20"));
 		TreeItem<LeafMain> treeItem2 = new TreeItem<>(new LeafMain("345", "63"));
 		
 		br0.getChildren().addAll(
@@ -82,17 +81,17 @@ public class MainAppScreen extends Application{
 		tree.setLayoutX(4);
 		tree.setLayoutY(36);
 		
-		tree.setOnMouseClicked(ev -> {if (ev.getClickCount()==2) {
-			try {
-			System.out.println(tree.getSelectionModel().getSelectedItem().getValue().getId());
-//			System.out.println(ev.getSource());
-			
-			
-			}catch(Exception e) {
-				
-			}
-			}
-		});
+//		tree.setOnMouseClicked(ev -> {if (ev.getClickCount()==2) {
+//			try {
+//			System.out.println(tree.getSelectionModel().getSelectedItem().getValue().getId());
+////			System.out.println(ev.getSource());
+//			
+//			
+//			}catch(Exception e) {
+//				
+//			}
+//			}
+//		});
 		
 		// test click count
 		tree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -101,17 +100,34 @@ public class MainAppScreen extends Application{
 		    @Override
 		    public void handle(MouseEvent event) {
 		        counter++;
-		        System.out.println("Kliknięć: " + counter);
 		        
-		        String id = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
-		        
-		        switch (id.toString()){
-		        case "10":
-		        	
-		        break;
-		        default:
+		        switch (counter) {
+		        case 1:
+		        	id0 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
+		         	break;
+		        case 2:
+		        	id1 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
+		        	counter = 0;
+		         	break;
+		         default:
+//		        	 counter = 0;
+		        	 break;
 		        }
-		    }
+	
+		        if (id0 == id1) {
+		        	
+//		        	System.out.println("Kliknięć: " + counter);
+//		        	System.out.println(id0);
+//		        System.out.println(id1);
+		        
+		        	switch (id0) {
+		        	case "10": 
+		        		sharedObjects.getMenuLeafActions().runREGPanel();
+		        	case "20":
+		        		sharedObjects.getMenuLeafActions().runAdhocQuery();
+		        	
+		        	}
+		        }}
 		});
 		//------------------
 		

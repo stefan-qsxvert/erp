@@ -39,12 +39,12 @@ public class REGPanel extends Application {
 		ev = new Events(sharedObjects);
 	}
 	
-	public REGPanel() {
-	}
+//	public REGPanel() {
+//	}
 	
-	public void run(String[] args) {
-		launch();
-	}
+//	public void run(String[] args) {
+//		launch();
+//	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -92,7 +92,7 @@ public class REGPanel extends Application {
 		
 		});
 
-		sharedObjects.getGui().getTablePersonList().getItems().add(new Person("1", "Nowak", "Krystna"));
+		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
 		
 		root.getChildren().addAll(
 									ewidNr, 

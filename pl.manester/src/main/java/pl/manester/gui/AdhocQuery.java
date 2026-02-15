@@ -7,8 +7,15 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import pl.manester.app.SharedObjects;
 
-public class AdhocQery extends Application{
+public class AdhocQuery extends Application{
+	
+	private SharedObjects sharedObjects;
+	
+	public AdhocQuery(SharedObjects sharedObjects) {
+		this.sharedObjects = sharedObjects;
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

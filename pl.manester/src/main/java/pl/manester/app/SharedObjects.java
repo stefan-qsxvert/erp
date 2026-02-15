@@ -1,9 +1,11 @@
 package pl.manester.app;
 
 import pl.manester.base.DBCon;
+import pl.manester.gui.AdhocQuery;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Graph;
 import pl.manester.gui.MainAppScreen;
+import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.PreparedObjects;
 import pl.manester.gui.events.CellEventHandler;
@@ -25,6 +27,9 @@ public class SharedObjects {
 	private Graph graph;
 	private MainAppScreen mainAppScreen;
 	private Boolean testMode;
+	private REGPanel regPanel;
+	private AdhocQuery adhocQuery;
+	private MenuLeafActions menuLeafActions;
 
 	public SharedObjects() {
 		testMode = true;
@@ -133,6 +138,30 @@ public class SharedObjects {
 
 	public void setTestMode(Boolean testMode) {
 		this.testMode = testMode;
+	}
+
+	public REGPanel getRegPanel() {
+		return regPanel;
+	}
+
+	public void setRegPanel(REGPanel regPanel) {
+		this.regPanel = regPanel;
+	}
+
+	public AdhocQuery getAdhocQuery() {
+		return adhocQuery;
+	}
+
+	public void setAdhocQery(AdhocQuery adhocQuery) {
+		this.adhocQuery = adhocQuery;
+	}
+
+	public MenuLeafActions getMenuLeafActions() {
+		return menuLeafActions;
+	}
+
+	public void setMenuLeafActions(MenuLeafActions menuLeafActions) {
+		this.menuLeafActions = menuLeafActions;
 	}
 	
 }

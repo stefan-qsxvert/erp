@@ -8,8 +8,8 @@ import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.LoginScreen;
 import pl.manester.gui.MainAppScreen;
+import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.PreparedObjects;
-import pl.manester.gui.AdhocQery;
 import pl.manester.gui.Graph;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
@@ -33,6 +33,8 @@ public class Run {
 		sharedObjects.setGraph(graph);
 		MainAppScreen mainAppScreen = new MainAppScreen(sharedObjects);
 		sharedObjects.setMainAppScreen(mainAppScreen);
+		MenuLeafActions menuLeafActions = new MenuLeafActions(sharedObjects);
+		sharedObjects.setMenuLeafActions(menuLeafActions);
 				
 		Platform.startup(new Runnable() {
 				@Override
@@ -43,7 +45,7 @@ public class Run {
 					LoginScreen loginScreen = new LoginScreen(sharedObjects);
 					MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
 					
-					AdhocQery testGui = new AdhocQery();
+//					AdhocQuery testGui = new AdhocQuery(sharedObjects);
 					try {
 //						mainMenu.start(new Stage());
 						loginScreen.start(new Stage());
