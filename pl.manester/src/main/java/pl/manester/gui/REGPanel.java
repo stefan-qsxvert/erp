@@ -39,17 +39,13 @@ public class REGPanel extends Application {
 		ev = new Events(sharedObjects);
 	}
 	
-//	public REGPanel() {
-//	}
-	
-//	public void run(String[] args) {
-//		launch();
-//	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getSlavFile().toString(),false));
+		
+		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
 				
 		primaryStageCopy = primaryStage;
 		
@@ -91,14 +87,18 @@ public class REGPanel extends Application {
 			}
 		
 		});
-
+		
+		Pane listPane = preparedObjects.createPane(212, 660, 4, 36);
+		listPane.setBorder(preparedObjects.createSolidBorder());
+		
 		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
 		
 		root.getChildren().addAll(
 									ewidNr, 
 									itTextField, 
 									swTextField, 
-									tablePersonList
+									tablePersonList,
+									listPane
 									);
 
 		

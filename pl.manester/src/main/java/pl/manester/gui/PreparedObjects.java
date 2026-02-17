@@ -1,5 +1,6 @@
 package pl.manester.gui;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -15,6 +16,7 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
@@ -124,5 +126,35 @@ public class PreparedObjects {
 	public Image createLogo() {
 		Image logo = new Image(sharedObjects.getClass().getResource("/1765051670049.jpg").toString(), false);
 		return logo;
+	}
+	
+	public Pane createPane(Integer w, Integer h, Integer layoutX, Integer layoutY) {
+		Pane pane = new Pane();
+		
+		pane.setPrefSize(w, h);
+		pane.setLayoutX(layoutX);
+		pane.setLayoutY(layoutY);
+		
+		return pane;
+	}
+	
+	public Border createSolidBorder() {
+		BorderStroke borderStroke = new BorderStroke(
+				Color.BLACK, 
+				Color.BLACK, 
+				Color.BLACK, 
+				Color.BLACK, 
+				BorderStrokeStyle.SOLID, 
+				BorderStrokeStyle.SOLID, 
+				BorderStrokeStyle.SOLID, 
+				BorderStrokeStyle.SOLID, 
+				CornerRadii.EMPTY, 
+				BorderWidths.DEFAULT, 
+				Insets.EMPTY
+				);
+		
+		Border border = new Border(borderStroke);
+		
+		return border;
 	}
 }

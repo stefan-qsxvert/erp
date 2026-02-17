@@ -39,11 +39,13 @@ public class AdhocQuery extends Application{
 		tree.setPrefSize(320, 512);
 		tree.setOpacity(50);
 		Pane pane = new Pane();
-		pane.setPrefSize(1460, 1024);
+		pane.setPrefSize(1256, 1024);
 		pane.getChildren().add(tree);
 		
 		Scene scene = new Scene(pane);
 //		
+		primaryStage.setHeight(1024);
+		primaryStage.setWidth(1256);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
