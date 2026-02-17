@@ -123,9 +123,10 @@ public class MainAppScreen extends Application{
 		        	switch (id0) {
 		        	case "10": 
 		        		sharedObjects.getMenuLeafActions().runREGPanel();
+		        		break;
 		        	case "20":
 		        		sharedObjects.getMenuLeafActions().runAdhocQuery();
-		        	
+		        		break;
 		        	}
 		        }}
 		});
