@@ -14,7 +14,6 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import pl.manester.app.Person;
@@ -137,20 +136,25 @@ public class PreparedObjects {
 		return pane;
 	}
 	
-	public Pane createLeaf() {
-		HBox pane = new HBox();
-		pane.setBorder(sharedObjects.getAuxPreperdObjects().createSolidBorder());
+	public Pane createLeaf(String item) {
+		Pane pane = new Pane();
+//		pane.setBorder(sharedObjects.getAuxPreperdObjects().createSolidBorder());
 		
-		Label textPos = new Label("lab1");
+		Label textPos = new Label(item);
 		
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
 		
+		filterCheckbox.setLayoutX(206);
+		raportCheckbox.setLayoutX(246);
+		
 		pane.getChildren().addAll(
-				textPos
-//				filterCheckbox,
-//				raportCheckbox				
+				textPos,
+				filterCheckbox,
+				raportCheckbox				
 				);
+		
+		pane.setBackground(sharedObjects.getAuxPreperdObjects().createLeafBackground());
 		
 		return pane;
 	}

@@ -2,7 +2,6 @@ package pl.manester.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
@@ -29,12 +28,19 @@ public class AdhocQuery extends Application{
 		Label menuLabel = new Label("Menu");
 		menuPane.getChildren().addAll(menuLabel);
 		
-		TreeItem<String> item= new TreeItem<>("op1");
+		TreeItem<String> item= new TreeItem<>("MENU");
 		TreeItem<String> item1= new TreeItem<>("op2");
 		TreeItem<String> item2= new TreeItem<>("op3");
 		TreeItem<String> item3= new TreeItem<>("op4");
 		
-		item.getChildren().addAll(item1, item2, item3);
+		TreeItem<String> item10= new TreeItem<>("op1");
+		TreeItem<String> item11= new TreeItem<>("op2");
+		TreeItem<String> item12= new TreeItem<>("op3");
+		TreeItem<String> item13= new TreeItem<>("op4");
+		
+		item10.getChildren().addAll(item11, item12, item13);
+		
+		item.getChildren().addAll(item10,item1, item2, item3);
 		item.setExpanded(true);
 		
 		TreeView<String> tree = new TreeView<>(item);
@@ -53,9 +59,12 @@ public class AdhocQuery extends Application{
 		                if (empty || item == null) {
 		                    setText(null);
 		                    setGraphic(null);
-		                } else {
-		                    setText(item);
-		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf());
+		                } else if (item == "MENU") {
+							setText(item);
+							setGraphic(null);
+						}else {
+		                    setText(null);
+		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));
 		                }
 		            }
 		        };

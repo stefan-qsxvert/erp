@@ -62,5 +62,13 @@ public class AuxPreperdObjects {
 		
 		return border;
 	}
+	public Background createLeafBackground() {
+		
+		Image img = new Image(sharedObjects.getClass().getResource("/menuPosImg.jpg").toString());
+		BackgroundImage backgroundImage = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+		Background bcg = new Background(backgroundImage);
+	
+		return bcg;
+	}
 
 }
