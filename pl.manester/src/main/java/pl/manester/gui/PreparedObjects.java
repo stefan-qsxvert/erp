@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -137,10 +138,14 @@ public class PreparedObjects {
 	}
 	
 	public Pane createLeaf(String item) {
+		
+		Background background = sharedObjects.getAuxPreperdObjects().createLeafBackground();
 		Pane pane = new Pane();
 //		pane.setBorder(sharedObjects.getAuxPreperdObjects().createSolidBorder());
 		
 		Label textPos = new Label(item);
+//		textPos.setBackground(background);
+		textPos.setPrefWidth(272);
 		
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
@@ -154,8 +159,9 @@ public class PreparedObjects {
 				raportCheckbox				
 				);
 		
-		pane.setBackground(sharedObjects.getAuxPreperdObjects().createLeafBackground());
-		
+		pane.setBackground(Background.fill(Color.LIGHTGREY));
+		pane.setOpacity(0.9);
+		pane.setPrefWidth(244);
 		return pane;
 	}
 	
