@@ -1,5 +1,6 @@
 package pl.manester.gui;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -40,6 +41,26 @@ public class AuxPreperdObjects {
 		
 		
 		return label;		
+	}
+	
+	public Border createSolidBorder() {
+		BorderStroke borderStroke = new BorderStroke(
+				Color.BLACK, 
+				Color.BLACK, 
+				Color.BLACK, 
+				Color.BLACK, 
+				BorderStrokeStyle.SOLID, 
+				BorderStrokeStyle.SOLID, 
+				BorderStrokeStyle.SOLID, 
+				BorderStrokeStyle.SOLID, 
+				CornerRadii.EMPTY, 
+				BorderWidths.DEFAULT, 
+				Insets.EMPTY
+				);
+		
+		Border border = new Border(borderStroke);
+		
+		return border;
 	}
 
 }

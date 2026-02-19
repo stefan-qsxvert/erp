@@ -46,6 +46,7 @@ public class REGPanel extends Application {
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getSlavFile().toString(),false));
 		
 		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
+		AuxPreperdObjects auxPreperdObjects = sharedObjects.getAuxPreperdObjects();
 				
 		primaryStageCopy = primaryStage;
 		
@@ -89,7 +90,7 @@ public class REGPanel extends Application {
 		});
 		
 		Pane listPane = preparedObjects.createPane(212, 660, 4, 36);
-		listPane.setBorder(preparedObjects.createSolidBorder());
+		listPane.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
 		

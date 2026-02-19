@@ -1,6 +1,7 @@
 package pl.manester.gui;
 
-import javafx.geometry.Insets;
+import java.awt.Checkbox;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -16,6 +17,7 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import pl.manester.app.Person;
@@ -138,23 +140,22 @@ public class PreparedObjects {
 		return pane;
 	}
 	
-	public Border createSolidBorder() {
-		BorderStroke borderStroke = new BorderStroke(
-				Color.BLACK, 
-				Color.BLACK, 
-				Color.BLACK, 
-				Color.BLACK, 
-				BorderStrokeStyle.SOLID, 
-				BorderStrokeStyle.SOLID, 
-				BorderStrokeStyle.SOLID, 
-				BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, 
-				BorderWidths.DEFAULT, 
-				Insets.EMPTY
+	public Pane createLeaf() {
+		HBox pane = new HBox();
+		pane.setBorder(sharedObjects.getAuxPreperdObjects().createSolidBorder());
+		
+		Label textPos = new Label("lab1");
+		
+		Checkbox filterCheckbox = new Checkbox();
+		Checkbox raportCheckbox = new Checkbox();
+		
+		pane.getChildren().addAll(
+				textPos
+//				filterCheckbox,
+//				raportCheckbox				
 				);
 		
-		Border border = new Border(borderStroke);
-		
-		return border;
+		return pane;
 	}
+	
 }
