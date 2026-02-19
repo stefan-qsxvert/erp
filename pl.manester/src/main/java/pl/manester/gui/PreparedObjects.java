@@ -1,15 +1,12 @@
 package pl.manester.gui;
 
-import java.awt.Checkbox;
-
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Border;
@@ -146,8 +143,8 @@ public class PreparedObjects {
 		
 		Label textPos = new Label("lab1");
 		
-		Checkbox filterCheckbox = new Checkbox();
-		Checkbox raportCheckbox = new Checkbox();
+		CheckBox filterCheckbox = new CheckBox();
+		CheckBox raportCheckbox = new CheckBox();
 		
 		pane.getChildren().addAll(
 				textPos
