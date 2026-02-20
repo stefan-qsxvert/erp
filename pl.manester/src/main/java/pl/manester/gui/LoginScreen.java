@@ -1,6 +1,12 @@
 package pl.manester.gui;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
@@ -28,6 +34,9 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import netscape.javascript.JSObject;
+import pl.manester.app.AppConfig;
 import pl.manester.app.SharedObjects;
 
 public class LoginScreen extends Application{
@@ -93,10 +102,40 @@ public class LoginScreen extends Application{
 		coll_text.setText("alias");
 		coll_ip.setText("ip");
 		
-		File loginConfig = new File("/home/tee/manester/config");
-		if (!loginConfig.exists()) {
-			loginConfig.getParentFile().mkdirs();
-			loginConfig.createNewFile();
+		String home = System.getProperty("user.home");
+		Gson gson = new Gson();
+		
+		File userProperties = new File(home + "/manester/user.properties");
+		if (!userProperties.exists()) {
+			userProperties.getParentFile().mkdirs();
+			userProperties.createNewFile();
+		}else {
+			BufferedReader reader = new BufferedReader( new FileReader(userProperties));
+			
+//			AppCo config = gson.fromJson(reader, JSObject.class);
+		}
+		
+		File serverConfig = new File(home + "/manester/server.properties");
+		if (!serverConfig.exists()) {
+			serverConfig.getParentFile().mkdirs();
+			serverConfig.createNewFile();
+			
+		}else {
+			
+			JsonReader reader = new JsonReader(new FileReader(serverConfig));
+			reader.setLenient(true);
+//			BufferedReader reader = new BufferedReader( new FileReader(serverConfig));
+			int i =0;
+			
+			AppConfig config = gson.fromJson(reader, AppConfig.class);
+			System.out.println(reader.toString());
+			
+			
+			while (reader.hasNext()) {
+				
+				System.out.println(i++);
+			}
+			
 		}
 		
 		tableView.getItems().add(new ServerMenu("1", "HSR", "82.165.235.182:7032"));
@@ -181,6 +220,39 @@ public class LoginScreen extends Application{
 				);
 		
 		primaryStage.setScene(scene);
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			
+			@Override
+			public void handle(WindowEvent event) {
+				
+				if (event.getEventType().toString().equals("WINDOW_CLOSE_REQUEST")) {
+//					System.out.println( event.getEventType());
+					
+					AppConfig appConfig = new AppConfig();
+					appConfig.setLogin(userTextField.getText());
+					
+					try {
+//						FileWriter login = new FileWriter(userProperties);
+//						gson.toJson(appConfig, login);
+//						login.close();
+						
+//						FileWriter servers = new FileWriter(serverConfig);
+						
+						for (ServerMenu sr : tableView.getItems()) {
+//							gson.toJson(new ServerMenu(sr.getLp(), sr.getAlias(), sr.getIp()), servers);
+						}
+						
+//						servers.close();
+//						System.out.println(tableView.getColumns().get(0).getText());
+						
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		});
 		primaryStage.show();
 		
 	}
