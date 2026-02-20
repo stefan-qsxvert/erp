@@ -1,5 +1,8 @@
 package pl.manester.gui;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -28,19 +31,28 @@ public class AdhocQuery extends Application{
 		Label menuLabel = new Label("Menu");
 		menuPane.getChildren().addAll(menuLabel);
 		
+		Statement statement = sharedObjects.getDbconn().getConn().createStatement();
+		ResultSet resultSet = statement.executeQuery("select * from its;");
+		
 		TreeItem<String> item= new TreeItem<>("MENU");
-		TreeItem<String> item1= new TreeItem<>("op2");
-		TreeItem<String> item2= new TreeItem<>("op3");
-		TreeItem<String> item3= new TreeItem<>("op4");
 		
-		TreeItem<String> item10= new TreeItem<>("op1");
-		TreeItem<String> item11= new TreeItem<>("op2");
-		TreeItem<String> item12= new TreeItem<>("op3");
-		TreeItem<String> item13= new TreeItem<>("op4");
+		String rowType = new String();
+		while(resultSet.next()) {
+			rowType=resultSet.getString(6);
+			
+			if (rowType.equals("i") ) {
+				item.getChildren().add(new TreeItem<>(resultSet.getString(2) + " " + resultSet.getString(3)));
+			}else if (rowType.equals("p")){
+				for(TreeItem<String> tr : item.getChildren()) {
+//					System.out.println(tr.getValue().toString().substring(0, 4));
+					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
+						tr.getChildren().add(new TreeItem<String>(resultSet.getString(5)  + " " + resultSet.getString(4)));
+					}
+			
+				}
+			}
+		}
 		
-		item10.getChildren().addAll(item11, item12, item13);
-		
-		item.getChildren().addAll(item10,item1, item2, item3);
 		item.setExpanded(true);
 		
 		TreeView<String> tree = new TreeView<>(item);

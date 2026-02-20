@@ -163,5 +163,9 @@ public class SharedObjects {
 	public void setMenuLeafActions(MenuLeafActions menuLeafActions) {
 		this.menuLeafActions = menuLeafActions;
 	}
+
+	public void setAdhocQuery(AdhocQuery adhocQuery) {
+		this.adhocQuery = adhocQuery;
+	}
 	
 }

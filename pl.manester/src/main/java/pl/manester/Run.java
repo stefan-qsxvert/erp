@@ -36,6 +36,8 @@ public class Run {
 		MenuLeafActions menuLeafActions = new MenuLeafActions(sharedObjects);
 		sharedObjects.setMenuLeafActions(menuLeafActions);
 				
+		sharedObjects.setTestMode(false);
+		
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {

@@ -12,6 +12,7 @@ public class Graph {
 	private URI slavFile;
 	private URI slav_orig;
 	private URI slav_main;
+	private URI leaf_bcg;
 	
 	public Graph(SharedObjects sharedObjects) throws URISyntaxException {
 		this.sharedObjects = sharedObjects;
@@ -19,6 +20,7 @@ public class Graph {
 		slavFile = new URI(sharedObjects.getClass().getResource("/slav.jpg").toString());
 		slav_orig = new URI(sharedObjects.getClass().getResource("/slav_orig.jpg").toString());
 		slav_main = new URI(sharedObjects.getClass().getResource("/slav_main.jpg").toString());
+		leaf_bcg = new URI(sharedObjects.getClass().getResource("/leaf_bcg.png").toString());
 	}
 	
 
@@ -61,4 +63,14 @@ public class Graph {
 	public void setSlav_main(URI slav_main) {
 		this.slav_main = slav_main;
 	}
+
+
+	public URI getLeaf_bcg() {
+		return leaf_bcg;
+	}
+
+	public void setLeaf_bcg(URI leaf_bcg) {
+		this.leaf_bcg = leaf_bcg;
+	}
+	
 }

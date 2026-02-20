@@ -10,6 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -139,7 +143,10 @@ public class PreparedObjects {
 	
 	public Pane createLeaf(String item) {
 		
-		Background background = sharedObjects.getAuxPreperdObjects().createLeafBackground();
+//		Background background = sharedObjects.getAuxPreperdObjects().createLeafBackground();
+		Image backImage = new Image(sharedObjects.getGraph().getLeaf_bcg().toString());
+		BackgroundImage backgroundImage = new BackgroundImage(backImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+
 		Pane pane = new Pane();
 //		pane.setBorder(sharedObjects.getAuxPreperdObjects().createSolidBorder());
 		
@@ -159,7 +166,8 @@ public class PreparedObjects {
 				raportCheckbox				
 				);
 		
-		pane.setBackground(Background.fill(Color.LIGHTGREY));
+//		pane.setBackground(Background.fill(Color.LIGHTGREY));
+		pane.setBackground(new Background(backgroundImage));
 		pane.setOpacity(0.9);
 		pane.setPrefWidth(244);
 		return pane;
