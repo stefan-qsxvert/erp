@@ -1,5 +1,7 @@
 package pl.manester.gui;
 
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -91,7 +93,13 @@ public class LoginScreen extends Application{
 		coll_text.setText("alias");
 		coll_ip.setText("ip");
 		
-		tableView.getItems().add(new ServerMenu("1", "HSR", "10.8.0.10:5432"));
+		File loginConfig = new File("/home/tee/manester/config");
+		if (!loginConfig.exists()) {
+			loginConfig.getParentFile().mkdirs();
+			loginConfig.createNewFile();
+		}
+		
+		tableView.getItems().add(new ServerMenu("1", "HSR", "82.165.235.182:7032"));
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		

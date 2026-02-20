@@ -25,7 +25,7 @@ public class AdhocQuery extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		Leaf leaf = new Leaf();
+//		Leaf leaf = new Leaf();
 		
 		Pane menuPane = new Pane();
 		Label menuLabel = new Label("Menu");
@@ -48,7 +48,6 @@ public class AdhocQuery extends Application{
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
 						tr.getChildren().add(new TreeItem<String>(resultSet.getString(5)  + " " + resultSet.getString(4)));
 					}
-			
 				}
 			}
 		}
