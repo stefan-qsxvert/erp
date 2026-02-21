@@ -32,7 +32,7 @@ public class AdhocQuery extends Application{
 		menuPane.getChildren().addAll(menuLabel);
 		
 		Statement statement = sharedObjects.getDbconn().getConn().createStatement();
-		ResultSet resultSet = statement.executeQuery("select * from its;");
+		ResultSet resultSet = statement.executeQuery("select * from its order by lp asc;");
 		
 		TreeItem<String> item= new TreeItem<>("MENU");
 		
@@ -46,7 +46,7 @@ public class AdhocQuery extends Application{
 				for(TreeItem<String> tr : item.getChildren()) {
 //					System.out.println(tr.getValue().toString().substring(0, 4));
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
-						tr.getChildren().add(new TreeItem<String>(resultSet.getString(5)  + " " + resultSet.getString(4)));
+						tr.getChildren().add(new TreeItem<String>(resultSet.getString(4) ));
 					}
 				}
 			}
