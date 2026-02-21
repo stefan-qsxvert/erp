@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.lang.reflect.Type;
+import java.util.List;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -35,7 +38,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import netscape.javascript.JSObject;
 import pl.manester.app.AppConfig;
 import pl.manester.app.SharedObjects;
 
@@ -110,9 +112,17 @@ public class LoginScreen extends Application{
 			userProperties.getParentFile().mkdirs();
 			userProperties.createNewFile();
 		}else {
-			BufferedReader reader = new BufferedReader( new FileReader(userProperties));
 			
-//			AppCo config = gson.fromJson(reader, JSObject.class);
+			BufferedReader reader = new BufferedReader(new FileReader(userProperties));
+			Type listType = new TypeToken<List<AppConfig>>() {}.getType();
+			List<AppConfig> userConfig = gson.fromJson(reader, listType);
+			
+			for (AppConfig u : userConfig) {
+				
+				System.out.println(u.getLogin());
+				
+			}
+			
 		}
 		
 		File serverConfig = new File(home + "/manester/server.properties");
