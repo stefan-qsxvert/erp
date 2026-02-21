@@ -163,37 +163,14 @@ public class PreparedObjects {
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
 		
-		filterCheckbox.setSelected(sharedObjects.getLeafFilterCheckbox());
-		raportCheckbox.setSelected(sharedObjects.getLeafRaportCheckbox());
-		
 		filterCheckbox.setLayoutX(206);
 		raportCheckbox.setLayoutX(246);
-		
-		filterCheckbox.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				sharedObjects.setLeafFilterCheckbox(filterCheckbox.isSelected());
-			}
-		});
-		
-		raportCheckbox.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				sharedObjects.setLeafRaportCheckbox(raportCheckbox.isSelected());
-			}
-			
-		});
-		
 		pane.getChildren().addAll(
 				textPos,
 				filterCheckbox,
 				raportCheckbox				
 				);
-		
 		
 //		pane.setBackground(Background.fill(Color.LIGHTGREY));
 		pane.setBackground(new Background(backgroundImage));

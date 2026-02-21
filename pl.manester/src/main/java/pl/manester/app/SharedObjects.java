@@ -30,15 +30,11 @@ public class SharedObjects {
 	private REGPanel regPanel;
 	private AdhocQuery adhocQuery;
 	private MenuLeafActions menuLeafActions;
-	private Boolean leafFilterCheckbox;
-	private Boolean leafRaportCheckbox;
 
 	public SharedObjects() {
 		testMode = true;
 		eventCase = new String();
 		rootDir = System.getProperty("user.dir");
-		leafFilterCheckbox = false;
-		leafRaportCheckbox = false;
 	}
 
 	public DBCon getDbconn() {
@@ -170,22 +166,6 @@ public class SharedObjects {
 
 	public void setAdhocQuery(AdhocQuery adhocQuery) {
 		this.adhocQuery = adhocQuery;
-	}
-
-	public Boolean getLeafFilterCheckbox() {
-		return leafFilterCheckbox;
-	}
-
-	public void setLeafFilterCheckbox(Boolean leafFilterCheckbox) {
-		this.leafFilterCheckbox = leafFilterCheckbox;
-	}
-
-	public Boolean getLeafRaportCheckbox() {
-		return leafRaportCheckbox;
-	}
-
-	public void setLeafRaportCheckbox(Boolean leafRaportCheckbox) {
-		this.leafRaportCheckbox = leafRaportCheckbox;
 	}
 	
 }

@@ -62,26 +62,26 @@ public class AdhocQuery extends Application{
 		    @Override
 		    public TreeCell<String> call(TreeView<String> param) {
 
-		        return new TreeCell<String>() {
+		         TreeCell<String> treeCell = new TreeCell<String>() {
 
 		            @Override
 		            protected void updateItem(String item, boolean empty) {
 		                super.updateItem(item, empty);
-
 		                if (empty || item == null) {
 		                    setText(null);
 		                    setGraphic(null);
 		                } else if (item == "MENU") {
 							setText(item);
 							setGraphic(null);
-						}else {
+						}else if (true){
 		                    setText(null);
 		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));
-		                    sharedObjects.setLeafFilterCheckbox(false);
-		                    sharedObjects.setLeafRaportCheckbox(false);
+		                
 		                }
 		            }
 		        };
+		        
+		        return treeCell;
 		    }
 		});
 		
