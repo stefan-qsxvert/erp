@@ -77,7 +77,8 @@ public class AdhocQuery extends Application{
 						}else {
 		                    setText(null);
 		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));
-		                    
+		                    sharedObjects.setLeafFilterCheckbox(false);
+		                    sharedObjects.setLeafRaportCheckbox(false);
 		                }
 		            }
 		        };
