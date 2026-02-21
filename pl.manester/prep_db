@@ -1,0 +1,49 @@
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('1','0001','dane podstawowe', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','dane osobowe', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','adresy', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','umowy', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','wynagrodzenia regularne', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','banki', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','składniki jednorazowe lg', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','składniki okresowe lg', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','harmonogram', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','zmiany harmonogramu', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','nieobecności', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','obecności', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','nadgodziny', '','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('65','0005','harmonogram', '','p');	
+		
+1 | 0001   | indeksy                   |                      |              | i
+    2 | 0002   | dane_osobowe              |                      |              | i
+    3 | 0003   | adresy                    |                      |              | i
+    4 | 0004   | potracenia                |                      |              | i
+    5 | 0005   | dodatki                   |                      |              | i
+    6 | 0006   | przypisanie_organizacyjne |                      |              | i
+    7 | 0007   | harmonogramy              |                      |              | i
+    8 | 0008   | zmiany_harmonogramu       |                      |              | i
+    9 | 0009   | wynagrodzenia_regularne   |                      |              | i
+   10 | 0010   | rachunki_bankowe          |                      |              | i
+   60 | 0005   |                           | lp                   |              | p
+   61 | 0005   |                           | numer ewidencyjny    |              | p
+   62 | 0005   |                           | data                 |              | p
+   63 | 0005   |                           | liczba               |              | p
+   64 | 0005   |                           | wartosc              |              | p
+   65 | 0005   |                           | korzypisanie kosztow |              | p
+  100 | 0006   |                           | poczatek_waznosci    | 1            | p
+  101 | 0006   |                           | koniec_waznosci      | 2            | p
+ 1101 | 1101   | stale_okresowe            |                      |              | i
+(19 wierszy)
