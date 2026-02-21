@@ -28,6 +28,7 @@ public class AdhocQuery extends Application{
 //		Leaf leaf = new Leaf();
 		
 		Pane menuPane = new Pane();
+//		menuPane.setPrefSize(380, 460);
 		Label menuLabel = new Label("Menu");
 		menuPane.getChildren().addAll(menuLabel);
 		
@@ -82,7 +83,7 @@ public class AdhocQuery extends Application{
 		    }
 		});
 		
-		tree.setPrefSize(320, 512);
+		tree.setPrefSize(380, 512);
 		Pane pane = new Pane();
 		pane.setPrefSize(1256, 1024);
 		pane.getChildren().add(tree);

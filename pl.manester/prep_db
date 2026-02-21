@@ -1,31 +1,57 @@
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('1','0001','dane podstawowe', '','p');
+		values ('1','0001','dane podstawowe', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','dane osobowe', '','p');
+		values ('10','0002','dane osobowe', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','adresy', '','p');
+		values ('20','0003','adresy', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','umowy', '','p');
+		values ('30','0004','umowy', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','wynagrodzenia regularne', '','p');
+		values ('40','0005','wynagrodzenia regularne', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','banki', '','p');
+		values ('50','0006','przypisanie do jednostki', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','składniki jednorazowe lg', '','p');
+		values ('60','0007','banki', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','składniki okresowe lg', '','p');
+		values ('70','0008','składniki jednorazowe lg', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','harmonogram', '','p');
+		values ('80','0009','składniki okresowe lg', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','zmiany harmonogramu', '','p');
+		values ('90','0010','harmonogram', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','nieobecności', '','p');
+		values ('100','0011','zmiany harmonogramu', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','obecności', '','p');
+		values ('110','0012','nieobecności', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','nadgodziny', '','p');
+		values ('120','0013','obecności', '','','i');
 insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
-		values ('65','0005','harmonogram', '','p');	
+		values ('130','0014','nadgodziny', '','','i');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('140','0015','limity nieobecności', '','','i');	
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('150','0016','limity obecności', '','','i');
+		
+		
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('2','0001','', 'numer ewidencyjny','','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('3','0001','', 'nazwisko','','p');	
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('4','0001','', 'imię','','p');
+
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('11','0002','', 'numer ewidencyjny','','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('12','0002','', 'początek ważności','','p');	
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('13','0002','', 'koniec ważności','','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('14','0002','', 'PESEL','','p');
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('15','0002','', 'NIP','','p');	
+insert INTO its (lp, it_num, it_title, it_column_name, it_column_id, rodzaj) 
+		values ('16','0002','', 'nazwisko rodowe','','p');	
+		
 		
 1 | 0001   | indeksy                   |                      |              | i
     2 | 0002   | dane_osobowe              |                      |              | i
