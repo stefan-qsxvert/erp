@@ -146,7 +146,7 @@ public class PreparedObjects {
 	
 	public Pane createLeaf(String item) {
 		
-		LeafBools leafBools = new  LeafBools(false, false);
+//		LeafBools leafBools = new  LeafBools(false, false);
 		
 //		Background background = sharedObjects.getAuxPreperdObjects().createLeafBackground();
 		Image backImage = new Image(sharedObjects.getGraph().getLeaf_bcg().toString());
@@ -166,44 +166,11 @@ public class PreparedObjects {
 		filterCheckbox.setLayoutX(206);
 		raportCheckbox.setLayoutX(246);
 		
-		EventHandler<MouseEvent> mousEventHandler = new EventHandler<MouseEvent>() {
-			
-			@Override
-			public void handle(MouseEvent event) {
-				leafBools.setFilterCheckbox(filterCheckbox.isSelected());
-				leafBools.setRaportCheckbox(raportCheckbox.isSelected());
-				System.out.println(leafBools.getFilterCheckbox());
-				System.out.println(leafBools.getRaportCheckbox());
-			}
-		};
-		
-		filterCheckbox.setOnMouseClicked(mousEventHandler);
-		raportCheckbox.setOnMouseClicked(mousEventHandler);
-		
 		pane.getChildren().addAll(
 				textPos,
 				filterCheckbox,
 				raportCheckbox				
 				);
-		
-		pane.setOnMouseClicked(new EventHandler<Event>() {
-
-			@Override
-			public void handle(Event event) {
-				filterCheckbox.setSelected(leafBools.getFilterCheckbox());
-				raportCheckbox.setSelected(leafBools.getRaportCheckbox());
-			}
-		});
-		
-		textPos.setOnMouseClicked(new EventHandler<Event>() {
-
-			@Override
-			public void handle(Event event) {
-				// TODO Auto-generated method stub
-				filterCheckbox.setSelected(leafBools.getFilterCheckbox());
-				raportCheckbox.setSelected(leafBools.getRaportCheckbox());
-			}
-		});
 		
 		
 //		pane.setBackground(Background.fill(Color.LIGHTGREY));

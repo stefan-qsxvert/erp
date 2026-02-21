@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 
 public class Leaf {
 	
+	
+	/*
 	private Label label;
 	private CheckBox checkBox0;
 	private CheckBox checkBox1;
@@ -112,5 +114,5 @@ public class Leaf {
 		
 		return pane;
 	}
-
+ */
 }

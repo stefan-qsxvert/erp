@@ -35,16 +35,16 @@ public class AdhocQuery extends Application{
 		Statement statement = sharedObjects.getDbconn().getConn().createStatement();
 		ResultSet resultSet = statement.executeQuery("select * from its order by lp asc;");
 		
-		TreeItem<String> item= new TreeItem<>("MENU");
+		TreeItem<String>treeItem = new TreeItem<>("MENU");
 		
 		String rowType = new String();
 		while(resultSet.next()) {
 			rowType=resultSet.getString(6);
 			
 			if (rowType.equals("i") ) {
-				item.getChildren().add(new TreeItem<>(resultSet.getString(2) + " " + resultSet.getString(3)));
+				treeItem.getChildren().add(new TreeItem<>(resultSet.getString(2) + " " + resultSet.getString(3)));
 			}else if (rowType.equals("p")){
-				for(TreeItem<String> tr : item.getChildren()) {
+				for(TreeItem<String> tr : treeItem.getChildren()) {
 //					System.out.println(tr.getValue().toString().substring(0, 4));
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
 						tr.getChildren().add(new TreeItem<String>(resultSet.getString(4) ));
@@ -53,9 +53,9 @@ public class AdhocQuery extends Application{
 			}
 		}
 		
-		item.setExpanded(true);
+		treeItem.setExpanded(true);
 		
-		TreeView<String> tree = new TreeView<>(item);
+		TreeView<String> tree = new TreeView<>(treeItem);
 		
 		tree.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
 
@@ -77,6 +77,7 @@ public class AdhocQuery extends Application{
 						}else {
 		                    setText(null);
 		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));
+		                    
 		                }
 		            }
 		        };
