@@ -104,6 +104,7 @@ public class LoginScreen extends Application{
 		coll_text.setText("alias");
 		coll_ip.setText("ip");
 		
+		try {
 		String home = System.getProperty("user.home");
 		Gson gson = new Gson();
 		
@@ -145,6 +146,9 @@ public class LoginScreen extends Application{
 				
 				System.out.println(i++);
 			}
+		}
+		
+		}catch(Exception e) {
 			
 		}
 		

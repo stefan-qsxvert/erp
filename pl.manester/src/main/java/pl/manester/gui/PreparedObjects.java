@@ -153,6 +153,7 @@ public class PreparedObjects {
 		Label textPos = new Label(item);
 //		textPos.setBackground(background);
 		textPos.setPrefWidth(272);
+		textPos.setTextFill(Color.BLACK);
 		
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
