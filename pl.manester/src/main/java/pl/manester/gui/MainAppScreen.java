@@ -104,24 +104,20 @@ public class MainAppScreen extends Application{
 		        switch (counter) {
 		        case 1:
 		        	id0 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
-		         	break;
+		        	break;
 		        case 2:
 		        	id1 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
 		        	counter = 0;
 		         	break;
 		         default:
-//		        	 counter = 0;
 		        	 break;
 		        }
 	
 		        if (id0 == id1) {
 		        	
-//		        	System.out.println("Kliknięć: " + counter);
-//		        	System.out.println(id0);
-//		        System.out.println(id1);
-		        
+	        
 		        	switch (id0) {
-		        	case "10": 
+		        	case "10":
 		        		sharedObjects.getMenuLeafActions().runREGPanel();
 		        		break;
 		        	case "20":

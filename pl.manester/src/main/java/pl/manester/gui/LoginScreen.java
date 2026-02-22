@@ -177,6 +177,42 @@ public class LoginScreen extends Application{
 		
 		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
 		PasswordField passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
+		passwordField.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+
+				sharedObjects.getDbconn().setUserDB(userTextField.getText());
+				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
+				
+				if (sharedObjects.getTestMode()) {
+					try {
+						primaryStage.hide();
+						sharedObjects.getMainAppScreen().start(new Stage());
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					sharedObjects.getDbconn().connectDB();
+				
+//				sharedObjects.getDbconn().disconnectDB();
+				
+				if (sharedObjects.getDbconn().getConnectionState()) {
+				
+				primaryStage.hide();
+				try {
+//					sharedObjects.getGui().start(new Stage());
+					sharedObjects.getMainAppScreen().start(new Stage());
+				} catch (Exception e) {
+//					e.printStackTrace();
+				}
+				}
+				}
+				
+			}
+		});
+		
 		
 		Button loginButton = new Button("Zaloguj");
 		loginButton.setLayoutX(34);
