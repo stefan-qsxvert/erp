@@ -35,9 +35,7 @@ public class MainAppScreen extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-		
-		
+
 		Image slav = new Image(sharedObjects.getGraph().getSlav_main().toString());
 		
 		BackgroundImage bcg = new BackgroundImage(slav, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
