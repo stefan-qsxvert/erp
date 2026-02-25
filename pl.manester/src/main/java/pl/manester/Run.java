@@ -38,18 +38,17 @@ public class Run {
 				
 		sharedObjects.setTestMode(false);
 		
+		REGPanel gui = new REGPanel(sharedObjects);
+					sharedObjects.setGui(gui);
+					
+		LoginScreen loginScreen = new LoginScreen(sharedObjects);
+		MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
+		
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
-					REGPanel gui = new REGPanel(sharedObjects);
-					sharedObjects.setGui(gui);
 					
-					LoginScreen loginScreen = new LoginScreen(sharedObjects);
-					MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
-					
-//					AdhocQuery testGui = new AdhocQuery(sharedObjects);
 					try {
-//						mainMenu.start(new Stage());
 						loginScreen.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
