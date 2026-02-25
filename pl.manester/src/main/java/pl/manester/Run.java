@@ -24,9 +24,9 @@ public class Run {
 		Events events = new Events(sharedObjects);
 		sharedObjects.setEvents(events);
 		EventActions eventActions = new EventActions(sharedObjects);
+		sharedObjects.setEventActions(eventActions);
 		PreparedObjects preparedObjects = new PreparedObjects(sharedObjects);
 		sharedObjects.setPreparedObjects(preparedObjects);
-		sharedObjects.setEventActions(eventActions);
 		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
 		sharedObjects.setAuxPreperdObjects(auxPreperdObjects);
 		Graph graph = new Graph(sharedObjects);

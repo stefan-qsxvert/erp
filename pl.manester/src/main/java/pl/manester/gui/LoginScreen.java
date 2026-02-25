@@ -115,6 +115,7 @@ public class LoginScreen extends Application{
 		}else {
 			
 			BufferedReader reader = new BufferedReader(new FileReader(userProperties));
+			System.out.println(reader.readLine());
 			Type listType = new TypeToken<List<AppConfig>>() {}.getType();
 			List<AppConfig> userConfig = gson.fromJson(reader, listType);
 			
@@ -213,7 +214,6 @@ public class LoginScreen extends Application{
 			}
 		});
 		
-		
 		Button loginButton = new Button("Zaloguj");
 		loginButton.setLayoutX(34);
 		loginButton.setLayoutY(98);
@@ -252,7 +252,6 @@ public class LoginScreen extends Application{
 				}
 			}
 		});
-		
 		
 		pn0.getChildren().addAll(tableView);
 		

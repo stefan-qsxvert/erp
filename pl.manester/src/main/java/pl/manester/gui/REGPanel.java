@@ -106,6 +106,8 @@ public class REGPanel extends Application {
 		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
 		
+		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
+		
 		primaryStage.setTitle("Moje okno");
 		primaryStage.setScene(sc);
 		primaryStage.setHeight(770);

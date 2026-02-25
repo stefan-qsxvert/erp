@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -92,6 +93,8 @@ public class AdhocQuery extends Application{
 		pane.getChildren().add(tree);
 		
 		Scene scene = new Scene(pane);
+		
+		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
 //		
 		primaryStage.setHeight(1024);
 		primaryStage.setWidth(1256);

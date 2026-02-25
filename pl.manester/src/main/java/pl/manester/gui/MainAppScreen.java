@@ -136,6 +136,7 @@ public class MainAppScreen extends Application{
 		
 		Scene scene = new Scene(pane);
 		
+		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();
