@@ -49,7 +49,8 @@ public class Run {
 				public void run() {
 					
 					try {
-						loginScreen.start(new Stage());
+//						loginScreen.start(new Stage());
+						gui.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

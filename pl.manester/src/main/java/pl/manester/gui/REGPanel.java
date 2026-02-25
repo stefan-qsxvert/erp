@@ -89,7 +89,7 @@ public class REGPanel extends Application {
 		
 		});
 		
-		Pane listPane = preparedObjects.createPane(212, 660, 4, 36);
+		Pane listPane = preparedObjects.createPane(212, 680, 4, 4);
 		listPane.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
