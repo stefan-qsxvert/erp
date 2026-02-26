@@ -199,6 +199,8 @@ public class LoginScreen extends Application{
 		
 		});
 		
+		tableView.setEditable(true);
+		
 		textField.setPrefSize(360, 24);
 		textField.setLayoutX(196);
 		textField.setLayoutY(316);
