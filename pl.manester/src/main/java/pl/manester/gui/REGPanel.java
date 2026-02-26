@@ -28,7 +28,7 @@ public class REGPanel extends Application {
 	private TextField swTextField;
 	private TextField ewidNr;
 	private TableView<Person> tablePersonList;
-	private Stage primaryStageCopy;
+	private Stage primaryStage;
 	private Image logo;
 	private Graph graph;
 	private Pane root;
@@ -48,7 +48,7 @@ public class REGPanel extends Application {
 		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
 		AuxPreperdObjects auxPreperdObjects = sharedObjects.getAuxPreperdObjects();
 				
-		primaryStageCopy = primaryStage;
+		this.primaryStage = primaryStage;
 		
 		itTextField = preparedObjects.createTextField("IT", 224, 660);
 		swTextField = preparedObjects.createTextField("SW", 586, 660);
@@ -86,7 +86,6 @@ public class REGPanel extends Application {
 					e.printStackTrace();
 				}				
 			}
-		
 		});
 		
 		Pane listPane = preparedObjects.createPane(212, 680, 4, 4);
@@ -157,12 +156,12 @@ public class REGPanel extends Application {
 		this.tablePersonList = tablePersonList;
 	}
 
-	public Stage getPrimaryStageCopy() {
-		return primaryStageCopy;
+	public Stage getPrimaryStage() {
+		return primaryStage;
 	}
 
-	public void setPrimaryStageCopy(Stage primaryStageCopy) {
-		this.primaryStageCopy = primaryStageCopy;
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
 	}
 
 	public Image getLogo() {
