@@ -59,7 +59,6 @@ public class REGPanel extends Application {
 //			sharedObjects.getDbconn().disconnectDB();
 		});
 			
-		;
 		logo = preparedObjects.createLogo();
 		tablePersonList = preparedObjects.createPersonTableView(224, 126);
 		
