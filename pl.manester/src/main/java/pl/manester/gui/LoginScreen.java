@@ -27,6 +27,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -168,20 +169,35 @@ public class LoginScreen extends Application{
 			String line = reader.readLine();
 			while (line != null) {
 				String[] serverLine = line.split(";");
-//				System.out.println();
-				tableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
+				try {
+					tableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
+				}catch(Exception e)
+				{
+					e.printStackTrace();
+				}
 				line = reader.readLine();
 			}
+			
 			reader.close();
 		}
-	
-		
-//		tableView.getItems().add(new ServerMenu("1", "HSR", "82.165.235.182:7032"));
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
 		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
 //		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> System.out.println(poz.getValue().getIp()));
+		
+		
+		
+		tableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode().toString().equals("DELETE")) {					
+					tableView.getItems().remove(tableView.getSelectionModel().getSelectedIndex());
+				}
+			}
+		
+		});
 		
 		textField.setPrefSize(360, 24);
 		textField.setLayoutX(196);
@@ -194,6 +210,7 @@ public class LoginScreen extends Application{
 				try {
 				String[] newPoz = textField.getText().split(";");
 				tableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2]));
+				textField.clear();
 				}catch(Exception e) {
 				
 				}}
