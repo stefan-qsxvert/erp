@@ -163,11 +163,20 @@ public class LoginScreen extends Application{
 			serversProperties.getParentFile().mkdirs();
 			serversProperties.createNewFile();
 		}else {
-		
+			
+			BufferedReader reader = new BufferedReader(new FileReader(serversProperties));
+			String line = reader.readLine();
+			while (line != null) {
+				String[] serverLine = line.split(";");
+//				System.out.println();
+				tableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
+				line = reader.readLine();
+			}
+			reader.close();
 		}
 	
 		
-		tableView.getItems().add(new ServerMenu("1", "HSR", "82.165.235.182:7032"));
+//		tableView.getItems().add(new ServerMenu("1", "HSR", "82.165.235.182:7032"));
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
@@ -268,6 +277,7 @@ public class LoginScreen extends Application{
 						}	
 					
 					servery.close();
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
