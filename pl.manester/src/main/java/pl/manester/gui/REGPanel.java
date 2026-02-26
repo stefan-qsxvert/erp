@@ -81,7 +81,7 @@ public class REGPanel extends Application {
 			@Override
 			public void handle(Event event) {
 				try {
-					sharedObjects.getGui().start(new Stage());
+					sharedObjects.getRegPanel().start(new Stage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}				

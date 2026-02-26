@@ -23,11 +23,11 @@ public class EventActions {
 //			sharedObjects.getDbconn().connectDB();
 			
 			ResultSet rs = sharedObjects.getDbconn().getResult("select * from danepodstawowe;" );
-			sharedObjects.getGui().getTablePersonList().getItems().clear();
+			sharedObjects.getRegPanel().getTablePersonList().getItems().clear();
 			while (rs.next()) {
-				sharedObjects.getGui().getTablePersonList().getItems().addAll(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
+				sharedObjects.getRegPanel().getTablePersonList().getItems().addAll(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
 			}
-				sharedObjects.getGui().getTablePersonList().getItems().add(new Person(null, null, null));
+				sharedObjects.getRegPanel().getTablePersonList().getItems().add(new Person(null, null, null));
 				
 		} catch (SQLException e) {
 

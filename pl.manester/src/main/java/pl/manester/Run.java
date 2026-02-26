@@ -38,8 +38,8 @@ public class Run {
 				
 		sharedObjects.setTestMode(false);
 		
-		REGPanel gui = new REGPanel(sharedObjects);
-					sharedObjects.setGui(gui);
+		REGPanel regPanel = new REGPanel(sharedObjects);
+					sharedObjects.setRegPanel(regPanel);;
 					
 		LoginScreen loginScreen = new LoginScreen(sharedObjects);
 		MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
@@ -50,7 +50,7 @@ public class Run {
 					
 					try {
 //						loginScreen.start(new Stage());
-						gui.start(new Stage());
+						regPanel.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

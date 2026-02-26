@@ -14,7 +14,6 @@ import pl.manester.gui.events.Events;
 
 public class SharedObjects {
 		
-	private REGPanel gui;
 	private EventActions eventActions;
 	private Events events;
 	private DBCon dbconn;
@@ -32,7 +31,6 @@ public class SharedObjects {
 	private MenuLeafActions menuLeafActions;
 
 	public SharedObjects() {
-		testMode = true;
 		eventCase = new String();
 		rootDir = System.getProperty("user.dir");
 	}
@@ -43,14 +41,6 @@ public class SharedObjects {
 
 	public void setDbconn(DBCon dbconn) {
 		this.dbconn = dbconn;
-	}
-
-	public REGPanel getGui() {
-		return gui;
-	}
-
-	public void setGui(REGPanel gui) {
-		this.gui = gui;
 	}
 
 	public Events getEvents() {
