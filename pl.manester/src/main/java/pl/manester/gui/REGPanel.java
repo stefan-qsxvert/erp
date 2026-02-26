@@ -52,6 +52,7 @@ public class REGPanel extends Application {
 		
 		itTextField = preparedObjects.createTextField("IT", 224, 660);
 		swTextField = preparedObjects.createTextField("SW", 586, 660);
+		
 		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 4);
 		ewidNr.setOnAction(ev -> {
 //			sharedObjects.getDbconn().connectDB();
@@ -59,15 +60,15 @@ public class REGPanel extends Application {
 //			sharedObjects.getDbconn().disconnectDB();
 		});
 			
-		logo = preparedObjects.createLogo();
+//		logo = preparedObjects.createLogo();
 		tablePersonList = preparedObjects.createPersonTableView(224, 126);
 		
 		itTextField.setMinSize(96, 24);
 		itTextField.setMaxSize(96, 24);
 				
-		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+//		BackgroundImage bgimg = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 		
-		Background bcg =new Background(bgimg);
+//		Background bcg =new Background(bgimg);
 			
 		root = new Pane();
 
@@ -101,7 +102,7 @@ public class REGPanel extends Application {
 									);
 
 		
-		root.setBackground(bcg);
+//		root.setBackground(bcg);
 		Scene sc = new Scene(root, 260, 320);
 		
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));

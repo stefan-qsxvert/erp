@@ -1,9 +1,11 @@
 package pl.manester.gui;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -21,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -54,6 +57,44 @@ public class LoginScreen extends Application{
 		
 		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+		
+		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
+		PasswordField passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
+		passwordField.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+
+				sharedObjects.getDbconn().setUserDB(userTextField.getText());
+				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
+				
+				if (sharedObjects.getTestMode()) {
+					try {
+						primaryStage.hide();
+						sharedObjects.getMainAppScreen().start(new Stage());
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					sharedObjects.getDbconn().connectDB();
+				
+//				sharedObjects.getDbconn().disconnectDB();
+				
+				if (sharedObjects.getDbconn().getConnectionState()) {
+				
+				primaryStage.hide();
+				try {
+//					sharedObjects.getGui().start(new Stage());
+					sharedObjects.getMainAppScreen().start(new Stage());
+				} catch (Exception e) {
+//					e.printStackTrace();
+				}
+				}
+				}
+				
+			}
+		});
 		
 		TextField textField = new TextField();
 		
@@ -104,54 +145,27 @@ public class LoginScreen extends Application{
 		coll_text.setText("alias");
 		coll_ip.setText("ip");
 		
-		try {
+		
 		String home = System.getProperty("user.home");
-		Gson gson = new Gson();
 		
 		File userProperties = new File(home + "/manester/user.properties");
 		if (!userProperties.exists()) {
 			userProperties.getParentFile().mkdirs();
 			userProperties.createNewFile();
 		}else {
-			
 			BufferedReader reader = new BufferedReader(new FileReader(userProperties));
-			System.out.println(reader.readLine());
-			Type listType = new TypeToken<List<AppConfig>>() {}.getType();
-			List<AppConfig> userConfig = gson.fromJson(reader, listType);
-			
-			for (AppConfig u : userConfig) {
-				
-				System.out.println(u.getLogin());
-				
-			}
-			
+			 userTextField.setText(reader.readLine());
+	 		 reader.close();
 		}
 		
-		File serverConfig = new File(home + "/manester/server.properties");
-		if (!serverConfig.exists()) {
-			serverConfig.getParentFile().mkdirs();
-			serverConfig.createNewFile();
-			
+		File serversProperties = new File(home + "/manester/server.properties");
+		if (!serversProperties.exists()) {
+			serversProperties.getParentFile().mkdirs();
+			serversProperties.createNewFile();
 		}else {
-			
-			JsonReader reader = new JsonReader(new FileReader(serverConfig));
-			reader.setLenient(true);
-//			BufferedReader reader = new BufferedReader( new FileReader(serverConfig));
-			int i =0;
-			
-			AppConfig config = gson.fromJson(reader, AppConfig.class);
-			System.out.println(reader.toString());
-			
-			
-			while (reader.hasNext()) {
-				
-				System.out.println(i++);
-			}
-		}
 		
-		}catch(Exception e) {
-			
 		}
+	
 		
 		tableView.getItems().add(new ServerMenu("1", "HSR", "82.165.235.182:7032"));
 		
@@ -174,44 +188,6 @@ public class LoginScreen extends Application{
 				}catch(Exception e) {
 				
 				}}
-		});
-		
-		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
-		PasswordField passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
-		passwordField.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-
-				sharedObjects.getDbconn().setUserDB(userTextField.getText());
-				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-				
-				if (sharedObjects.getTestMode()) {
-					try {
-						primaryStage.hide();
-						sharedObjects.getMainAppScreen().start(new Stage());
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else {
-					sharedObjects.getDbconn().connectDB();
-				
-//				sharedObjects.getDbconn().disconnectDB();
-				
-				if (sharedObjects.getDbconn().getConnectionState()) {
-				
-				primaryStage.hide();
-				try {
-//					sharedObjects.getGui().start(new Stage());
-					sharedObjects.getMainAppScreen().start(new Stage());
-				} catch (Exception e) {
-//					e.printStackTrace();
-				}
-				}
-				}
-				
-			}
 		});
 		
 		Button loginButton = new Button("Zaloguj");
@@ -275,32 +251,27 @@ public class LoginScreen extends Application{
 			public void handle(WindowEvent event) {
 				
 				if (event.getEventType().toString().equals("WINDOW_CLOSE_REQUEST")) {
-//					System.out.println( event.getEventType());
+				try {
+					BufferedWriter writer = new BufferedWriter(new FileWriter(userProperties, false));
+					writer.write(userTextField.getText());
+					writer.newLine();
+					writer.close();
 					
-					AppConfig appConfig = new AppConfig();
-					appConfig.setLogin(userTextField.getText());
+					BufferedWriter servery = new BufferedWriter(new FileWriter(serversProperties,false));
+						for ( int i = 0; i < tableView.getItems().size(); i++) {
+							servery.write(
+									tableView.getItems().get(i).getLp() +  ";" + 
+									tableView.getItems().get(i).getAlias() + ";" +
+									tableView.getItems().get(i).getIp()
+							);
+							servery.newLine();
+						}	
 					
-					try {
-//						FileWriter login = new FileWriter(userProperties);
-//						gson.toJson(appConfig, login);
-//						login.close();
-						
-//						FileWriter servers = new FileWriter(serverConfig);
-						
-						for (ServerMenu sr : tableView.getItems()) {
-//							gson.toJson(new ServerMenu(sr.getLp(), sr.getAlias(), sr.getIp()), servers);
-						}
-						
-//						servers.close();
-//						System.out.println(tableView.getColumns().get(0).getText());
-						
-					} catch (Exception e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
+					servery.close();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-				
-			}
+				}}
 		});
 		primaryStage.show();
 		
