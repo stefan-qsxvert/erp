@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -44,6 +45,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import pl.manester.app.AppConfig;
 import pl.manester.app.SharedObjects;
+import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class LoginScreen extends Application{
 	
@@ -56,46 +58,60 @@ public class LoginScreen extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
+		LoginScreenActionEvents actions = new LoginScreenActionEvents(sharedObjects);
+		
 		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
 		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
 		PasswordField passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
-		passwordField.setOnAction(new EventHandler<ActionEvent>() {
+		passwordField.setOnAction( new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
-
-				sharedObjects.getDbconn().setUserDB(userTextField.getText());
-				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-				
-				if (sharedObjects.getTestMode()) {
-					try {
-						primaryStage.hide();
-						sharedObjects.getMainAppScreen().start(new Stage());
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else {
-					sharedObjects.getDbconn().connectDB();
-				
-//				sharedObjects.getDbconn().disconnectDB();
-				
-				if (sharedObjects.getDbconn().getConnectionState()) {
-				
-				primaryStage.hide();
-				try {
-//					sharedObjects.getGui().start(new Stage());
-					sharedObjects.getMainAppScreen().start(new Stage());
-				} catch (Exception e) {
-//					e.printStackTrace();
-				}
-				}
-				}
+				// TODO Auto-generated method stub
+				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
 				
 			}
 		});
+				
+				
+				
+//				new EventHandler<ActionEvent>() {
+//			
+//			@Override
+//			public void handle(ActionEvent event) {
+//
+//				sharedObjects.getDbconn().setUserDB(userTextField.getText());
+//				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
+//				
+//				if (sharedObjects.getTestMode()) {
+//					try {
+//						primaryStage.hide();
+//						sharedObjects.getMainAppScreen().start(new Stage());
+//					} catch (Exception e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}else {
+//					sharedObjects.getDbconn().connectDB();
+//				
+////				sharedObjects.getDbconn().disconnectDB();
+//				
+//				if (sharedObjects.getDbconn().getConnectionState()) {
+//				
+//				primaryStage.hide();
+//				try {
+////					sharedObjects.getGui().start(new Stage());
+//					sharedObjects.getMainAppScreen().start(new Stage());
+//				} catch (Exception e) {
+////					e.printStackTrace();
+//				}
+//				}
+//				}
+//				
+//			}
+//		});
 		
 		TextField textField = new TextField();
 		
@@ -197,45 +213,17 @@ public class LoginScreen extends Application{
 				}}
 		});
 		
-		Button loginButton = new Button("Zaloguj");
-		loginButton.setLayoutX(34);
-		loginButton.setLayoutY(98);
-		loginButton.setPrefSize(144, 24);
-		loginButton.setOnMouseClicked(new EventHandler<Event>() {
+		Button loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);
+		
+		loginButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
-			public void handle(Event event) {
-//				
-				sharedObjects.getDbconn().setUserDB(userTextField.getText());
-				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-				
-				if (sharedObjects.getTestMode()) {
-					try {
-						primaryStage.hide();
-						sharedObjects.getMainAppScreen().start(new Stage());
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else {
-					sharedObjects.getDbconn().connectDB();
-				
-//				sharedObjects.getDbconn().disconnectDB();
-				
-				if (sharedObjects.getDbconn().getConnectionState()) {
-				
-				primaryStage.hide();
-				try {
-//					sharedObjects.getGui().start(new Stage());
-					sharedObjects.getMainAppScreen().start(new Stage());
-				} catch (Exception e) {
-//					e.printStackTrace();
-				}
-				}
-				}
+			public void handle(MouseEvent event) {
+				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
 			}
+			
 		});
-		
+			
 		pn0.getChildren().addAll(tableView);
 		
 		Pane pane = new Pane();
@@ -252,35 +240,35 @@ public class LoginScreen extends Application{
 				);
 		
 		primaryStage.setScene(scene);
-		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			
-			@Override
-			public void handle(WindowEvent event) {
-				
-				if (event.getEventType().toString().equals("WINDOW_CLOSE_REQUEST")) {
-				try {
-					BufferedWriter writer = new BufferedWriter(new FileWriter(userProperties, false));
-					writer.write(userTextField.getText());
-					writer.newLine();
-					writer.close();
-					
-					BufferedWriter servery = new BufferedWriter(new FileWriter(serversProperties,false));
-						for ( int i = 0; i < tableView.getItems().size(); i++) {
-							servery.write(
-									tableView.getItems().get(i).getLp() +  ";" + 
-									tableView.getItems().get(i).getAlias() + ";" +
-									tableView.getItems().get(i).getIp()
-							);
-							servery.newLine();
-						}	
-					
-					servery.close();
-					
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				}}
-		});
+//		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//			
+//			@Override
+//			public void handle(WindowEvent event) {
+//				
+//				if (event.getEventType().toString().equals("WINDOW_CLOSE_REQUEST")) {
+//				try {
+//					BufferedWriter writer = new BufferedWriter(new FileWriter(userProperties, false));
+//					writer.write(userTextField.getText());
+//					writer.newLine();
+//					writer.close();
+//					
+//					BufferedWriter servery = new BufferedWriter(new FileWriter(serversProperties,false));
+//						for ( int i = 0; i < tableView.getItems().size(); i++) {
+//							servery.write(
+//									tableView.getItems().get(i).getLp() +  ";" + 
+//									tableView.getItems().get(i).getAlias() + ";" +
+//									tableView.getItems().get(i).getIp()
+//							);
+//							servery.newLine();
+//						}	
+//					
+//					servery.close();
+//					
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//				}}
+//		});
 		primaryStage.show();
 		
 	}

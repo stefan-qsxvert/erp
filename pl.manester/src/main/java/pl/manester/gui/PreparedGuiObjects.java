@@ -33,13 +33,14 @@ public class PreparedGuiObjects {
 		this.sharedObjects = sharedObjects;
 	}
 	
-	public Button createButton(String text, String id, Integer layoutX, Integer layoutY) {
+	public Button createButton(String text, String id, Integer width, Integer height, Integer layoutX, Integer layoutY) {
 		Button przycisk =new Button();
 		przycisk.setText(text);
 		przycisk.setOnAction(sharedObjects.getEvents());
 		przycisk.setId(id);
-		przycisk.setMaxSize(88,24);
-		przycisk.setMinSize(88, 24);
+		przycisk.setPrefSize(width, height);
+//		przycisk.setMaxSize(88,24);
+//		przycisk.setMinSize(88, 24);
 		przycisk.setLayoutX(layoutX);
 		przycisk.setLayoutY(layoutY);
 		return przycisk;
