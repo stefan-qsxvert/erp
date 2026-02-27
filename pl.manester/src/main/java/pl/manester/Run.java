@@ -9,7 +9,7 @@ import pl.manester.gui.REGPanel;
 import pl.manester.gui.LoginScreen;
 import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
-import pl.manester.gui.PreparedObjects;
+import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.Graph;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
@@ -25,7 +25,7 @@ public class Run {
 		sharedObjects.setEvents(events);
 		EventActions eventActions = new EventActions(sharedObjects);
 		sharedObjects.setEventActions(eventActions);
-		PreparedObjects preparedObjects = new PreparedObjects(sharedObjects);
+		PreparedGuiObjects preparedObjects = new PreparedGuiObjects(sharedObjects);
 		sharedObjects.setPreparedObjects(preparedObjects);
 		AuxPreperdObjects auxPreperdObjects = new AuxPreperdObjects(sharedObjects);
 		sharedObjects.setAuxPreperdObjects(auxPreperdObjects);

@@ -21,7 +21,7 @@ import pl.manester.gui.events.Events;
 
 public class REGPanel extends Application {
 	
-	private PreparedObjects preparedObjects;
+	private PreparedGuiObjects preparedObjects;
 	private SharedObjects sharedObjects;
 	private Events ev;
 	private TextField itTextField;
@@ -34,7 +34,7 @@ public class REGPanel extends Application {
 	private Pane root;
 	
 	public REGPanel(SharedObjects sharedObjects) {
-		preparedObjects = new PreparedObjects(sharedObjects);
+		preparedObjects = new PreparedGuiObjects(sharedObjects);
 		this.sharedObjects = sharedObjects;
 		ev = new Events(sharedObjects);
 	}
@@ -45,7 +45,7 @@ public class REGPanel extends Application {
 
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getSlavFile().toString(),false));
 		
-		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
+		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		AuxPreperdObjects auxPreperdObjects = sharedObjects.getAuxPreperdObjects();
 				
 		this.primaryStage = primaryStage;
@@ -123,11 +123,11 @@ public class REGPanel extends Application {
 		this.sharedObjects = sharedObjects;
 	}
 
-	public PreparedObjects getPreparedObjects() {
+	public PreparedGuiObjects getPreparedObjects() {
 		return preparedObjects;
 	}
 
-	public void setPreparedObjects(PreparedObjects preparedObjects) {
+	public void setPreparedObjects(PreparedGuiObjects preparedObjects) {
 		this.preparedObjects = preparedObjects;
 	}
 

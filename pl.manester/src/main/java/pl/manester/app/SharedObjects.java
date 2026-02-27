@@ -7,7 +7,7 @@ import pl.manester.gui.Graph;
 import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.REGPanel;
-import pl.manester.gui.PreparedObjects;
+import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.events.CellEventHandler;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
@@ -21,7 +21,7 @@ public class SharedObjects {
 	private Person person;
 	private CellEventHandler cellEventHandler;
 	private String rootDir;
-	private PreparedObjects preparedObjects;
+	private PreparedGuiObjects preparedObjects;
 	private AuxPreperdObjects auxPreperdObjects;
 	private Graph graph;
 	private MainAppScreen mainAppScreen;
@@ -106,11 +106,11 @@ public class SharedObjects {
 		this.graph = graph;
 	}
 
-	public PreparedObjects getPreparedObjects() {
+	public PreparedGuiObjects getPreparedObjects() {
 		return preparedObjects;
 	}
 
-	public void setPreparedObjects(PreparedObjects preparedObjects) {
+	public void setPreparedObjects(PreparedGuiObjects preparedObjects) {
 		this.preparedObjects = preparedObjects;
 	}
 	

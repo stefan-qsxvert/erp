@@ -28,11 +28,11 @@ import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.events.CellEventHandler;
 
-public class PreparedObjects {
+public class PreparedGuiObjects {
 	
 	SharedObjects sharedObjects;
 	
-	public PreparedObjects(SharedObjects sharedObjects) {
+	public PreparedGuiObjects(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
 	}
 	

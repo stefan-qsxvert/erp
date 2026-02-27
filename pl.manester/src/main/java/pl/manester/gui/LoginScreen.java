@@ -56,7 +56,7 @@ public class LoginScreen extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		PreparedObjects preparedObjects = sharedObjects.getPreparedObjects();
+		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
 		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
@@ -120,7 +120,6 @@ public class LoginScreen extends Application{
 		pn1.setLayoutX(34);
 		pn1.setLayoutY(130);
 		pn1.setPrefSize(144, 212);
-//		pn1.setBorder(border);
 		
 		Image image = new Image(sharedObjects.getGraph().getSlavFile().toString());
 		BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
@@ -184,10 +183,7 @@ public class LoginScreen extends Application{
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
 		
 		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
-//		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> System.out.println(poz.getValue().getIp()));
-		
-		
-		
+	
 		tableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 			@Override
@@ -196,7 +192,6 @@ public class LoginScreen extends Application{
 					tableView.getItems().remove(tableView.getSelectionModel().getSelectedIndex());
 				}
 			}
-		
 		});
 		
 		tableView.setEditable(true);
