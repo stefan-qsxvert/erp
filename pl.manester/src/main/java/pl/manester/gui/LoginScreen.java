@@ -103,29 +103,13 @@ public class LoginScreen extends Application{
 		primaryStage.setWidth(580);
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
 
-		Label server = new Label("server");
-		server.setLayoutX(196);
-		server.setLayoutY(34);
-		server.setBorder(border);
-		server.setPrefWidth(360);
-		server.setPrefHeight(24);
+		Label server = preparedObjects.createLabel("server", 360, 24, 196, 34);
 		
-		Pane pn0 = new Pane();
-		pn0.setBorder(border);
-		pn0.setPrefSize(360, 240);
-		pn0.setLayoutX(196);
-		pn0.setLayoutY(68);
+		Pane pn0 = preparedObjects.createPane(360, 240, 196, 68);
 		
-		Pane pn1 = new Pane();
-		pn1.setLayoutX(34);
-		pn1.setLayoutY(130);
-		pn1.setPrefSize(144, 212);
+		Pane pn1 = preparedObjects.createPane(144, 212, 34, 130);
 		
-		Image image = new Image(sharedObjects.getGraph().getSlavFile().toString());
-		BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-		Background background = new Background(backgroundImage);
-		
-		pn1.setBackground(background);
+		pn1.setBackground(preparedObjects.createLoginScreenBackgroundPicture());
 		
 		TableView<ServerMenu> tableView = new TableView<>();
 		tableView.setPrefSize(358, 240);

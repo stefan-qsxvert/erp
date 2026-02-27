@@ -1,7 +1,5 @@
 package pl.manester.gui;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -11,7 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -53,7 +50,6 @@ public class PreparedGuiObjects {
 		
 		TextField textField = new TextField();
 		textField.setPromptText(text);
-//		textField.setPrefWidth(164);
 		textField.setLayoutX(layoutX);
 		textField.setLayoutY(layoutY);
 		textField.setMaxSize(144, 24);
@@ -69,11 +65,6 @@ public class PreparedGuiObjects {
 		passwordField.setMinSize(144, 24);
 		passwordField.setLayoutX(layoutX);
 		passwordField.setLayoutY(layoutY);
-//		passwordField.setOnAction(ev -> {
-//			sharedObjects.getDbconn().connectDB();
-//			sharedObjects.getEventActions().fillTable();
-//			sharedObjects.getDbconn().disconnectDB();
-//		});
 		return passwordField;
 	}
 	
@@ -146,17 +137,12 @@ public class PreparedGuiObjects {
 	
 	public Pane createLeaf(String item) {
 		
-//		LeafBools leafBools = new  LeafBools(false, false);
-		
-//		Background background = sharedObjects.getAuxPreperdObjects().createLeafBackground();
 		Image backImage = new Image(sharedObjects.getGraph().getLeaf_bcg().toString());
 		BackgroundImage backgroundImage = new BackgroundImage(backImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
 		Pane pane = new Pane();
-//		pane.setBorder(sharedObjects.getAuxPreperdObjects().createSolidBorder());
 		
 		Label textPos = new Label(item);
-//		textPos.setBackground(background);
 		textPos.setPrefWidth(272);
 		textPos.setTextFill(Color.BLACK);
 		
@@ -172,11 +158,33 @@ public class PreparedGuiObjects {
 				raportCheckbox				
 				);
 		
-//		pane.setBackground(Background.fill(Color.LIGHTGREY));
 		pane.setBackground(new Background(backgroundImage));
 		pane.setOpacity(0.9);
 		pane.setPrefWidth(244);
 		return pane;
 	}
+	
+	public Label createLabel(String text, Integer width, Integer height, Integer layoutX, Integer layoutY) {
+		
+		Label label = new Label(text);
+		label.setLayoutX(layoutX);
+		label.setLayoutY(layoutY);
+//		label.setBorder(border);
+		label.setPrefWidth(width);
+		label.setPrefHeight(height);
+		
+		return label;
+	}
+	
+	public Background createLoginScreenBackgroundPicture() {
+		
+		Image image = new Image(sharedObjects.getGraph().getSlavFile().toString());
+		BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+		Background background = new Background(backgroundImage);
+		
+		return background;
+	}
+	
+	
 	
 }
