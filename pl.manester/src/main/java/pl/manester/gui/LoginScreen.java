@@ -221,7 +221,6 @@ public class LoginScreen extends Application{
 			public void handle(MouseEvent event) {
 				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
 			}
-			
 		});
 			
 		pn0.getChildren().addAll(tableView);
