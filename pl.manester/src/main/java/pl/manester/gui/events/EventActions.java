@@ -119,7 +119,6 @@ public class EventActions {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			
 			}
 	}
 }
