@@ -1,5 +1,7 @@
 package pl.manester.gui;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -9,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -186,6 +189,41 @@ public class PreparedGuiObjects {
 		return background;
 	}
 	
-	
+	public TableView<ServerMenu> createSerTableView(){
+		
+		TableView<ServerMenu> serverListTableView = new TableView<>();
+		serverListTableView.setPrefSize(358, 240);
+		TableColumn<ServerMenu, String> coll_lp = new TableColumn<>();
+		TableColumn<ServerMenu, String> coll_text = new TableColumn<>();
+		TableColumn<ServerMenu, String> coll_ip = new TableColumn<>();
+		
+		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLp()));
+		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAlias()));
+		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIp()));
+		
+		coll_lp.setPrefWidth(24);
+		coll_text.setPrefWidth(116);
+		coll_ip.setPrefWidth(196);
+		
+		coll_lp.setText("lp");
+		coll_text.setText("alias");
+		coll_ip.setText("ip");
+		
+		serverListTableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
+		serverListTableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
+		serverListTableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode().toString().equals("DELETE")) {					
+					serverListTableView.getItems().remove(serverListTableView.getSelectionModel().getSelectedIndex());
+				}
+			}
+		});
+		
+		serverListTableView.setEditable(true);
+		
+		return serverListTableView;
+	}
 	
 }

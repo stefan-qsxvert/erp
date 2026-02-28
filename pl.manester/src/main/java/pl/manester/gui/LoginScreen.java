@@ -55,6 +55,7 @@ public class LoginScreen extends Application{
 	private PasswordField passwordField;
 	private TextField addServerTextField;
 	private Button loginButton;
+	TableView<ServerMenu> serverListTableView;
 	
 	public LoginScreen(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -83,30 +84,10 @@ public class LoginScreen extends Application{
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
 
 		Label server = preparedObjects.createLabel("server", 360, 24, 196, 34);
-		
 		Pane pn0 = preparedObjects.createPane(360, 240, 196, 68);
-		
 		Pane pn1 = preparedObjects.createPane(144, 212, 34, 130);
-		
 		pn1.setBackground(preparedObjects.createLoginScreenBackgroundPicture());
-		
-		TableView<ServerMenu> tableView = new TableView<>();
-		tableView.setPrefSize(358, 240);
-		TableColumn<ServerMenu, String> coll_lp = new TableColumn<>();
-		TableColumn<ServerMenu, String> coll_text = new TableColumn<>();
-		TableColumn<ServerMenu, String> coll_ip = new TableColumn<>();
-		
-		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLp()));
-		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAlias()));
-		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIp()));
-		
-		coll_lp.setPrefWidth(24);
-		coll_text.setPrefWidth(116);
-		coll_ip.setPrefWidth(196);
-		
-		coll_lp.setText("lp");
-		coll_text.setText("alias");
-		coll_ip.setText("ip");
+		serverListTableView = preparedObjects.createSerTableView();
 		
 		
 		String home = System.getProperty("user.home");
@@ -132,7 +113,7 @@ public class LoginScreen extends Application{
 			while (line != null) {
 				String[] serverLine = line.split(";");
 				try {
-					tableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
+					serverListTableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
 				}catch(Exception e)
 				{
 					e.printStackTrace();
@@ -143,19 +124,7 @@ public class LoginScreen extends Application{
 			reader.close();
 		}
 		
-		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
-		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
-		tableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-			@Override
-			public void handle(KeyEvent event) {
-				if (event.getCode().toString().equals("DELETE")) {					
-					tableView.getItems().remove(tableView.getSelectionModel().getSelectedIndex());
-				}
-			}
-		});
 		
-		tableView.setEditable(true);
 		
 		addServerTextField.setPrefSize(360, 24);
 		addServerTextField.setLayoutX(196);
@@ -167,7 +136,7 @@ public class LoginScreen extends Application{
 				// TODO Auto-generated method stub
 				try {
 				String[] newPoz = addServerTextField.getText().split(";");
-				tableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2]));
+				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2]));
 				addServerTextField.clear();
 				}catch(Exception e) {
 				
@@ -186,7 +155,7 @@ public class LoginScreen extends Application{
 		
 		loginButton.setOnMouseClicked(new CMouseEventHandler(sharedObjects));
 			
-		pn0.getChildren().addAll(tableView);
+		pn0.getChildren().addAll(serverListTableView);
 		
 		Pane pane = new Pane();
 		Scene scene = new Scene(pane);
@@ -241,6 +210,46 @@ public class LoginScreen extends Application{
 
 	public void setSharedObjects(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
+	}
+
+	public TextField getUserTextField() {
+		return userTextField;
+	}
+
+	public void setUserTextField(TextField userTextField) {
+		this.userTextField = userTextField;
+	}
+
+	public PasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(PasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public TextField getAddServerTextField() {
+		return addServerTextField;
+	}
+
+	public void setAddServerTextField(TextField addServerTextField) {
+		this.addServerTextField = addServerTextField;
+	}
+
+	public Button getLoginButton() {
+		return loginButton;
+	}
+
+	public void setLoginButton(Button loginButton) {
+		this.loginButton = loginButton;
+	}
+
+	public TableView<ServerMenu> getServerListTableView() {
+		return serverListTableView;
+	}
+
+	public void setServerListTableView(TableView<ServerMenu> serverListTableView) {
+		this.serverListTableView = serverListTableView;
 	}
 
 }
