@@ -8,9 +8,11 @@ import pl.manester.app.SharedObjects;
 public class CMouseEventHandler implements EventHandler<MouseEvent>{
 	
 	SharedObjects sharedObjects;
+	EventActions eventActions;
 	
 	public CMouseEventHandler(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
+		this.eventActions = new EventActions(sharedObjects);
 	}
 	
 	@Override
@@ -19,8 +21,13 @@ public class CMouseEventHandler implements EventHandler<MouseEvent>{
 		String user = sharedObjects.getLoginScreen().getUserTextField().getText();
 		String passDB = sharedObjects.getLoginScreen().getPasswordField().getText();
 		Stage stage = sharedObjects.getLoginScreen().getPrimaryStage();
-		
+				
 		sharedObjects.getLoginScreenActionEvents().loginActions(stage, user, passDB);
+		eventActions.writeLastUserAndServerList(
+				sharedObjects.getLoginScreen().getUserTextField(),
+				sharedObjects.getLoginScreen().getServerListTableView()
+				);
+		
 	}
 	
 	

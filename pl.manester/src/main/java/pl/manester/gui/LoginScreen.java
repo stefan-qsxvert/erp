@@ -1,9 +1,5 @@
 package pl.manester.gui;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,19 +38,12 @@ public class LoginScreen extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		
 		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
 		userTextField = preparedObjects.createTextField("login", 34, 34);
 		passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
-		passwordField.setOnAction( new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-//				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
-			}
-		});
+		passwordField.setOnAction(sharedObjects.getcKeyPressedEventHandler());
 		
 		addServerTextField = new TextField();
 		
@@ -67,43 +56,6 @@ public class LoginScreen extends Application{
 		Pane pn1 = preparedObjects.createPane(144, 212, 34, 130);
 		pn1.setBackground(preparedObjects.createLoginScreenBackgroundPicture());
 		serverListTableView = preparedObjects.createSerTableView();
-		
-		
-		String home = System.getProperty("user.home");
-		
-		File userProperties = new File(home + "/manester/user.properties");
-		if (!userProperties.exists()) {
-			userProperties.getParentFile().mkdirs();
-			userProperties.createNewFile();
-		}else {
-			BufferedReader reader = new BufferedReader(new FileReader(userProperties));
-			 userTextField.setText(reader.readLine());
-	 		 reader.close();
-		}
-		
-		File serversProperties = new File(home + "/manester/server.properties");
-		if (!serversProperties.exists()) {
-			serversProperties.getParentFile().mkdirs();
-			serversProperties.createNewFile();
-		}else {
-			
-			BufferedReader reader = new BufferedReader(new FileReader(serversProperties));
-			String line = reader.readLine();
-			while (line != null) {
-				String[] serverLine = line.split(";");
-				try {
-					serverListTableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
-				}catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-				line = reader.readLine();
-			}
-			
-			reader.close();
-		}
-		
-		
 		
 		addServerTextField.setPrefSize(360, 24);
 		addServerTextField.setLayoutX(196);
@@ -122,17 +74,8 @@ public class LoginScreen extends Application{
 				}}
 		});
 		
-		loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);
-		
-//		loginButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent event) {
-//				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
-//			}
-//		});
-		
-		loginButton.setOnMouseClicked(new CMouseEventHandler(sharedObjects));
+		loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);		
+		loginButton.setOnMouseClicked(cMouseEventHandler);
 			
 		pn0.getChildren().addAll(serverListTableView);
 		
@@ -149,42 +92,11 @@ public class LoginScreen extends Application{
 				pn1
 				);
 		
+		sharedObjects.getEventActions().loadLastUser(userTextField);
+		sharedObjects.getEventActions().loadServerList(serverListTableView);
+		
 		primaryStage.setScene(scene);
-//		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//			
-//			@Override
-//			public void handle(WindowEvent event) {
-//				
-//				if (event.getEventType().toString().equals("WINDOW_CLOSE_REQUEST")) {
-//				try {
-//					BufferedWriter writer = new BufferedWriter(new FileWriter(userProperties, false));
-//					writer.write(userTextField.getText());
-//					writer.newLine();
-//					writer.close();
-//					
-//					BufferedWriter servery = new BufferedWriter(new FileWriter(serversProperties,false));
-//						for ( int i = 0; i < tableView.getItems().size(); i++) {
-//							servery.write(
-//									tableView.getItems().get(i).getLp() +  ";" + 
-//									tableView.getItems().get(i).getAlias() + ";" +
-//									tableView.getItems().get(i).getIp()
-//							);
-//							servery.newLine();
-//						}	
-//					
-//					servery.close();
-//					
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//				}}
-//		});
-		
-		this.primaryStage = primaryStage;
-		this.userTextField = userTextField;
-		this.passwordField = passwordField;
-		primaryStage.show();
-		
+		primaryStage.show();		
 	}
 
 	public SharedObjects getSharedObjects() {

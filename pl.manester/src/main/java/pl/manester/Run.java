@@ -11,6 +11,8 @@ import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.Graph;
+import pl.manester.gui.events.CKeyPressedEventHandler;
+import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
 import pl.manester.gui.events.LoginScreenActionEvents;
@@ -40,6 +42,10 @@ public class Run {
 		sharedObjects.setLoginScreen(loginScreen);
 		LoginScreenActionEvents loginScreenActionEvents = new LoginScreenActionEvents(sharedObjects);
 		sharedObjects.setLoginScreenActionEvents(loginScreenActionEvents);
+		CMouseEventHandler cMouseEventHandler = new CMouseEventHandler(sharedObjects);
+		sharedObjects.setcMouseEventHandler(cMouseEventHandler);
+		CKeyPressedEventHandler cKeyPressedEventHandler = new CKeyPressedEventHandler(sharedObjects);
+		sharedObjects.setcKeyPressedEventHandler(cKeyPressedEventHandler);
 		
 				
 		sharedObjects.setTestMode(false);

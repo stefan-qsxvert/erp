@@ -1,5 +1,7 @@
 package pl.manester.app;
 
+import java.awt.color.CMMException;
+
 import pl.manester.base.DBCon;
 import pl.manester.gui.AdhocQuery;
 import pl.manester.gui.AuxPreperdObjects;
@@ -10,6 +12,8 @@ import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.events.CCellEventHandler;
+import pl.manester.gui.events.CKeyPressedEventHandler;
+import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
 import pl.manester.gui.events.LoginScreenActionEvents;
@@ -22,6 +26,8 @@ public class SharedObjects {
 	private String eventCase;
 	private Person person;
 	private CCellEventHandler cellEventHandler;
+	private CMouseEventHandler cMouseEventHandler;
+	private CKeyPressedEventHandler cKeyPressedEventHandler;
 	private String rootDir;
 	private PreparedGuiObjects preparedObjects;
 	private AuxPreperdObjects auxPreperdObjects;
@@ -176,6 +182,22 @@ public class SharedObjects {
 
 	public void setLoginScreen(LoginScreen loginScreen) {
 		this.loginScreen = loginScreen;
+	}
+
+	public CMouseEventHandler getcMouseEventHandler() {
+		return cMouseEventHandler;
+	}
+
+	public void setcMouseEventHandler(CMouseEventHandler cMouseEventHandler) {
+		this.cMouseEventHandler = cMouseEventHandler;
+	}
+
+	public CKeyPressedEventHandler getcKeyPressedEventHandler() {
+		return cKeyPressedEventHandler;
+	}
+
+	public void setcKeyPressedEventHandler(CKeyPressedEventHandler cKeyPressedEventHandler) {
+		this.cKeyPressedEventHandler = cKeyPressedEventHandler;
 	}
 	
 }

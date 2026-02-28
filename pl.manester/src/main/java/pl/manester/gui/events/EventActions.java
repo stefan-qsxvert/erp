@@ -1,10 +1,18 @@
 package pl.manester.gui.events;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
+import pl.manester.gui.ServerMenu;
 
 public class EventActions {
 	private SharedObjects sharedObjects;
@@ -36,5 +44,35 @@ public class EventActions {
 	
 	public void disconnectDB() {
 		sharedObjects.getDbconn().disconnectDB();
+	}
+	
+	
+	
+	public void writeLastUserAndServerList(TextField userTextField, TableView<ServerMenu> tableView) {
+		String home = System.getProperty("user.home");
+		File userProperties = new File(home + "/manester/user.properties");
+		File serversProperties = new File(home + "/manester/server.properties");
+			try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter(userProperties, false));
+				writer.write(userTextField.getText());
+				writer.newLine();
+				writer.close();
+				
+				BufferedWriter servery = new BufferedWriter(new FileWriter(serversProperties,false));
+					for ( int i = 0; i < tableView.getItems().size(); i++) {
+						servery.write(
+								tableView.getItems().get(i).getLp() +  ";" + 
+								tableView.getItems().get(i).getAlias() + ";" +
+								tableView.getItems().get(i).getIp()
+						);
+						servery.newLine();
+					}	
+				
+				servery.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			
+			}
 	}
 }
