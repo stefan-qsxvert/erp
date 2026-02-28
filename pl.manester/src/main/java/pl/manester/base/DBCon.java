@@ -112,7 +112,7 @@ public class DBCon {
 	}
 
 	public String getUserPasswordDB() {
-		return userPasswordDB;
+		return "@gjs4#5Gt+";
 	}
 
 	public void setUserPasswordDB(String userPasswordDB) {
