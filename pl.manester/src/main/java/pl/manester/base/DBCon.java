@@ -14,13 +14,13 @@ public class DBCon {
 	private Connection conn;
 	private Boolean connectionState;
 	private String userDB;
-	private String userPasswordDB;
+	private char[] userPasswordDB;
 	private String ip;
 	
 	public DBCon(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
 		userDB = new String();
-		userPasswordDB = new String();
+//		userPasswordDB = new String();
 		ip = new String();
 		connectionState = false;
 	}
@@ -29,15 +29,13 @@ public class DBCon {
 
 		String dataBase = "manester";
 		
-//		ip = "10.8.0.10:5432";
 		
 		String url = "jdbc:postgresql://"+ ip + "/" + dataBase;
 		connectionState = false;
 		
-//		System.out.println(url);
 		try {
 			
-			conn = DriverManager.getConnection(url, userDB, userPasswordDB);
+			conn = DriverManager.getConnection(url, userDB, userPasswordDB.toString());
 			System.out.println("Baza połączona!");
 		} catch (Exception e) {
 			System.out.println("Nie tym razem!");
@@ -116,7 +114,7 @@ public class DBCon {
 	}
 
 	public void setUserPasswordDB(String userPasswordDB) {
-		this.userPasswordDB = userPasswordDB;
+		this.userPasswordDB = userPasswordDB.toCharArray();
 	}
 
 	public String getIp() {
