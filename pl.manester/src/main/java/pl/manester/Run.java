@@ -13,6 +13,7 @@ import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.Graph;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
+import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class Run {
 	
@@ -35,6 +36,8 @@ public class Run {
 		sharedObjects.setMainAppScreen(mainAppScreen);
 		MenuLeafActions menuLeafActions = new MenuLeafActions(sharedObjects);
 		sharedObjects.setMenuLeafActions(menuLeafActions);
+		LoginScreenActionEvents loginScreenActionEvents = new LoginScreenActionEvents(sharedObjects);
+		sharedObjects.setLoginScreenActionEvents(loginScreenActionEvents);
 				
 		sharedObjects.setTestMode(false);
 		

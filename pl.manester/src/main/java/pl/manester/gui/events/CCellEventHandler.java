@@ -5,12 +5,12 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 
-public class CellEventHandler implements EventHandler<CellEditEvent<Person, String>>{
+public class CCellEventHandler implements EventHandler<CellEditEvent<Person, String>>{
 	
 	SharedObjects sharedObjects;
 	String type;
 	
-	public CellEventHandler(SharedObjects sharedObjects, String type){
+	public CCellEventHandler(SharedObjects sharedObjects, String type){
 		this.sharedObjects = sharedObjects;
 		this.type = type;
 	}

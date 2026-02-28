@@ -45,11 +45,16 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import pl.manester.app.AppConfig;
 import pl.manester.app.SharedObjects;
+import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class LoginScreen extends Application{
 	
 	private SharedObjects sharedObjects;
+	private TextField userTextField;
+	private PasswordField passwordField;
+	private TextField addServerTextField;
+	private Button loginButton;
 	
 	public LoginScreen(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -58,62 +63,20 @@ public class LoginScreen extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		LoginScreenActionEvents actions = new LoginScreenActionEvents(sharedObjects);
-		
 		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
-		TextField userTextField = preparedObjects.createTextField("login", 34, 34);
-		PasswordField passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
+		userTextField = preparedObjects.createTextField("login", 34, 34);
+		passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
 		passwordField.setOnAction( new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
-				
+//				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
 			}
 		});
-				
-				
-				
-//				new EventHandler<ActionEvent>() {
-//			
-//			@Override
-//			public void handle(ActionEvent event) {
-//
-//				sharedObjects.getDbconn().setUserDB(userTextField.getText());
-//				sharedObjects.getDbconn().setUserPasswordDB(passwordField.getText());
-//				
-//				if (sharedObjects.getTestMode()) {
-//					try {
-//						primaryStage.hide();
-//						sharedObjects.getMainAppScreen().start(new Stage());
-//					} catch (Exception e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}else {
-//					sharedObjects.getDbconn().connectDB();
-//				
-////				sharedObjects.getDbconn().disconnectDB();
-//				
-//				if (sharedObjects.getDbconn().getConnectionState()) {
-//				
-//				primaryStage.hide();
-//				try {
-////					sharedObjects.getGui().start(new Stage());
-//					sharedObjects.getMainAppScreen().start(new Stage());
-//				} catch (Exception e) {
-////					e.printStackTrace();
-//				}
-//				}
-//				}
-//				
-//			}
-//		});
 		
-		TextField textField = new TextField();
+		addServerTextField = new TextField();
 		
 		primaryStage.setHeight(400);
 		primaryStage.setWidth(580);
@@ -181,9 +144,7 @@ public class LoginScreen extends Application{
 		}
 		
 		tableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
-		
 		tableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
-	
 		tableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 			@Override
@@ -196,32 +157,34 @@ public class LoginScreen extends Application{
 		
 		tableView.setEditable(true);
 		
-		textField.setPrefSize(360, 24);
-		textField.setLayoutX(196);
-		textField.setLayoutY(316);
-		textField.setOnAction(new EventHandler<ActionEvent>() {
+		addServerTextField.setPrefSize(360, 24);
+		addServerTextField.setLayoutX(196);
+		addServerTextField.setLayoutY(316);
+		addServerTextField.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				try {
-				String[] newPoz = textField.getText().split(";");
+				String[] newPoz = addServerTextField.getText().split(";");
 				tableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2]));
-				textField.clear();
+				addServerTextField.clear();
 				}catch(Exception e) {
 				
 				}}
 		});
 		
-		Button loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);
+		loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);
 		
-		loginButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
-			}
-		});
+//		loginButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//
+//			@Override
+//			public void handle(MouseEvent event) {
+//				actions.loginActions(primaryStage, userTextField.getText(), passwordField.getText());
+//			}
+//		});
+		
+		loginButton.setOnMouseClicked(new CMouseEventHandler(sharedObjects));
 			
 		pn0.getChildren().addAll(tableView);
 		
@@ -233,7 +196,7 @@ public class LoginScreen extends Application{
 				passwordField,
 				pn0,
 				server,
-				textField,
+				addServerTextField,
 				loginButton,
 				pn1
 				);

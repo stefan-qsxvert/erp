@@ -8,9 +8,10 @@ import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.REGPanel;
 import pl.manester.gui.PreparedGuiObjects;
-import pl.manester.gui.events.CellEventHandler;
+import pl.manester.gui.events.CCellEventHandler;
 import pl.manester.gui.events.EventActions;
 import pl.manester.gui.events.Events;
+import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class SharedObjects {
 		
@@ -19,7 +20,7 @@ public class SharedObjects {
 	private DBCon dbconn;
 	private String eventCase;
 	private Person person;
-	private CellEventHandler cellEventHandler;
+	private CCellEventHandler cellEventHandler;
 	private String rootDir;
 	private PreparedGuiObjects preparedObjects;
 	private AuxPreperdObjects auxPreperdObjects;
@@ -29,6 +30,7 @@ public class SharedObjects {
 	private REGPanel regPanel;
 	private AdhocQuery adhocQuery;
 	private MenuLeafActions menuLeafActions;
+	private LoginScreenActionEvents loginScreenActionEvents;
 
 	public SharedObjects() {
 		eventCase = new String();
@@ -75,11 +77,11 @@ public class SharedObjects {
 		this.eventActions = eventActions;
 	}
 
-	public CellEventHandler getCellEventHandler() {
+	public CCellEventHandler getCellEventHandler() {
 		return cellEventHandler;
 	}
 
-	public void setCellEventHandler(CellEventHandler cellEventHandler) {
+	public void setCellEventHandler(CCellEventHandler cellEventHandler) {
 		this.cellEventHandler = cellEventHandler;
 	}
 	public String getRootDir() {
@@ -156,6 +158,14 @@ public class SharedObjects {
 
 	public void setAdhocQuery(AdhocQuery adhocQuery) {
 		this.adhocQuery = adhocQuery;
+	}
+	
+	public LoginScreenActionEvents getLoginScreenActionEvents() {
+		return loginScreenActionEvents;
+	}
+
+	public void setLoginScreenActionEvents(LoginScreenActionEvents loginScreenActionEvents) {
+		this.loginScreenActionEvents = loginScreenActionEvents;
 	}
 	
 }

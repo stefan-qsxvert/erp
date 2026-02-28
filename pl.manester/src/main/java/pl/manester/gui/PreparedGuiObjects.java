@@ -23,7 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.events.CellEventHandler;
+import pl.manester.gui.events.CCellEventHandler;
 
 public class PreparedGuiObjects {
 	
@@ -95,9 +95,9 @@ public class PreparedGuiObjects {
 		col1.setText("Nazwisko");
 		col2.setText("Imię");
 		
-		col0.setOnEditCommit(new CellEventHandler(sharedObjects, "0"));
-		col1.setOnEditCommit(new CellEventHandler(sharedObjects, "1"));
-		col2.setOnEditCommit(new CellEventHandler(sharedObjects, "2"));
+		col0.setOnEditCommit(new CCellEventHandler(sharedObjects, "0"));
+		col1.setOnEditCommit(new CCellEventHandler(sharedObjects, "1"));
+		col2.setOnEditCommit(new CCellEventHandler(sharedObjects, "2"));
 		
 		col0.setResizable(true);
 		col1.setResizable(true);
