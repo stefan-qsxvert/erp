@@ -1,7 +1,5 @@
 package pl.manester.app;
 
-import java.awt.color.CMMException;
-
 import pl.manester.base.DBCon;
 import pl.manester.gui.AdhocQuery;
 import pl.manester.gui.AuxPreperdObjects;
@@ -9,8 +7,9 @@ import pl.manester.gui.Graph;
 import pl.manester.gui.LoginScreen;
 import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
-import pl.manester.gui.REGPanel;
 import pl.manester.gui.PreparedGuiObjects;
+import pl.manester.gui.REGPanel;
+import pl.manester.gui.events.CActionEvent;
 import pl.manester.gui.events.CCellEventHandler;
 import pl.manester.gui.events.CKeyPressedEventHandler;
 import pl.manester.gui.events.CMouseEventHandler;
@@ -28,6 +27,7 @@ public class SharedObjects {
 	private CCellEventHandler cellEventHandler;
 	private CMouseEventHandler cMouseEventHandler;
 	private CKeyPressedEventHandler cKeyPressedEventHandler;
+	private CActionEvent cActionEvent;
 	private String rootDir;
 	private PreparedGuiObjects preparedObjects;
 	private AuxPreperdObjects auxPreperdObjects;
@@ -198,6 +198,14 @@ public class SharedObjects {
 
 	public void setcKeyPressedEventHandler(CKeyPressedEventHandler cKeyPressedEventHandler) {
 		this.cKeyPressedEventHandler = cKeyPressedEventHandler;
+	}
+
+	public CActionEvent getcActionEvent() {
+		return cActionEvent;
+	}
+
+	public void setcActionEvent(CActionEvent cActionEvent) {
+		this.cActionEvent = cActionEvent;
 	}
 	
 }

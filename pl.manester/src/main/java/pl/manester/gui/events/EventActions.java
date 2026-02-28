@@ -46,7 +46,54 @@ public class EventActions {
 		sharedObjects.getDbconn().disconnectDB();
 	}
 	
+	public void loadServerList(TableView<ServerMenu> serverListTableView) {
+		
+		String home = System.getProperty("user.home");
+	try {	
+		File serversProperties = new File(home + "/manester/server.properties");
+		if (!serversProperties.exists()) {
+			serversProperties.getParentFile().mkdirs();
+			serversProperties.createNewFile();
+		}else {
+			
+			BufferedReader reader = new BufferedReader(new FileReader(serversProperties));
+			String line = reader.readLine();
+			while (line != null) {
+				String[] serverLine = line.split(";");
+					try {
+						serverListTableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					line = reader.readLine();
+			}
+			
+			reader.close();
+		}
+		
+	}catch(Exception e) {
+		
+	}
+		
+	}
 	
+	public void loadLastUser(TextField userTextField ) {
+		
+		String home = System.getProperty("user.home");
+		try {
+			File userProperties = new File(home + "/manester/user.properties");
+			if (!userProperties.exists()) {
+				userProperties.getParentFile().mkdirs();
+				userProperties.createNewFile();
+			}else {
+				BufferedReader reader = new BufferedReader(new FileReader(userProperties));
+				userTextField.setText(reader.readLine());
+				reader.close();
+			}
+		}catch (Exception e) {
+	
+		}
+	}
 	
 	public void writeLastUserAndServerList(TextField userTextField, TableView<ServerMenu> tableView) {
 		String home = System.getProperty("user.home");

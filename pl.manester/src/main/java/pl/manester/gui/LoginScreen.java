@@ -43,7 +43,7 @@ public class LoginScreen extends Application{
 		
 		userTextField = preparedObjects.createTextField("login", 34, 34);
 		passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
-		passwordField.setOnAction(sharedObjects.getcKeyPressedEventHandler());
+		passwordField.setOnAction(sharedObjects.getcActionEvent());
 		
 		addServerTextField = new TextField();
 		
@@ -75,7 +75,7 @@ public class LoginScreen extends Application{
 		});
 		
 		loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);		
-		loginButton.setOnMouseClicked(cMouseEventHandler);
+		loginButton.setOnMouseClicked(sharedObjects.getcMouseEventHandler());
 			
 		pn0.getChildren().addAll(serverListTableView);
 		
