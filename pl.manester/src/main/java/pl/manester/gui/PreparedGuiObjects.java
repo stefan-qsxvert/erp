@@ -193,7 +193,7 @@ public class PreparedGuiObjects {
 		return background;
 	}
 	
-	public TableView<ServerMenu> createSerTableView(){
+	public TableView<ServerMenu> createServerTableView(){
 		
 		TableView<ServerMenu> serverListTableView = new TableView<>();
 		serverListTableView.setPrefSize(358, 240);

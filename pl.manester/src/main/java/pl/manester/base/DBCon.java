@@ -16,6 +16,7 @@ public class DBCon {
 	private String userDB;
 	private char[] userPasswordDB;
 	private String ip;
+	String dataBase;
 	
 	public DBCon(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -27,7 +28,7 @@ public class DBCon {
 	
 	public void connectDB() {
 
-		String dataBase = "manester";
+
 		String url = "jdbc:postgresql://"+ ip + "/" + dataBase;
 		
 		connectionState = false;

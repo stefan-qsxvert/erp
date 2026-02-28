@@ -55,7 +55,7 @@ public class LoginScreen extends Application{
 		Pane pn0 = preparedObjects.createPane(360, 240, 196, 68);
 		Pane pn1 = preparedObjects.createPane(144, 212, 34, 130);
 		pn1.setBackground(preparedObjects.createLoginScreenBackgroundPicture());
-		serverListTableView = preparedObjects.createSerTableView();
+		serverListTableView = preparedObjects.createServerTableView();
 		
 		addServerTextField.setPrefSize(360, 24);
 		addServerTextField.setLayoutX(196);
