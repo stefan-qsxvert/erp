@@ -1,14 +1,17 @@
 package pl.manester.gui;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -24,6 +27,7 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.util.Callback;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.events.CCellEventHandler;
@@ -196,20 +200,31 @@ public class PreparedGuiObjects {
 		TableColumn<ServerMenu, String> coll_lp = new TableColumn<>();
 		TableColumn<ServerMenu, String> coll_text = new TableColumn<>();
 		TableColumn<ServerMenu, String> coll_ip = new TableColumn<>();
+		TableColumn<ServerMenu, String> coll_base = new TableColumn<>();
 		
 		coll_lp.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLp()));
 		coll_text.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getAlias()));
 		coll_ip.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIp()));
+		coll_base.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ServerMenu,String>, ObservableValue<String>>() {
+			
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<ServerMenu, String> param) {
+				return new SimpleStringProperty(param.getValue().getBase());
+//				return null;
+			}
+		});
 		
 		coll_lp.setPrefWidth(24);
-		coll_text.setPrefWidth(116);
-		coll_ip.setPrefWidth(196);
+		coll_text.setPrefWidth(84);
+		coll_ip.setPrefWidth(104);
+		coll_base.setPrefWidth(104);
 		
 		coll_lp.setText("lp");
 		coll_text.setText("alias");
 		coll_ip.setText("ip");
+		coll_base.setText("baza");
 		
-		serverListTableView.getColumns().addAll(coll_lp, coll_text, coll_ip);
+		serverListTableView.getColumns().addAll(coll_lp, coll_text, coll_ip, coll_base);
 		serverListTableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
 		serverListTableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
 

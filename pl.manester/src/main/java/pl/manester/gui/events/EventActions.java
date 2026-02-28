@@ -38,7 +38,6 @@ public class EventActions {
 				sharedObjects.getRegPanel().getTablePersonList().getItems().add(new Person(null, null, null));
 				
 		} catch (SQLException e) {
-
 		}
 	}
 	
@@ -61,16 +60,14 @@ public class EventActions {
 			while (line != null) {
 				String[] serverLine = line.split(";");
 					try {
-						serverListTableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2]));
+						serverListTableView.getItems().add(new ServerMenu(serverLine[0], serverLine[1], serverLine[2], serverLine[3]));
 					}catch(Exception e){
 						e.printStackTrace();
 					}
 					line = reader.readLine();
 			}
-			
 			reader.close();
 		}
-		
 	}catch(Exception e) {
 		
 	}
@@ -110,7 +107,8 @@ public class EventActions {
 						servery.write(
 								tableView.getItems().get(i).getLp() +  ";" + 
 								tableView.getItems().get(i).getAlias() + ";" +
-								tableView.getItems().get(i).getIp()
+								tableView.getItems().get(i).getIp() + ";" +
+								tableView.getItems().get(i).getBase()
 						);
 						servery.newLine();
 					}	

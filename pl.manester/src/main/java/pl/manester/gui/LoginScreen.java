@@ -67,7 +67,7 @@ public class LoginScreen extends Application{
 				// TODO Auto-generated method stub
 				try {
 				String[] newPoz = addServerTextField.getText().split(";");
-				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2]));
+				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
 				addServerTextField.clear();
 				}catch(Exception e) {
 				
