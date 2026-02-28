@@ -1,39 +1,19 @@
 package pl.manester.gui;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.List;
-
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -42,11 +22,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import pl.manester.app.AppConfig;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.events.CMouseEventHandler;
-import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class LoginScreen extends Application{
 	
@@ -55,7 +32,8 @@ public class LoginScreen extends Application{
 	private PasswordField passwordField;
 	private TextField addServerTextField;
 	private Button loginButton;
-	TableView<ServerMenu> serverListTableView;
+	private TableView<ServerMenu> serverListTableView;
+	private Stage primaryStage;
 	
 	public LoginScreen(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -63,6 +41,7 @@ public class LoginScreen extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
 		
 		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
@@ -200,6 +179,10 @@ public class LoginScreen extends Application{
 //				}
 //				}}
 //		});
+		
+		this.primaryStage = primaryStage;
+		this.userTextField = userTextField;
+		this.passwordField = passwordField;
 		primaryStage.show();
 		
 	}
@@ -250,6 +233,14 @@ public class LoginScreen extends Application{
 
 	public void setServerListTableView(TableView<ServerMenu> serverListTableView) {
 		this.serverListTableView = serverListTableView;
+	}
+
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
 	}
 
 }

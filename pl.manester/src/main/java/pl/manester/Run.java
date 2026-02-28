@@ -36,15 +36,18 @@ public class Run {
 		sharedObjects.setMainAppScreen(mainAppScreen);
 		MenuLeafActions menuLeafActions = new MenuLeafActions(sharedObjects);
 		sharedObjects.setMenuLeafActions(menuLeafActions);
+		LoginScreen loginScreen = new LoginScreen(sharedObjects);
+		sharedObjects.setLoginScreen(loginScreen);
 		LoginScreenActionEvents loginScreenActionEvents = new LoginScreenActionEvents(sharedObjects);
 		sharedObjects.setLoginScreenActionEvents(loginScreenActionEvents);
+		
 				
 		sharedObjects.setTestMode(false);
 		
 		REGPanel regPanel = new REGPanel(sharedObjects);
 					sharedObjects.setRegPanel(regPanel);;
 					
-		LoginScreen loginScreen = new LoginScreen(sharedObjects);
+//		LoginScreen loginScreen = new LoginScreen(sharedObjects);
 		MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
 		
 		Platform.startup(new Runnable() {

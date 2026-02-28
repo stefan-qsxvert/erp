@@ -4,6 +4,7 @@ import pl.manester.base.DBCon;
 import pl.manester.gui.AdhocQuery;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.Graph;
+import pl.manester.gui.LoginScreen;
 import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.REGPanel;
@@ -30,6 +31,7 @@ public class SharedObjects {
 	private REGPanel regPanel;
 	private AdhocQuery adhocQuery;
 	private MenuLeafActions menuLeafActions;
+	private LoginScreen loginScreen; 
 	private LoginScreenActionEvents loginScreenActionEvents;
 
 	public SharedObjects() {
@@ -166,6 +168,14 @@ public class SharedObjects {
 
 	public void setLoginScreenActionEvents(LoginScreenActionEvents loginScreenActionEvents) {
 		this.loginScreenActionEvents = loginScreenActionEvents;
+	}
+
+	public LoginScreen getLoginScreen() {
+		return loginScreen;
+	}
+
+	public void setLoginScreen(LoginScreen loginScreen) {
+		this.loginScreen = loginScreen;
 	}
 	
 }
