@@ -23,6 +23,7 @@ public class CMouseEventHandler implements EventHandler<MouseEvent>{
 		Stage stage = sharedObjects.getLoginScreen().getPrimaryStage();
 				
 		sharedObjects.getLoginScreenActionEvents().loginActions(stage, user, passDB);
+		
 		eventActions.writeLastUserAndServerList(
 				sharedObjects.getLoginScreen().getUserTextField(),
 				sharedObjects.getLoginScreen().getServerListTableView()

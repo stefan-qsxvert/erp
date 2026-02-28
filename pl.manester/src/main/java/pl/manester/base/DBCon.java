@@ -16,7 +16,7 @@ public class DBCon {
 	private String userDB;
 	private char[] userPasswordDB;
 	private String ip;
-	String dataBase;
+	private String dataBase;
 	
 	public DBCon(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -123,5 +123,13 @@ public class DBCon {
 
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+
+	public String getDataBase() {
+		return dataBase;
+	}
+
+	public void setDataBase(String dataBase) {
+		this.dataBase = dataBase;
 	}
 }

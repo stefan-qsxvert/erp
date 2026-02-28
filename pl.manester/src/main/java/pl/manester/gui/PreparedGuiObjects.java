@@ -1,6 +1,7 @@
 package pl.manester.gui;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -226,6 +227,10 @@ public class PreparedGuiObjects {
 		
 		serverListTableView.getColumns().addAll(coll_lp, coll_text, coll_ip, coll_base);
 		serverListTableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
+	
+		serverListTableView.getSelectionModel().selectedItemProperty().addListener(ChangeListener<ServerMenu> e);
+		
+		l
 		serverListTableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 			@Override
