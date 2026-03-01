@@ -226,11 +226,16 @@ public class PreparedGuiObjects {
 		coll_base.setText("baza");
 		
 		serverListTableView.getColumns().addAll(coll_lp, coll_text, coll_ip, coll_base);
-		serverListTableView.getSelectionModel().selectedItemProperty().addListener((poz, n, o) -> sharedObjects.getDbconn().setIp(poz.getValue().getIp()));
-	
-		serverListTableView.getSelectionModel().selectedItemProperty().addListener(ChangeListener<ServerMenu> e);
+		serverListTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ServerMenu>() {
+
+			@Override
+			public void changed(ObservableValue<? extends ServerMenu> observable, ServerMenu oldValue, ServerMenu newValue) {
+				sharedObjects.getDbconn().setDataBase(observable.getValue().getBase());
+				sharedObjects.getDbconn().setIp(observable.getValue().getIp());
+			}
+		});;
 		
-		l
+		
 		serverListTableView.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 			@Override
