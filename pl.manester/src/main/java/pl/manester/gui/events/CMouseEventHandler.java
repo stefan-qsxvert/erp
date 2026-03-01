@@ -17,12 +17,10 @@ public class CMouseEventHandler implements EventHandler<MouseEvent>{
 	
 	@Override
 	public void handle(MouseEvent event) {
-		System.out.println(event.getSource().toString().contains("id=11"));
-		String user = sharedObjects.getLoginScreen().getUserTextField().getText();
-		String passDB = sharedObjects.getLoginScreen().getPasswordField().getText();
+
 		Stage stage = sharedObjects.getLoginScreen().getPrimaryStage();
 				
-		sharedObjects.getLoginScreenActionEvents().loginActions(stage, user, passDB);
+		sharedObjects.getLoginScreenActionEvents().loginActions(stage);
 		
 		eventActions.writeLastUserAndServerList(
 				sharedObjects.getLoginScreen().getUserTextField(),

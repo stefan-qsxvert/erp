@@ -13,13 +13,11 @@ public class DBCon {
 	private SharedObjects sharedObjects;
 	private Connection conn;
 	private Boolean connectionState;
-	private String userDB;
 	private String ip;
 	private String dataBase;
 	
 	public DBCon(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
-		userDB = new String();
 		ip = new String();
 		connectionState = false;
 	}
@@ -32,7 +30,10 @@ public class DBCon {
 		
 		try {
 
-			conn = DriverManager.getConnection(url, userDB, sharedObjects.getLoginScreen().getPasswordField().getText());
+			conn = DriverManager.getConnection(
+					url, 
+					sharedObjects.getLoginScreen().getUserTextField().getText(), 
+					sharedObjects.getLoginScreen().getPasswordField().getText());
 			System.out.println("Baza połączona!");
 		} catch (Exception e) {
 			System.out.println("Nie tym razem!");
@@ -96,14 +97,6 @@ public class DBCon {
 
 	public void setConnectionState(Boolean connectionState) {
 		this.connectionState = connectionState;
-	}
-
-	public String getUserDB() {
-		return userDB;
-	}
-
-	public void setUserDB(String userDB) {
-		this.userDB = userDB;
 	}
 
 	public String getIp() {

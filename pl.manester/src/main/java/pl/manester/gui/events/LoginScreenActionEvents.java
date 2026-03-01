@@ -11,10 +11,7 @@ public class LoginScreenActionEvents {
 		this.sharedObjects = sharedObjects;
 	}
 	
-	public void loginActions(Stage stage, String user, String pass){
-		
-				sharedObjects.getDbconn().setUserDB(user);
-				sharedObjects.getDbconn().setUserPasswordDB(pass);
+	public void loginActions(Stage stage){
 				
 				if (sharedObjects.getTestMode()) {
 					try {
@@ -28,15 +25,15 @@ public class LoginScreenActionEvents {
 				
 //				sharedObjects.getDbconn().disconnectDB();
 				
-				if (sharedObjects.getDbconn().getConnectionState()) {
+					if (sharedObjects.getDbconn().getConnectionState()) {
 				
-				stage.hide();
-				try {
-//					sharedObjects.getGui().start(new Stage());
-					sharedObjects.getMainAppScreen().start(new Stage());
-				} catch (Exception e) {
-//					e.printStackTrace();
-				}
+						try {
+//							sharedObjects.getGui().start(new Stage());
+							stage.hide();
+							sharedObjects.getMainAppScreen().start(new Stage());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 				}
 				}
 			}

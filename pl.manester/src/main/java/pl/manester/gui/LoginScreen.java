@@ -38,6 +38,8 @@ public class LoginScreen extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
+		this.primaryStage = primaryStage;
+		
 		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
 		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
