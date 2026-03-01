@@ -62,20 +62,21 @@ public class LoginScreen extends Application{
 		addServerTextField.setPrefSize(360, 24);
 		addServerTextField.setLayoutX(196);
 		addServerTextField.setLayoutY(316);
-		addServerTextField.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				try {
-				String[] newPoz = addServerTextField.getText().split(";");
-				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
-				addServerTextField.clear();
-				sharedObjects.getEventActions().writeLastUserAndServerList(userTextField, serverListTableView);
-				}catch(Exception e) {
-				
-				}}
-		});
+		addServerTextField.setOnAction(sharedObjects.getcActionEvent());
+//		addServerTextField.setOnAction(new EventHandler<ActionEvent>() {
+//			
+//			@Override
+//			public void handle(ActionEvent event) {
+//				// TODO Auto-generated method stub
+//				try {
+//				String[] newPoz = addServerTextField.getText().split(";");
+//				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
+//				addServerTextField.clear();
+//				sharedObjects.getEventActions().writeLastUserAndServerList(userTextField, serverListTableView);
+//				}catch(Exception e) {
+//				
+//				}}
+//		});
 		
 		loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);		
 		loginButton.setOnMouseClicked(sharedObjects.getcMouseEventHandler());
