@@ -71,6 +71,7 @@ public class LoginScreen extends Application{
 				String[] newPoz = addServerTextField.getText().split(";");
 				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
 				addServerTextField.clear();
+				sharedObjects.getEventActions().writeLastUserAndServerList(userTextField, serverListTableView);
 				}catch(Exception e) {
 				
 				}}
