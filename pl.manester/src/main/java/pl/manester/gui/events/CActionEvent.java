@@ -18,27 +18,31 @@ public class CActionEvent implements EventHandler<ActionEvent>{
 
 	@Override
 	public void handle(ActionEvent event) {
+
+		Integer id_index = event.getSource().toString().indexOf("id=");
+		String id = event.getSource().toString().substring(id_index);
+		Integer id_size = id.indexOf(", ");
+		id = id.substring(3,id_size);
 		
-		TextField addServerTextField = sharedObjects.getLoginScreen().getAddServerTextField();
-		TableView<ServerMenu> serverListTableView = sharedObjects.getLoginScreen().getServerListTableView();
-		try {
-			String[] newPoz = addServerTextField.getText().split(";");
-			serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
-			addServerTextField.clear();
-			sharedObjects.getEventActions().writeLastUserAndServerList(addServerTextField, serverListTableView);
-			}catch(Exception e) {
+		
 			
-			}
-		
-//		switch () {
-//		case value:
-//			
-//			break;
-//
-//		default:
-//			break;
-//		}
+		switch (id) {
+		case "3":
+			
+			TextField addServerTextField = sharedObjects.getLoginScreen().getAddServerTextField();
+			TableView<ServerMenu> serverListTableView = sharedObjects.getLoginScreen().getServerListTableView();
+			try {
+				String[] newPoz = addServerTextField.getText().split(";");
+				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
+				addServerTextField.clear();
+				sharedObjects.getEventActions().writeLastUserAndServerList(addServerTextField, serverListTableView);
+				}catch(Exception e) {
+				
+				}
+			System.out.println(id);
+			break;
+		default:
+			break;
+		}
 	}
-	
-	
 }

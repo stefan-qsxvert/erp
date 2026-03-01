@@ -62,6 +62,7 @@ public class LoginScreen extends Application{
 		addServerTextField.setPrefSize(360, 24);
 		addServerTextField.setLayoutX(196);
 		addServerTextField.setLayoutY(316);
+		addServerTextField.setId("3");
 		addServerTextField.setOnAction(sharedObjects.getcActionEvent());
 //		addServerTextField.setOnAction(new EventHandler<ActionEvent>() {
 //			
