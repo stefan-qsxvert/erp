@@ -142,7 +142,7 @@ public class PreparedGuiObjects {
 		return pane;
 	}
 	
-	public Pane createLeaf(String item) {
+	public Pane createLeaf(String item, String itNum) {
 		
 		Image backImage = new Image(sharedObjects.getGraph().getLeaf_bcg().toString());
 		BackgroundImage backgroundImage = new BackgroundImage(backImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
@@ -155,6 +155,8 @@ public class PreparedGuiObjects {
 		
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
+		
+		System.out.println(itNum);
 		
 		filterCheckbox.setLayoutX(206);
 		raportCheckbox.setLayoutX(246);

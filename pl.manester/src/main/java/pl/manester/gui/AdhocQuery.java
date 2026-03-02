@@ -18,6 +18,7 @@ import pl.manester.app.SharedObjects;
 public class AdhocQuery extends Application{
 	
 	private SharedObjects sharedObjects;
+	private String itNum;
 	
 	public AdhocQuery(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
@@ -26,10 +27,7 @@ public class AdhocQuery extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-//		Leaf leaf = new Leaf();
-		
 		Pane menuPane = new Pane();
-//		menuPane.setPrefSize(380, 460);
 		Label menuLabel = new Label("Menu");
 		menuPane.getChildren().addAll(menuLabel);
 		
@@ -39,11 +37,13 @@ public class AdhocQuery extends Application{
 		TreeItem<String>treeItem = new TreeItem<>("MENU");
 		
 		String rowType = new String();
+
 		while(resultSet.next()) {
-			rowType=resultSet.getString(6);
+			rowType = resultSet.getString(6);
+			itNum = resultSet.getString(2);
 			
 			if (rowType.equals("i") ) {
-				treeItem.getChildren().add(new TreeItem<>(resultSet.getString(2) + " " + resultSet.getString(3)));
+				treeItem.getChildren().add(new TreeItem<>(itNum + " " + resultSet.getString(3)));
 			}else if (rowType.equals("p")){
 				for(TreeItem<String> tr : treeItem.getChildren()) {
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
@@ -57,7 +57,6 @@ public class AdhocQuery extends Application{
 		treeItem.setExpanded(true);
 		
 		TreeView<String> tree = new TreeView<>(treeItem);
-		
 		tree.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
 
 		    @Override
@@ -76,7 +75,8 @@ public class AdhocQuery extends Application{
 							setGraphic(null);
 						}else if (getGraphic()==null){
 		                    setText(null);
-		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));		                
+		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item, itNum));
+		                    
 		                }
 		            }
 		        };
