@@ -15,6 +15,8 @@ public class Events implements EventHandler<ActionEvent>{
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
+		
+		/*
 		String c = actionEvent.getSource().toString();
 		
 		if (c.contains("connectDB")) {
@@ -30,7 +32,7 @@ public class Events implements EventHandler<ActionEvent>{
 		switch (sharedObjects.getEventCase()) {
 		
 		case "connectDB":
-			sharedObjects.getEventActions().connectDB();
+			sharedObjects.getDbconn().connectDB();
 //			System.out.println(sharedObjects.getDbconn().getConnectionState());
 			if (sharedObjects.getDbconn().getConnectionState()) {
 //			sharedObjects.getGui().getButton().setId("fillTab");
@@ -55,6 +57,7 @@ public class Events implements EventHandler<ActionEvent>{
 		default:
 			break;
 		}
-
+*/
 	}
+	
 }

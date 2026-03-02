@@ -20,16 +20,38 @@ public class EventActions {
 	public EventActions(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
 	}
+	
+	public void addServerToTableView() {
+		
+		TextField addServerTextField = sharedObjects.getLoginScreen().getAddServerTextField();
+		TableView<ServerMenu> serverListTableView = sharedObjects.getLoginScreen().getServerListTableView();
+		if (addServerTextField!=null) {
+			try {
+				String[] newPoz = addServerTextField.getText().split(";");
+				serverListTableView.getItems().add(new ServerMenu(newPoz[0], newPoz[1], newPoz[2], newPoz[3]));
+				addServerTextField.clear();
+				sharedObjects.getEventActions().writeLastUserAndServerList(addServerTextField, serverListTableView);
+			}catch(Exception e) {
+			
+			}
+		}
+		
+	}
 
-	public void connectDB() {
+	public void loginToApp() {
 		sharedObjects.getDbconn().connectDB();
+		if (sharedObjects.getDbconn().getConnectionState()) {
+			sharedObjects.getLoginScreen().getPrimaryStage().hide();
+			sharedObjects.getGui().mainAppScreenStart();
+		}else {
+		
+		}
 	}
 	
 	public void fillTable() {
 	
 		try {
-//			sharedObjects.getDbconn().connectDB();
-			
+		
 			ResultSet rs = sharedObjects.getDbconn().getResult("select * from danepodstawowe;" );
 			sharedObjects.getRegPanel().getTablePersonList().getItems().clear();
 			while (rs.next()) {

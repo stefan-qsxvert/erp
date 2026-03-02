@@ -12,7 +12,7 @@ import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.Graph;
 import pl.manester.gui.Gui;
-import pl.manester.gui.events.CActionEvent;
+import pl.manester.gui.events.CEventHandler;
 import pl.manester.gui.events.CKeyPressedEventHandler;
 import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.EventActions;
@@ -48,8 +48,8 @@ public class Run {
 		sharedObjects.setcMouseEventHandler(cMouseEventHandler);
 		CKeyPressedEventHandler cKeyPressedEventHandler = new CKeyPressedEventHandler(sharedObjects);
 		sharedObjects.setcKeyPressedEventHandler(cKeyPressedEventHandler);
-		CActionEvent cActionEvent = new CActionEvent(sharedObjects);
-		sharedObjects.setcActionEvent(cActionEvent);
+		CEventHandler cEventHandler = new CEventHandler(sharedObjects);
+		sharedObjects.setcEventHandler(cEventHandler);
 		Gui gui = new Gui(sharedObjects);
 		sharedObjects.setGui(gui);
 		

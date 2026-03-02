@@ -44,11 +44,9 @@ public class PreparedGuiObjects {
 	public Button createButton(String text, String id, Integer width, Integer height, Integer layoutX, Integer layoutY) {
 		Button przycisk =new Button();
 		przycisk.setText(text);
-		przycisk.setOnAction(sharedObjects.getEvents());
 		przycisk.setId(id);
+		przycisk.setOnMouseClicked(sharedObjects.getcMouseEventHandler());
 		przycisk.setPrefSize(width, height);
-//		przycisk.setMaxSize(88,24);
-//		przycisk.setMinSize(88, 24);
 		przycisk.setLayoutX(layoutX);
 		przycisk.setLayoutY(layoutY);
 		return przycisk;

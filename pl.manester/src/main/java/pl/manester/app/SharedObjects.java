@@ -10,8 +10,8 @@ import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.REGPanel;
-import pl.manester.gui.events.CActionEvent;
 import pl.manester.gui.events.CCellEventHandler;
+import pl.manester.gui.events.CEventHandler;
 import pl.manester.gui.events.CKeyPressedEventHandler;
 import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.EventActions;
@@ -28,7 +28,7 @@ public class SharedObjects {
 	private CCellEventHandler cellEventHandler;
 	private CMouseEventHandler cMouseEventHandler;
 	private CKeyPressedEventHandler cKeyPressedEventHandler;
-	private CActionEvent cActionEvent;
+	private CEventHandler cEventHandler;
 	private String rootDir;
 	private PreparedGuiObjects preparedObjects;
 	private AuxPreperdObjects auxPreperdObjects;
@@ -201,13 +201,13 @@ public class SharedObjects {
 	public void setcKeyPressedEventHandler(CKeyPressedEventHandler cKeyPressedEventHandler) {
 		this.cKeyPressedEventHandler = cKeyPressedEventHandler;
 	}
-
-	public CActionEvent getcActionEvent() {
-		return cActionEvent;
+	
+	public CEventHandler getcEventHandler() {
+		return cEventHandler;
 	}
 
-	public void setcActionEvent(CActionEvent cActionEvent) {
-		this.cActionEvent = cActionEvent;
+	public void setcEventHandler(CEventHandler cEventHandler) {
+		this.cEventHandler = cEventHandler;
 	}
 
 	public Gui getGui() {

@@ -1,8 +1,6 @@
 package pl.manester.gui;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,7 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.events.CMouseEventHandler;
 
 public class LoginScreen extends Application{
 	
@@ -46,7 +43,7 @@ public class LoginScreen extends Application{
 		userTextField = preparedObjects.createTextField("login", 34, 34);
 		passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
 		passwordField.setId("2");
-		passwordField.setOnAction(sharedObjects.getcActionEvent());
+		passwordField.setOnAction(sharedObjects.getcEventHandler());
 		
 		addServerTextField = new TextField();
 		
@@ -64,10 +61,10 @@ public class LoginScreen extends Application{
 		addServerTextField.setLayoutX(196);
 		addServerTextField.setLayoutY(316);
 		addServerTextField.setId("3");
-		addServerTextField.setOnAction(sharedObjects.getcActionEvent());
+		addServerTextField.setOnAction(sharedObjects.getcEventHandler());
 		
-		loginButton = preparedObjects.createButton("zaloguj", "11",  144, 24, 34, 98);		
-		loginButton.setOnMouseClicked(sharedObjects.getcMouseEventHandler());
+		loginButton = preparedObjects.createButton("zaloguj", "4",  144, 24, 34, 98);		
+		
 			
 		pn0.getChildren().addAll(serverListTableView);
 		
