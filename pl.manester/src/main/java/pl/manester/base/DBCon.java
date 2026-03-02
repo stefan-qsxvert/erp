@@ -41,7 +41,7 @@ public class DBCon {
 		}
 	}
 	
-	public ResultSet getResult(String query) throws SQLException {
+	public ResultSet getResult(String query){
 		
 		ResultSet rs = null;
 		
@@ -51,7 +51,6 @@ public class DBCon {
 		} catch (Exception e) {
 			System.out.println();
 		}
-		
 		return rs;
 	}
 	
@@ -65,9 +64,6 @@ public class DBCon {
 		}
 	}
 	
-	public boolean getConnState() throws SQLException {
-		return !conn.isClosed();
-	}
 
 	public Connection getConn() {
 		return conn;

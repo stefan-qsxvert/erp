@@ -26,13 +26,15 @@ public class CActionEvent implements EventHandler<ActionEvent>{
 		Integer id_size = id.indexOf(", ");
 		id = id.substring(3,id_size);
 		
-		System.out.println(id);
-			
 		switch (id) {
 		case "2":
-			sharedObjects.getDbconn().connectDB();
-			sharedObjects.getLoginScreen().getPrimaryStage().hide();
-			sharedObjects.getGui().mainAppScreenStart();
+				sharedObjects.getDbconn().connectDB();
+			if (sharedObjects.getDbconn().getConnectionState()) {
+				sharedObjects.getLoginScreen().getPrimaryStage().hide();
+				sharedObjects.getGui().mainAppScreenStart();
+			}else {
+			
+			}
 			break;
 		case "3":
 			

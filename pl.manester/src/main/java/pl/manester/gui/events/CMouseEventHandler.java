@@ -21,9 +21,12 @@ public class CMouseEventHandler implements EventHandler<MouseEvent>{
 //		Stage stage = sharedObjects.getLoginScreen().getPrimaryStage();
 				
 //		sharedObjects.getLoginScreenActionEvents().loginActions(stage);
-		
+		if (sharedObjects.getDbconn().getConnectionState()) {
 		sharedObjects.getLoginScreen().getPrimaryStage().hide();
 		sharedObjects.getGui().mainAppScreenStart();
+		}else {
+			
+		}
 		
 		eventActions.writeLastUserAndServerList(
 				sharedObjects.getLoginScreen().getUserTextField(),

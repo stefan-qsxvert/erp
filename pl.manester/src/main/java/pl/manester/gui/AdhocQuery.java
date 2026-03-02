@@ -46,7 +46,6 @@ public class AdhocQuery extends Application{
 				treeItem.getChildren().add(new TreeItem<>(resultSet.getString(2) + " " + resultSet.getString(3)));
 			}else if (rowType.equals("p")){
 				for(TreeItem<String> tr : treeItem.getChildren()) {
-//					System.out.println(tr.getValue().toString().substring(0, 4));
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
 						tr.getChildren().add(new TreeItem<String>(resultSet.getString(4) ));
 						tr.setGraphic(null);
@@ -77,8 +76,7 @@ public class AdhocQuery extends Application{
 							setGraphic(null);
 						}else if (getGraphic()==null){
 		                    setText(null);
-		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));
-		                
+		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item));		                
 		                }
 		            }
 		        };
@@ -86,6 +84,8 @@ public class AdhocQuery extends Application{
 		        return treeCell;
 		    }
 		});
+		
+		resultSet.close();
 		
 		tree.setPrefSize(380, 512);
 		Pane pane = new Pane();
