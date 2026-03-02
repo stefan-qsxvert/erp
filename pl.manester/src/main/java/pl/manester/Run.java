@@ -16,7 +16,6 @@ import pl.manester.gui.events.CEventHandler;
 import pl.manester.gui.events.CKeyPressedEventHandler;
 import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.EventActions;
-import pl.manester.gui.events.Events;
 import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class Run {
@@ -26,8 +25,6 @@ public class Run {
 		SharedObjects sharedObjects = new SharedObjects();
 		DBCon dbcon = new DBCon(sharedObjects);
 		sharedObjects.setDbconn(dbcon);
-		Events events = new Events(sharedObjects);
-		sharedObjects.setEvents(events);
 		EventActions eventActions = new EventActions(sharedObjects);
 		sharedObjects.setEventActions(eventActions);
 		PreparedGuiObjects preparedObjects = new PreparedGuiObjects(sharedObjects);
@@ -59,7 +56,6 @@ public class Run {
 		REGPanel regPanel = new REGPanel(sharedObjects);
 					sharedObjects.setRegPanel(regPanel);;
 					
-//		LoginScreen loginScreen = new LoginScreen(sharedObjects);
 		MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
 		
 		Platform.startup(new Runnable() {

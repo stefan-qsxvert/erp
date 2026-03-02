@@ -17,13 +17,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pl.manester.app.Person;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.events.Events;
 
 public class REGPanel extends Application {
 	
 	private PreparedGuiObjects preparedObjects;
 	private SharedObjects sharedObjects;
-	private Events ev;
+
 	private TextField itTextField;
 	private TextField swTextField;
 	private TextField ewidNr;
@@ -36,7 +35,6 @@ public class REGPanel extends Application {
 	public REGPanel(SharedObjects sharedObjects) {
 		preparedObjects = new PreparedGuiObjects(sharedObjects);
 		this.sharedObjects = sharedObjects;
-		ev = new Events(sharedObjects);
 	}
 	
 	
@@ -138,15 +136,6 @@ public class REGPanel extends Application {
 	public void setSharedObjects(SharedObjects sharedObjects) {
 		this.sharedObjects = sharedObjects;
 	}
-
-	public Events getEv() {
-		return ev;
-	}
-
-	public void setEv(Events ev) {
-		this.ev = ev;
-	}
-
 
 	public TableView<Person> getTablePersonList() {
 		return tablePersonList;

@@ -15,13 +15,11 @@ import pl.manester.gui.events.CEventHandler;
 import pl.manester.gui.events.CKeyPressedEventHandler;
 import pl.manester.gui.events.CMouseEventHandler;
 import pl.manester.gui.events.EventActions;
-import pl.manester.gui.events.Events;
 import pl.manester.gui.events.LoginScreenActionEvents;
 
 public class SharedObjects {
 		
 	private EventActions eventActions;
-	private Events events;
 	private DBCon dbconn;
 	private String eventCase;
 	private Person person;
@@ -53,14 +51,6 @@ public class SharedObjects {
 
 	public void setDbconn(DBCon dbconn) {
 		this.dbconn = dbconn;
-	}
-
-	public Events getEvents() {
-		return events;
-	}
-
-	public void setEvents(Events events) {
-		this.events = events;
 	}
 
 	public String getEventCase() {

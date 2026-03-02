@@ -1,7 +1,7 @@
 package pl.manester.gui;
 
 public class LeafBools {
-	
+	/*
 	private Boolean filterCheckbox, raportCheckbox;
 	
 	
@@ -26,4 +26,5 @@ public class LeafBools {
 	public void setRaportCheckbox(Boolean raportCheckbox) {
 		this.raportCheckbox = raportCheckbox;
 	}
+	*/
 }
