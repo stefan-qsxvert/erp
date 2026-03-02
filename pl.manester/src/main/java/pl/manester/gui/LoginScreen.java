@@ -45,6 +45,7 @@ public class LoginScreen extends Application{
 		
 		userTextField = preparedObjects.createTextField("login", 34, 34);
 		passwordField = preparedObjects.createPasswordField("hasło", 34, 68);
+		passwordField.setId("2");
 		passwordField.setOnAction(sharedObjects.getcActionEvent());
 		
 		addServerTextField = new TextField();

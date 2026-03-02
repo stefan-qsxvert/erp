@@ -11,6 +11,7 @@ import pl.manester.gui.MainAppScreen;
 import pl.manester.gui.MenuLeafActions;
 import pl.manester.gui.PreparedGuiObjects;
 import pl.manester.gui.Graph;
+import pl.manester.gui.Gui;
 import pl.manester.gui.events.CActionEvent;
 import pl.manester.gui.events.CKeyPressedEventHandler;
 import pl.manester.gui.events.CMouseEventHandler;
@@ -49,6 +50,8 @@ public class Run {
 		sharedObjects.setcKeyPressedEventHandler(cKeyPressedEventHandler);
 		CActionEvent cActionEvent = new CActionEvent(sharedObjects);
 		sharedObjects.setcActionEvent(cActionEvent);
+		Gui gui = new Gui(sharedObjects);
+		sharedObjects.setGui(gui);
 		
 				
 		sharedObjects.setTestMode(false);

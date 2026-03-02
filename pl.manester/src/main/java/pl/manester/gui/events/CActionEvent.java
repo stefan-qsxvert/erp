@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import jdk.internal.org.jline.terminal.TerminalBuilder.SystemOutput;
 import pl.manester.app.SharedObjects;
 import pl.manester.gui.ServerMenu;
 
@@ -24,9 +26,14 @@ public class CActionEvent implements EventHandler<ActionEvent>{
 		Integer id_size = id.indexOf(", ");
 		id = id.substring(3,id_size);
 		
-		
+		System.out.println(id);
 			
 		switch (id) {
+		case "2":
+			sharedObjects.getDbconn().connectDB();
+			sharedObjects.getLoginScreen().getPrimaryStage().hide();
+			sharedObjects.getGui().mainAppScreenStart();
+			break;
 		case "3":
 			
 			TextField addServerTextField = sharedObjects.getLoginScreen().getAddServerTextField();

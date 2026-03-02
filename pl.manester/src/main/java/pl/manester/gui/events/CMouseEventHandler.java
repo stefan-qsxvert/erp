@@ -18,9 +18,12 @@ public class CMouseEventHandler implements EventHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent event) {
 
-		Stage stage = sharedObjects.getLoginScreen().getPrimaryStage();
+//		Stage stage = sharedObjects.getLoginScreen().getPrimaryStage();
 				
-		sharedObjects.getLoginScreenActionEvents().loginActions(stage);
+//		sharedObjects.getLoginScreenActionEvents().loginActions(stage);
+		
+		sharedObjects.getLoginScreen().getPrimaryStage().hide();
+		sharedObjects.getGui().mainAppScreenStart();
 		
 		eventActions.writeLastUserAndServerList(
 				sharedObjects.getLoginScreen().getUserTextField(),
