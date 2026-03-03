@@ -3,6 +3,7 @@ package pl.manester;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
+import pl.manester.app.TestScreen;
 import pl.manester.base.DBCon;
 import pl.manester.gui.AuxPreperdObjects;
 import pl.manester.gui.REGPanel;
@@ -57,13 +58,15 @@ public class Run {
 					sharedObjects.setRegPanel(regPanel);;
 					
 		MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
+		TestScreen ts = new TestScreen();
 		
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
 					
 					try {
-						loginScreen.start(new Stage());
+						ts.start(new Stage());
+//						loginScreen.start(new Stage());
 //						regPanel.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
