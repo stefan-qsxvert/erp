@@ -22,6 +22,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import pl.manester.app.SharedObjects;
 
 public class MainAppScreen extends Application{
@@ -135,6 +136,13 @@ public class MainAppScreen extends Application{
 		
 		
 		Scene scene = new Scene(pane);
+		
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			
+			@Override
+			public void handle(WindowEvent event) {
+				sharedObjects.getDbconn().disconnectDB();	}
+		});
 		
 		primaryStage.getIcons().add(new Image(sharedObjects.getGraph().getLogoFile().toString(), false));
 		

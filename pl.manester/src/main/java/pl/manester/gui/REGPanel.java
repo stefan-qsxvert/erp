@@ -54,9 +54,8 @@ public class REGPanel extends Application {
 		
 		ewidNr = preparedObjects.createTextField("Numer ewidencyjny lub PESEL", 224, 4);
 		ewidNr.setOnAction(ev -> {
-//			sharedObjects.getDbconn().connectDB();
 			sharedObjects.getEventActions().fillTable();
-//			sharedObjects.getDbconn().disconnectDB();
+
 		});
 			
 //		logo = preparedObjects.createLogo();
@@ -91,22 +90,22 @@ public class REGPanel extends Application {
 		listPane.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		Label l01 = preparedObjects.createLabel(" ", 248, 24, 328, 660);
-		l01.setBorder(auxPreperdObjects.createSolidBorder());
+//		l01.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		Label l02 = preparedObjects.createLabel(" ", 348, 24, 376, 4);
-		l02.setBorder(auxPreperdObjects.createSolidBorder());
+//		l02.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		Label l03 = preparedObjects.createLabel(" ", 142, 24, 224, 36);
-		l03.setBorder(auxPreperdObjects.createSolidBorder());
+//		l03.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		Label l04 = preparedObjects.createLabel(" ", 348, 24, 376, 36);
-		l04.setBorder(auxPreperdObjects.createSolidBorder());
+//		l04.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		Label l05 = preparedObjects.createLabel(" ", 142, 24, 224, 72);
-		l05.setBorder(auxPreperdObjects.createSolidBorder());
+//		l05.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		Label l06 = preparedObjects.createLabel(" ", 348, 24, 376, 72);
-		l06.setBorder(auxPreperdObjects.createSolidBorder());
+//		l06.setBorder(auxPreperdObjects.createSolidBorder());
 		
 		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
 		
