@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -89,6 +90,12 @@ public class REGPanel extends Application {
 		Pane listPane = preparedObjects.createPane(212, 680, 4, 4);
 		listPane.setBorder(auxPreperdObjects.createSolidBorder());
 		
+		Label l01 = preparedObjects.createLabel(" ", 248, 24, 328, 660);
+		l01.setBorder(auxPreperdObjects.createSolidBorder());
+		
+		Label l02 = preparedObjects.createLabel(" ", 348, 24, 376, 4);
+		l02.setBorder(auxPreperdObjects.createSolidBorder());
+		
 		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
 		
 		root.getChildren().addAll(
@@ -96,7 +103,9 @@ public class REGPanel extends Application {
 									itTextField, 
 									swTextField, 
 									tablePersonList,
-									listPane
+									listPane,
+									l01,
+									l02
 									);
 
 		

@@ -63,8 +63,8 @@ public class Run {
 				public void run() {
 					
 					try {
-						loginScreen.start(new Stage());
-//						regPanel.start(new Stage());
+//						loginScreen.start(new Stage());
+						regPanel.start(new Stage());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
