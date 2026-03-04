@@ -96,6 +96,18 @@ public class REGPanel extends Application {
 		Label l02 = preparedObjects.createLabel(" ", 348, 24, 376, 4);
 		l02.setBorder(auxPreperdObjects.createSolidBorder());
 		
+		Label l03 = preparedObjects.createLabel(" ", 142, 24, 224, 36);
+		l03.setBorder(auxPreperdObjects.createSolidBorder());
+		
+		Label l04 = preparedObjects.createLabel(" ", 348, 24, 376, 36);
+		l04.setBorder(auxPreperdObjects.createSolidBorder());
+		
+		Label l05 = preparedObjects.createLabel(" ", 142, 24, 224, 72);
+		l05.setBorder(auxPreperdObjects.createSolidBorder());
+		
+		Label l06 = preparedObjects.createLabel(" ", 348, 24, 376, 72);
+		l06.setBorder(auxPreperdObjects.createSolidBorder());
+		
 		tablePersonList.getItems().add(new Person("1", "Nowak", "Krystna"));
 		
 		root.getChildren().addAll(
@@ -105,7 +117,11 @@ public class REGPanel extends Application {
 									tablePersonList,
 									listPane,
 									l01,
-									l02
+									l02,
+									l03,
+									l04,
+									l05,
+									l06
 									);
 
 		
