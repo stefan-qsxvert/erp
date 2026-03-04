@@ -49,6 +49,7 @@ public class AdhocQuery extends Application{
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
 						tr.getChildren().add(new TreeItem<String>(resultSet.getString(4) ));
 						tr.setGraphic(null);
+						itNum = resultSet.getString(2);
 					}
 				}
 			}
@@ -76,8 +77,8 @@ public class AdhocQuery extends Application{
 						}else if (getGraphic()==null){
 		                    setText(null);
 		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item, itNum));
-		                    
-		                }
+		                
+						}
 		            }
 		        };
 		        

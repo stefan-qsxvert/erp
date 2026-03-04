@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -144,6 +145,14 @@ public class PreparedGuiObjects {
 	
 	public Pane createLeaf(String item, String itNum) {
 		
+		EventHandler<MouseEvent> ev = new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent event) {
+				System.out.println(item);
+			}
+		};
+		
 		Image backImage = new Image(sharedObjects.getGraph().getLeaf_bcg().toString());
 		BackgroundImage backgroundImage = new BackgroundImage(backImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
@@ -156,7 +165,8 @@ public class PreparedGuiObjects {
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
 		
-		System.out.println(itNum);
+		filterCheckbox.setOnMouseClicked(ev);
+		raportCheckbox.setOnMouseClicked(ev);
 		
 		filterCheckbox.setLayoutX(206);
 		raportCheckbox.setLayoutX(246);
