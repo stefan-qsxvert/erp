@@ -2,12 +2,7 @@ package pl.manester.gui.events;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import jdk.internal.org.jline.terminal.TerminalBuilder.SystemOutput;
 import pl.manester.app.SharedObjects;
-import pl.manester.gui.ServerMenu;
 
 public class CEventHandler implements EventHandler<ActionEvent>{
 

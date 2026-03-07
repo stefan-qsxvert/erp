@@ -56,8 +56,6 @@ public class Run {
 		REGPanel regPanel = new REGPanel(sharedObjects);
 					sharedObjects.setRegPanel(regPanel);;
 					
-		MainAppScreen mainMenu = new MainAppScreen(sharedObjects);
-		
 		Platform.startup(new Runnable() {
 				@Override
 				public void run() {
