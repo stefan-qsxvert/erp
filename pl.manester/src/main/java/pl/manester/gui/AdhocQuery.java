@@ -34,7 +34,7 @@ public class AdhocQuery extends Application{
 		Statement statement = sharedObjects.getDbconn().getConn().createStatement();
 		ResultSet resultSet = statement.executeQuery("select * from its order by lp asc;");
 		
-		TreeItem<String>treeItem = new TreeItem<>("MENU");
+		TreeItem<LeafData> treeItem = new TreeItem<>(new LeafData("MENU", "00"));
 		
 		String rowType = new String();
 
@@ -43,13 +43,12 @@ public class AdhocQuery extends Application{
 			itNum = resultSet.getString(2);
 			
 			if (rowType.equals("i") ) {
-				treeItem.getChildren().add(new TreeItem<>(itNum + " " + resultSet.getString(3)));
+				treeItem.getChildren().add(new TreeItem<LeafData>( new LeafData(itNum + " " + resultSet.getString(3), itNum) ));
 			}else if (rowType.equals("p")){
-				for(TreeItem<String> tr : treeItem.getChildren()) {
+				for(TreeItem<LeafData> tr : treeItem.getChildren()) {
 					if (tr.getValue().toString().substring(0, 4).equals(resultSet.getString(2))) {
-						tr.getChildren().add(new TreeItem<String>(resultSet.getString(4) ));
+						tr.getChildren().add(new TreeItem<LeafData>(new LeafData(resultSet.getString(4), resultSet.getString(2))));
 						tr.setGraphic(null);
-						itNum = resultSet.getString(2);
 					}
 				}
 			}
@@ -57,27 +56,27 @@ public class AdhocQuery extends Application{
 		
 		treeItem.setExpanded(true);
 		
-		TreeView<String> tree = new TreeView<>(treeItem);
-		tree.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
+		TreeView<LeafData> tree = new TreeView<>(treeItem);
+		tree.setCellFactory(new Callback<TreeView<LeafData>, TreeCell<LeafData>>() {
 
 		    @Override
-		    public TreeCell<String> call(TreeView<String> param) {
+		    public TreeCell<LeafData> call(TreeView<LeafData> param) {
 
-		         TreeCell<String> treeCell = new TreeCell<String>() {
+		         TreeCell<LeafData> treeCell = new TreeCell<LeafData>() {
 
 		            @Override
-		            protected void updateItem(String item, boolean empty) {
+		            protected void updateItem(LeafData item, boolean empty) {
+		            	
 		                super.updateItem(item, empty);
 		                if (empty || item == null) {
 		                    setText(null);
 		                    setGraphic(null);
-		                } else if (item == "MENU") {
-							setText(item);
+		                } else if (item.getName() == "MENU") {
+							setText(item.getName());
 							setGraphic(null);
 						}else if (getGraphic()==null){
 		                    setText(null);
-		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item, itNum));
-		                
+		                    setGraphic(sharedObjects.getPreparedObjects().createLeaf(item.getId()));
 						}
 		            }
 		        };

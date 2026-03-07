@@ -2,7 +2,6 @@ package pl.manester.gui.events;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
 
 public class CMouseEventHandler implements EventHandler<MouseEvent>{

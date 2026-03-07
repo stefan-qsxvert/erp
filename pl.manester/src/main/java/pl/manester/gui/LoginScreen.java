@@ -8,13 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import pl.manester.app.SharedObjects;
 
@@ -38,7 +32,6 @@ public class LoginScreen extends Application{
 		this.primaryStage = primaryStage;
 		
 		PreparedGuiObjects preparedObjects = sharedObjects.getPreparedObjects();
-		Border border = new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 		
 		userTextField = preparedObjects.createTextField("login", 34, 34);
 		passwordField = preparedObjects.createPasswordField("hasło", 34, 68);

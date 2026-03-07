@@ -1,11 +1,11 @@
 package pl.manester.gui;
 
-public class LeafMain {
+public class LeafData{
 
 	private String name;
 	private String id;
 	
-	public LeafMain(String name, String id) {
+	public LeafData(String name, String id) {
 		this.name = name;
 		this.id = id;
 	}

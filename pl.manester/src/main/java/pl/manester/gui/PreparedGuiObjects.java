@@ -143,15 +143,9 @@ public class PreparedGuiObjects {
 		return pane;
 	}
 	
-	public Pane createLeaf(String item, String itNum) {
+	public Pane createLeaf(String item) {
 		
-		EventHandler<MouseEvent> ev = new EventHandler<MouseEvent>() {
-			
-			@Override
-			public void handle(MouseEvent event) {
-				System.out.println(item);
-			}
-		};
+		EventHandler<MouseEvent> ev = sharedObjects.getcMouseEventHandler();
 		
 		Image backImage = new Image(sharedObjects.getGraph().getLeaf_bcg().toString());
 		BackgroundImage backgroundImage = new BackgroundImage(backImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
@@ -164,6 +158,9 @@ public class PreparedGuiObjects {
 		
 		CheckBox filterCheckbox = new CheckBox();
 		CheckBox raportCheckbox = new CheckBox();
+		
+		filterCheckbox.setId(item);
+		raportCheckbox.setId(item);
 		
 		filterCheckbox.setOnMouseClicked(ev);
 		raportCheckbox.setOnMouseClicked(ev);

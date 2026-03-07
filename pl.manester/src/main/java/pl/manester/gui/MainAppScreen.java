@@ -48,12 +48,7 @@ public class MainAppScreen extends Application{
 		Label licence = new Label("Wszystkie prawa zastrzeżone");
 		licence.setLayoutX((primaryStage.getWidth()/2-36));
 		licence.setLayoutY(primaryStage.getHeight() - 64);
-		
-				
-		BorderStroke borderStroke = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
-		Border border = new Border(borderStroke);
-		Menu menu = new Menu();
-		
+			
 		Pane graph = new Pane();
 		graph.setBackground(slavBackground);
 		
@@ -62,11 +57,11 @@ public class MainAppScreen extends Application{
 //		graph.setBorder(border);
 		graph.setLayoutX(420);
 		
-		TreeItem<LeafMain> br0 = new TreeItem<>(new LeafMain("Menu","60"));
+		TreeItem<LeafData> br0 = new TreeItem<>(new LeafData("Menu","60"));
 		br0.setExpanded(true);
-		TreeItem<LeafMain> treeItem0 = new TreeItem<>(new LeafMain("Reg panel", "10"));
-		TreeItem<LeafMain> treeItem1 = new TreeItem<>(new LeafMain("Adhoc query","20"));
-		TreeItem<LeafMain> treeItem2 = new TreeItem<>(new LeafMain("345", "63"));
+		TreeItem<LeafData> treeItem0 = new TreeItem<>(new LeafData("Reg panel", "10"));
+		TreeItem<LeafData> treeItem1 = new TreeItem<>(new LeafData("Adhoc query","20"));
+		TreeItem<LeafData> treeItem2 = new TreeItem<>(new LeafData("345", "63"));
 		
 		br0.getChildren().addAll(
 						treeItem0,
@@ -74,25 +69,13 @@ public class MainAppScreen extends Application{
 						treeItem2
 				);
 		
-		TreeView<LeafMain> tree = new TreeView<>(br0);
+		TreeView<LeafData> tree = new TreeView<>(br0);
 		tree.setPrefWidth(408);
 		tree.setPrefHeight(820);
 		tree.setLayoutX(4);
 		tree.setLayoutY(36);
 		
-//		tree.setOnMouseClicked(ev -> {if (ev.getClickCount()==2) {
-//			try {
-//			System.out.println(tree.getSelectionModel().getSelectedItem().getValue().getId());
-////			System.out.println(ev.getSource());
-//			
-//			
-//			}catch(Exception e) {
-//				
-//			}
-//			}
-//		});
-		
-		// test click count
+
 		tree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 		    private int counter = 0;
 
