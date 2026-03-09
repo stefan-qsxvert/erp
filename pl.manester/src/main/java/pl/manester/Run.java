@@ -50,7 +50,6 @@ public class Run {
 		Gui gui = new Gui(sharedObjects);
 		sharedObjects.setGui(gui);
 		
-				
 		sharedObjects.setTestMode(false);
 		
 		REGPanel regPanel = new REGPanel(sharedObjects);
