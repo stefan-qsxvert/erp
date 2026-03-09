@@ -71,7 +71,6 @@ public class MainAppScreen extends Application{
 
 		tree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-
 		    @Override
 		    public void handle(MouseEvent event) {
 
