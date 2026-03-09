@@ -68,7 +68,6 @@ public class MainAppScreen extends Application{
 		tree.setLayoutX(4);
 		tree.setLayoutY(36);
 		
-
 		tree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 		    @Override
