@@ -70,27 +70,23 @@ public class MainAppScreen extends Application{
 		
 
 		tree.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		    private int counter = 0;
+
 
 		    @Override
 		    public void handle(MouseEvent event) {
-		        counter++;
-		        
-		        switch (counter) {
+
+		        switch (event.getClickCount()) {
 		        case 1:
-		        	id0 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
+		        	id0 = "!";
+	        		id1 = "!";
 		        	break;
 		        case 2:
-		        	id1 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
-		        	counter = 0;
+		        	id0 = tree.getSelectionModel().selectedItemProperty().getValue().getValue().getId();
 		         	break;
 		         default:
 		        	 break;
 		        }
-	
-		        if (id0 == id1) {
-		        	
-	        
+		        
 		        	switch (id0) {
 		        	case "10":
 		        		sharedObjects.getMenuLeafActions().runREGPanel();
@@ -98,10 +94,12 @@ public class MainAppScreen extends Application{
 		        	case "20":
 		        		sharedObjects.getMenuLeafActions().runAdhocQuery();
 		        		break;
+		        	default:
+		        		System.out.println("Brak lub inne Id");
+		        		break;
 		        	}
-		        }}
+		        }
 		});
-		//------------------
 		
 		Pane pane = new Pane();
 		pane.getChildren().addAll(
@@ -109,7 +107,6 @@ public class MainAppScreen extends Application{
 				licence,
 				tree
 				);
-		
 		
 		Scene scene = new Scene(pane);
 		
@@ -124,8 +121,5 @@ public class MainAppScreen extends Application{
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
 	}
-
-	
 }
